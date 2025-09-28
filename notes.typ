@@ -1,4 +1,4 @@
-#import "@preview/physica:0.9.5": dd, derivative
+#import "@preview/physica:0.9.5": dd, derivative, arccot
 #import "style.typ": *
 
 #show: show-theorion
@@ -234,6 +234,11 @@ e.g., by rearranging terms.]
   is just a way to say $x != c.$
 ]
 
+#definition(title: [Infinite Limit])[
+  Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = infinity$ if
+  $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
+]
+
 == Continuity
 
 #definition(title: [Continuity])[
@@ -262,55 +267,45 @@ e.g., by rearranging terms.]
 ]
 
 #theorem(title: [Composition])[ 
-  Given $f : A -> RR$ and $g : B -> RR$ with $f(A) subset.eq B$,
+  Given $f : A -> B$ and $g : B -> RR$ with $f(A) subset.eq B$,
   if $f$ is continuous at $c in A$ and $g$ is continuous at $f(c) in B$,
   then $g compose f$ is continuous at $c$.
-  
-  In other words, if $f$ is differentiable on an interval, then $f'$ satisfies the Intermediate Value Property.
 ]
-
 #theorem(title: [Composition Limit])[ 
   If $f$ is continuous at $y$ and $lim_(x->c) g(x) = y$, then
   $ lim_(x->c) f(g(x)) = f(lim_(x->c) g(x)) = f(y). $ 
 ]
 
-#theorem(title: [Darboux's])[
-  If $f$ is differentiable on $[a, b]$ and if $y$ lies between $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
+== Derivatives
+
+=== Differentiation
+
+#theorem(title: [Chain Rule])[
+  Let $f : X -> Y$ and $g : Y -> RR$.
+  If $f$ is differentiable at $c in X$ and $g$ is differentiable at $f(c) in Y$,
+  then $g compose f$ is differentable at $c$ with
+  $ (g compose f)'(c) = g'(f(c)) f'(c). $
 ]
 
-== The Mean Value Theorems
-
-Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
-
-#theorem(title: [Rolle's])[
-  $ f(a) = f(b) ==> exists c in (a, b) : f'(c) = 0 $
-
-  #proof[$f(x)$ is bounded and $f'(x) = 0$ at its extreme points.]
-] <thm:rolles>
-
-#theorem(title: [Mean Value])[
-  $ exists c in (a, b) : f'(c) = (f(b) - f(a))/(b - a) $
-
-  #proof[Let the signed distance $d$ between the function value $f$ and the secant $y$ through $a$ and $b$ be
-  $ d(x) = f(x) - y(x) =  f(x) - (f(b) - f(a))/(b - a) (x - a) - f(a) $
-  and note that $d(a) = d(b) = 0$. Then apply @thm:rolles.
-  ]
-]
-
-#theorem(title: [Generalized Mean Value])[
-  $ exists c in (a, b) : [f(b) - f(a)] g'(c) = [g(b) - g(a)] f'(c) $
-  If $g'$ is never zero on $(a, b)$, then the above can be stated as
-  $ (f'(c))/(g'(c)) = (f(b) - f(a))/(g(b) - g(a)). $
-
-  #proof[Let $h = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$ and then apply @thm:rolles.]
-] <thm:gmv>
-
-=== L'Hôpital's Rule
-
-#definition(title: [Infinite Limit])[
-  Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = infinity$ if
-  $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
-]
+#theorem(title: [Basic Derivatives], 
+  grid(
+    columns: (1fr, 1.2fr),
+    [$
+      &derivative(,x) (arcsin x) = 1 / sqrt(1 - x^2) \
+      &derivative(,x) (arccos x) = -1 / sqrt(1 - x^2) \
+      &derivative(,x) (arctan x) = 1 / (1 + x^2) \
+      &derivative(,x) (arccot x) = -1 / (1 + x^2) \
+      &derivative(,x) (x^a) = a x^(a - 1) #h(0.7em) (a != 0) \
+    $],
+    [$
+      &derivative(,x) (sin x) = cos x \
+      &derivative(,x) (cos x) = -sin x \
+      &derivative(,x) (tan x) = 1 / (cos^2 x) \
+      &derivative(,x) (e^x) = e^x \
+      &derivative(,x) (ln abs(x)) = 1 / x \
+    $],
+  )
+)
 
 #theorem(title: [L'Hôpital's Rule])[
   Let $f(x)$ and $g(x)$ be defined and, with the possible exception of at the limit point $c$, differentiable. If
@@ -345,6 +340,47 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   so there may exist some other solution if this method fails.
 ]
 
+=== Function Character
+
+#theorem(title: [Interior Extremum])[
+  If $f$ is differentiable on $(a, b)$, then $f'(x) = 0$ at any local extreme points.
+
+  However, note that a zero-derivative point may also be a stationary point of inflection. 
+]
+
+#theorem(title: [Darboux's])[
+  If $f$ is differentiable on $[a, b]$ and if $y$ lies between $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
+
+  In other words, if $f$ is differentiable on an interval, then $f'$ satisfies the Intermediate Value Property.
+]
+
+=== The Mean Value Theorems
+
+Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
+
+#theorem(title: [Rolle's])[
+  $ f(a) = f(b) ==> exists c in (a, b) : f'(c) = 0 $
+
+  #proof[$f(x)$ is bounded and $f'(x) = 0$ at its extreme points.]
+] <thm:rolles>
+
+#theorem(title: [Mean Value])[
+  $ exists c in (a, b) : f'(c) = (f(b) - f(a))/(b - a) $
+
+  #proof[Let the signed distance $d$ between the function value $f$ and the secant $y$ through $a$ and $b$ be
+  $ d(x) = f(x) - y(x) =  f(x) - (f(b) - f(a))/(b - a) (x - a) - f(a) $
+  and note that $d(a) = d(b) = 0$. Then apply @thm:rolles.
+  ]
+]
+
+#theorem(title: [Generalized Mean Value])[
+  $ exists c in (a, b) : [f(b) - f(a)] g'(c) = [g(b) - g(a)] f'(c) $
+  If $g'$ is never zero on $(a, b)$, then the above can be stated as
+  $ (f'(c))/(g'(c)) = (f(b) - f(a))/(g(b) - g(a)). $
+
+  #proof[Let $h = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$ and then apply @thm:rolles.]
+] <thm:gmv>
+
 == Asymptotes
 
 #definition(title: [Asymptote])[
@@ -362,22 +398,3 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   If $f(x)$ has an oblique asymptote $y = k x + m$, then
   $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
 ]
-
-#theorem(title: [Basic Derivatives], 
-  grid(
-    columns: (1fr, 1fr),
-    [$
-      &derivative(,x) (arctan x) = 1 / (1 + x^2) \
-      &derivative(,x) (arcsin x) = 1 / sqrt(1 - x^2) \
-      &derivative(,x) (arccos x) = -1 / sqrt(1 - x^2) \
-      &derivative(,x) (ln abs(x)) = 1 / x \
-      &derivative(,x) (x^a) = a x^(a - 1) #h(1em) (a != 0) \
-    $],
-    [$
-      &derivative(,x) (sin x) = cos x \
-      &derivative(,x) (cos x) = -sin x \
-      &derivative(,x) (tan x) = 1 / cos^2 x \
-      &derivative(,x) (e^x) = e^x \
-    $],
-  )
-)
