@@ -17,9 +17,9 @@
 = The real numbers
 
 #theorem(title: [Triangle Inequalities])[
-  1. $|a + b| <= |a| + |b|$
-  2. $|a - b| <= |a - c| + |c - b|$
-  3. $|a - b| >= ||a| - |b||$
+  + $|a + b| <= |a| + |b|$
+  + $|a - b| <= |a - c| + |c - b|$
+  + $|a - b| >= ||a| - |b||$
 
   The reverse triangle inequality (iii) is seldom used.
 ]
@@ -30,8 +30,8 @@
 
 #theorem(title: [Induction])[
   If $s in NN$ such that
-  1. $1 in S$ and
-  2. when $n in S$ it follows that $n + 1 in S$
+  + $1 in S$ and
+  + when $n in S$ it follows that $n + 1 in S$
   it follows that $S = NN$.
 ]
 
@@ -51,9 +51,9 @@
 ]
 
 #theorem(title: [Density of $QQ$ in $RR$])[
-  1. $forall a < b in RR space exists r in QQ : a < r < b$
+  + $forall a < b in RR space exists r in QQ : a < r < b$
 
-  2. $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
+  + $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
 ]
 
 #definition(title: [Injective/Surjective/Bijective])[
@@ -120,9 +120,9 @@ e.g., by rearranging terms.]
   We write this $lim_(n->infinity) a_n = lim a_n = a$ or $a_n -> a$.
 
   #example[Template of a typical convergence proof:
-    1. Let $epsilon > 0$ be arbitrary.
-    2. Propose an $N in NN$ (found before writing the proof).
-    3. Assume $n >= N$.
+    + Let $epsilon > 0$ be arbitrary.
+    + Propose an $N in NN$ (found before writing the proof).
+    + Assume $n >= N$.
     4. Show that $|a_n - a| < epsilon.$
   ]
 ]
@@ -169,14 +169,14 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Comparison Test])[
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
-  1. $sum^infinity_(k=1) (a_k)$ converges if $sum^infinity_(k=1) (b_k)$  converges.
-  2. $sum^infinity_(k=1) (b_k)$ diverges if $sum^infinity_(k=1) (a_k)$  diverges.
+  + $sum^infinity_(k=1) (a_k)$ converges if $sum^infinity_(k=1) (b_k)$  converges.
+  + $sum^infinity_(k=1) (b_k)$ diverges if $sum^infinity_(k=1) (a_k)$  diverges.
 ]
 
 #theorem(title: [Alternating Series Test])[
   Let $(a_n)$ satisfy
-  1. $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
-  2. $(a_n) -> 0$.
+  + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
+  + $(a_n) -> 0$.
   Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
 ]
 
@@ -224,8 +224,8 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Function Limit])[ 
   Given $f : A -> RR$ with the limit point $c$,
-  1. $lim_(x->c) f(x) = L$ is equivalent to
-  2. if $forall (x_n) subset.eq A : (x_n != c "and" x_n -> c)$ it follows that $f(x_n) -> L$.
+  + $lim_(x->c) f(x) = L$ is equivalent to
+  + if $forall (x_n) subset.eq A : (x_n != c "and" x_n -> c)$ it follows that $f(x_n) -> L$.
 ]
 
 #note-box[
@@ -250,9 +250,9 @@ e.g., by rearranging terms.]
 #theorem(title: [Continuity Characterizations])[
   The following are equivalent:
   
-  1. $f$ is continuous (see @def:continuity).
-  2. $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$.
-  3. $x_n -> c$, where $(x_n) subset.eq A$, implies $f(x_n) -> f(c)$.
+  + $f$ is continuous (see @def:continuity).
+  + $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$.
+  + $x_n -> c$, where $(x_n) subset.eq A$, implies $f(x_n) -> f(c)$.
   If $c$ is a limit point of $A$:
   4. $lim_(x->c) f(x) = f(c)$, also written $lim_(h->0)f(c + h) - f(c) = 0$.
 ]
@@ -271,9 +271,18 @@ e.g., by rearranging terms.]
   if $f$ is continuous at $c in A$ and $g$ is continuous at $f(c) in B$,
   then $g compose f$ is continuous at $c$.
 ]
+
 #theorem(title: [Composition Limit])[ 
   If $f$ is continuous at $y$ and $lim_(x->c) g(x) = y$, then
   $ lim_(x->c) f(g(x)) = f(lim_(x->c) g(x)) = f(y). $ 
+]
+
+#theorem(title: [Weierstrass Extreme Value])[
+  If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
+] <thm:extreme>
+
+#theorem(title: [Intermediate Value])[
+  If $f$ is continuous on $[a, b]$, then for any $y$ between $f(a)$ and $f(b)$, there exists some $c in (a, b)$ such that $f(c) = y$.
 ]
 
 == Derivatives
@@ -301,16 +310,16 @@ e.g., by rearranging terms.]
       &derivative(,x) (sin x) = cos x \
       &derivative(,x) (cos x) = -sin x \
       &derivative(,x) (tan x) = 1 / (cos^2 x) \
-      &derivative(,x) (e^x) = e^x \
       &derivative(,x) (ln abs(x)) = 1 / x \
+      &(f^(-1))'(y) = -1/(f'(x)) #h(0.7em) (f'(x) != 0)
     $],
   )
 )
 
 #theorem(title: [L'Hôpital's Rule])[
   Let $f(x)$ and $g(x)$ be defined and, with the possible exception of at the limit point $c$, differentiable. If
-  1. $lim_(x->c) f(x) = lim_(x->c) g(x) = 0 "or" plus.minus infinity$ and
-  2. $g'(x) != 0$ for all $x != c$, then
+  + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0 "or" plus.minus infinity$ and
+  + $g'(x) != 0$ for all $x != c$, then
   $ lim_(x->c) (f'(x))/(g'(x)) = L #h(0.7em) ==> #h(0.7em) lim_(x->c) (f(x))/(g(x)) = L. $
 
   #proof(title: "Proof of the zero case")[Assume the limits are zero.
@@ -342,16 +351,46 @@ e.g., by rearranging terms.]
 
 === Function Character
 
-#theorem(title: [Interior Extremum])[
-  If $f$ is differentiable on $(a, b)$, then $f'(x) = 0$ at any local extreme points.
+#theorem(title: [Fermat's or Interior Extremum])[
+  Let $f : (a, b) -> RR$  be differentiable at the local extremum $c in (a, b)$. Then $f'(x) = 0$.
 
   However, note that a zero-derivative point may also be a stationary point of inflection. 
-]
+] <thm:fermat>
 
 #theorem(title: [Darboux's])[
-  If $f$ is differentiable on $[a, b]$ and if $y$ lies between $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
+  If $f$ is differentiable on $[a, b]$ and if $y$ lies strictly between $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
 
-  In other words, if $f$ is differentiable on an interval, then $f'$ satisfies the Intermediate Value Property.
+  In other words, if $f$ is differentiable on an interval,
+  then $f'$ satisfies the Intermediate Value Property (IVP).
+
+  #proof[Assume that $f'(a) < y < f'(b).$ // why not ≤? 
+
+  Let $g(x) = f(x) - y x$ with $g'(x) = f'(x) - y$. Note that $f'(c) = y$ if $g'(c) = 0$ for some $c in (a, b)$.
+  
+  @thm:extreme states that $g$ must have a minimum point $c in [a, b]$.
+  More precisely $c in (a, b)$ since, from the assumption, $g'(a) < 0$ and $g'(b) > 0$.
+  Furthermore, $g'(c) = 0$ according to @thm:fermat.
+  ]
+]
+
+#theorem(title: [Newton's Method])[
+  Find roots to a differentiable function $f(x)$.
+
+  Given $x_n$ with the coordinates $(x_n, f(x_n))$, the tangent line is given by
+  $ T(x) = f'(x_n)(x - x_n) + f(x_n) $
+  and intersects the $x$-axis at
+  $ T(x_(n+1)) = 0 #h(0.8em) <==> #h(0.8em) x_(n+1) = x_n - f(x_n)/(f'(x_n)). $
+
+  The method fails if it iterates endlessly or $f'(x_n) = 0$.
+]
+
+#theorem(title: [Convexity])[
+  Let $f$ be twice differentiable on $(a, b)$.
+  Then, $f''(x) >= 0$ if and only if $f$ is convex on $(a, b)$.
+]
+
+#definition(title: [Concave])[
+  On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
 ]
 
 === The Mean Value Theorems
@@ -397,4 +436,22 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 #theorem(title: [Oblique Asymptote])[ 
   If $f(x)$ has an oblique asymptote $y = k x + m$, then
   $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
+]
+
+#tip-box(title: [Tip: Sketching Graphs])[
+  ==== Information
+  + split into cases
+  + symmetries
+  + domain → vertical asymptotes
+  + factorize → oblique asymptotes & roots
+  + first and second derivative and their roots
+  + sign tables
+  + calculate interesting points: intersection with $y$-axis, defined non-differentiable points, local extremums, endpoints, inflection points
+  
+  ==== Sketching
+  + Axes
+  + Symmetries
+  + Asymptotes
+  + Interesting points
+  + Curves
 ]
