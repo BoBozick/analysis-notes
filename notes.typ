@@ -1,0 +1,383 @@
+#import "@preview/physica:0.9.5": dd, derivative
+#import "style.typ": *
+
+#show: show-theorion
+#show: styling.with(
+  course_name: "Analys i en variabel",
+  course_code: "SF1673 (HT25)",
+  title_size: 30pt,
+  title_space: 0em, 
+
+  margin: 0.5cm,
+  width: 15cm,
+  height: auto,
+  size: 12pt,
+)
+
+= The real numbers
+
+#theorem(title: [Triangle Inequalities])[
+  1. $|a + b| <= |a| + |b|$
+  2. $|a - b| <= |a - c| + |c - b|$
+  3. $|a - b| >= ||a| - |b||$
+
+  The reverse triangle inequality (iii) is seldom used.
+]
+
+#definition(title: [Equality])[
+  $a  = b <==> (forall epsilon > 0 => |a - b| < epsilon)$
+]
+
+#theorem(title: [Induction])[
+  If $s in NN$ such that
+  1. $1 in S$ and
+  2. when $n in S$ it follows that $n + 1 in S$
+  it follows that $S = NN$.
+]
+
+#theorem(title: [Nested Interval Property])[
+  The intervals $ RR supset.eq I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c$
+  all contain a point $a = inter.big_(n=1)^infinity I_n $.]
+
+#axiom(title: [Supremum Property or Axiom of Completeness])[
+  Every bounded, non-empty set of real numbers has a least upper bound.
+]
+
+#note-box[The same does not apply for the rationals.]
+
+#definition(title: [Least Upper Bound])[
+  Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
+  $ s = sup A #h(1em) <==> #h(1em) forall epsilon > 0 space exists a in A : s - epsilon < a. $
+]
+
+#theorem(title: [Density of $QQ$ in $RR$])[
+  1. $forall a < b in RR space exists r in QQ : a < r < b$
+
+  2. $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
+]
+
+#definition(title: [Injective/Surjective/Bijective])[
+  $f : X -> Y$ is _injective_ (or one-to-one) if $x_1 != x_2 ==> f(x_1) != f(x_2)$
+  or equivalently if $f(x_1) = f(x_2) ==> x_1 = x_2$.
+  
+  $f$ is _surjective_ if $forall y space exists x : f(x) = y$.
+  
+  $f$ is _bijective_ if is both injective and surjective or equivalently if each $y$ is mapped to exactly one $x$.
+]
+
+== Cardinality
+
+#definition(title: [Cardinality])[
+  $A$ has the same _cardinality_ as $B$ if there exists a bijective $f : A -> B$.
+]
+
+#definition(title: [Countable/Uncountable])[
+  $A$ is _countable_ if $NN tilde A$.
+  Otherwise, $A$ is _uncountable_ if there are infinite elements or _finite_ if there are finite elements.
+]
+
+#theorem(title: [Countability of $QQ$, $RR$])[
+  $QQ$ is countable.
+
+  #proof[Let $A_1 = {0}$ and let
+    $ A_n = {plus.minus p slash q : p, q in NN_+, gcd(p, q) = 1, p + q = n} $
+    for all $n >= 2$.
+    Each $A_n$ is finite and every rational numbers appears in exactly one set.
+  ]
+
+  $RR$ is uncountable.
+
+  #proof[Cantor's diagonalization method.]
+
+  $II$ is uncountable.
+
+  #proof[$II = RR backslash QQ$ where $QQ$ is countable.]
+]
+
+== Sequences and Series
+
+#theorem(title: [Infinite Series])[
+  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
+  The sum of the infinite series is defined as
+  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n = lim_(n->infinity) sum^n_(j=0) a_j. $
+]
+
+#caution-box[Beware of treating infinite series like elementary algebra,
+e.g., by rearranging terms.]
+
+=== Convergence
+
+#definition(title: [Sequence])[
+  A _sequence_ is a function whose domain is $NN.$
+]
+
+#definition(title: [Convergence])[
+  A sequence _converges_ to $a$ if
+  $ forall epsilon > 0 space exists N in NN : n >= N ==> |a_n - a| < epsilon $
+  or equivalently if for any $V_epsilon (a)$ there exists a point in the sequence after which all terms are in $V_epsilon (a)$.
+  In other words if every $epsilon$-neighborhood contains all but a finite number of the terms in $(a_n)$.
+
+  We write this $lim_(n->infinity) a_n = lim a_n = a$ or $a_n -> a$.
+
+  #example[Template of a typical convergence proof:
+    1. Let $epsilon > 0$ be arbitrary.
+    2. Propose an $N in NN$ (found before writing the proof).
+    3. Assume $n >= N$.
+    4. Show that $|a_n - a| < epsilon.$
+  ]
+]
+
+#theorem(title: [Uniqueness of Limits])[
+  The limit of a sequence, if it exists, is unique.
+]
+
+#definition(title: [Bounded])[
+  A sequence is _bounded_ if $exists M > 0 : |a_n| < M space forall n in NN$.
+]
+
+#theorem(title: [Convergent/Monotone])[
+  Every convergent series is bounded.
+
+  If a sequence is monotone and bounded it converges.
+
+  Subsequences of a convergent series converge to the same limit.
+]
+
+#theorem(title: [Bolzano--Weierstrass])[
+  Every bounded sequence contains a convergent subsequence.
+]
+
+#theorem(title: [Series Term Test])[
+  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
+]
+
+#theorem(title: [Cauchy Condensation Test])[
+  Let $(a_n)$ be a decreasing sequence of non-negative real numbers.
+  Then $sum_(n=1)^(infinity) a_n$ converges if and only if $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
+]
+
+#definition(title: [Cauchy Sequence])[
+  A sequence $(a_n)$ is a _Cauchy sequence_ if
+  $ forall epsilon > 0 space exists N in NN : m, n >= N ==> |a_n - a_m| < epsilon. $
+]
+
+#theorem(title: [Cauchy Criterion])[
+  A sequence converges if and only if it is a Cauchy sequence.
+]
+
+// Add theorem 2.7.2
+
+#theorem(title: [Comparison Test])[
+  Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
+  1. $sum^infinity_(k=1) (a_k)$ converges if $sum^infinity_(k=1) (b_k)$  converges.
+  2. $sum^infinity_(k=1) (b_k)$ diverges if $sum^infinity_(k=1) (a_k)$  diverges.
+]
+
+#theorem(title: [Alternating Series Test])[
+  Let $(a_n)$ satisfy
+  1. $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
+  2. $(a_n) -> 0$.
+  Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
+]
+
+// Chapter 2.8 can be added.
+
+== Topology
+
+#definition(title: [Limit Point])[
+  $x$ is a _limit point_ of $A$ if every $V_epsilon (x)$ intersects $A$ at some point other than $x$.
+]
+
+#theorem(title: [Sequential Limit Point])[
+  $x$ is a limit point of $A$ if $x = lim a_n$ for some $(a_n) subset.eq A : a_n != x space forall n in NN.$
+]
+
+#definition(title: [Open/Closed Set])[
+  $A subset.eq RR$ is _open_ if $forall a in A space exists V_epsilon (a) subset.eq A$ or equivalently if its complement is closed.
+  
+  $A subset.eq RR$ is _closed_ if it contains its limit points or equivalently if its complement is open.
+]
+
+#theorem(title: [Clopen Sets])[
+  $RR$ and $emptyset$ are _clopen_ (both opened and closed).
+]
+
+#theorem(title: [Unions/Intersections])[
+  The union of open (closed) sets is open (closed).
+  
+  The intersection of finitely many open (closed) sets is open (closed).  
+]
+
+#definition(title: [Compact])[
+  A set $K$ in a topological space is _compact_ if every open cover has a finite subcover.
+]
+
+#theorem(title: [Heine--Borel])[
+  A set $K subset.eq RR^n$ is compact if and only if it is closed and bounded.
+]
+
+#note-box[Compactness is like a generalization of closed intervals.]
+
+= Real functions
+
+== Limits
+
+#theorem(title: [Function Limit])[ 
+  Given $f : A -> RR$ with the limit point $c$,
+  1. $lim_(x->c) f(x) = L$ is equivalent to
+  2. if $forall (x_n) subset.eq A : (x_n != c "and" x_n -> c)$ it follows that $f(x_n) -> L$.
+]
+
+#note-box[
+  In the $epsilon delta$-definition of limits,
+  the additional restriction that $0 < abs(x - a)$
+  is just a way to say $x != c.$
+]
+
+== Continuity
+
+#definition(title: [Continuity])[
+  A function $f : A -> R$ is _continuous_ at $c in RR$ if
+  $ forall epsilon > 0 space exists delta > 0 : |x - c| < delta ==> |f(x) - f(c)| < epsilon, $
+  where $x in A$. 
+] <def:continuity>
+
+#theorem(title: [Continuity Characterizations])[
+  The following are equivalent:
+  
+  1. $f$ is continuous (see @def:continuity).
+  2. $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$.
+  3. $x_n -> c$, where $(x_n) subset.eq A$, implies $f(x_n) -> f(c)$.
+  If $c$ is a limit point of $A$:
+  4. $lim_(x->c) f(x) = f(c)$, also written $lim_(h->0)f(c + h) - f(c) = 0$.
+]
+
+#theorem(title: [Isolated Continuity])[
+  All functions are continuous at isolated points.
+]
+
+#theorem(title: [Dirichlet Discontinuous])[ 
+  The Dirichlet function $f : RR -> RR$ such that $f(x) = 1$ if $x in QQ$ and
+  $f(x) = 0$ if $x in II$ is discontinuous everywhere.
+]
+
+#theorem(title: [Composition])[ 
+  Given $f : A -> RR$ and $g : B -> RR$ with $f(A) subset.eq B$,
+  if $f$ is continuous at $c in A$ and $g$ is continuous at $f(c) in B$,
+  then $g compose f$ is continuous at $c$.
+  
+  In other words, if $f$ is differentiable on an interval, then $f'$ satisfies the Intermediate Value Property.
+]
+
+#theorem(title: [Composition Limit])[ 
+  If $f$ is continuous at $y$ and $lim_(x->c) g(x) = y$, then
+  $ lim_(x->c) f(g(x)) = f(lim_(x->c) g(x)) = f(y). $ 
+]
+
+#theorem(title: [Darboux's])[
+  If $f$ is differentiable on $[a, b]$ and if $y$ lies between $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
+]
+
+== The Mean Value Theorems
+
+Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
+
+#theorem(title: [Rolle's])[
+  $ f(a) = f(b) ==> exists c in (a, b) : f'(c) = 0 $
+
+  #proof[$f(x)$ is bounded and $f'(x) = 0$ at its extreme points.]
+] <thm:rolles>
+
+#theorem(title: [Mean Value])[
+  $ exists c in (a, b) : f'(c) = (f(b) - f(a))/(b - a) $
+
+  #proof[Let the signed distance $d$ between the function value $f$ and the secant $y$ through $a$ and $b$ be
+  $ d(x) = f(x) - y(x) =  f(x) - (f(b) - f(a))/(b - a) (x - a) - f(a) $
+  and note that $d(a) = d(b) = 0$. Then apply @thm:rolles.
+  ]
+]
+
+#theorem(title: [Generalized Mean Value])[
+  $ exists c in (a, b) : [f(b) - f(a)] g'(c) = [g(b) - g(a)] f'(c) $
+  If $g'$ is never zero on $(a, b)$, then the above can be stated as
+  $ (f'(c))/(g'(c)) = (f(b) - f(a))/(g(b) - g(a)). $
+
+  #proof[Let $h = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$ and then apply @thm:rolles.]
+] <thm:gmv>
+
+=== L'Hôpital's Rule
+
+#definition(title: [Infinite Limit])[
+  Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = infinity$ if
+  $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
+]
+
+#theorem(title: [L'Hôpital's Rule])[
+  Let $f(x)$ and $g(x)$ be defined and, with the possible exception of at the limit point $c$, differentiable. If
+  1. $lim_(x->c) f(x) = lim_(x->c) g(x) = 0 "or" plus.minus infinity$ and
+  2. $g'(x) != 0$ for all $x != c$, then
+  $ lim_(x->c) (f'(x))/(g'(x)) = L #h(0.7em) ==> #h(0.7em) lim_(x->c) (f(x))/(g(x)) = L. $
+
+  #proof(title: "Proof of the zero case")[Assume the limits are zero.
+
+  Let the functions be differentiable on the open interval $(c, x)$.
+  Then, rewriting and applying @thm:gmv gives
+  $ lim_(x->c) f(x)/g(x) = lim_(x->c) (f(x)-f(c))/(g(x)-g(c))
+  = lim_(x->c) (f'(p))/(g'(p)) = lim_(p->c) (f'(p))/(g'(p)) $
+  for some $p "between" c "and" x$.
+  ]
+
+  #proof(title: "Proof of the infinity case")[The proof is too complicated.
+  // Assume the limits are infinite. We will only prove the right-hand limit.
+  // Let $c < a < b$. The @thm:gmv states that there exists a $p in (a, b)$ such that
+  // $ f'(p)[g(b) - g(a)] = g'(p)[f(b) - f(a)]. $
+  // Solving for $f(a)$, we get 
+  // $ f(a) = f(b) + (f'(p)(g(a) - g(b)))/(g'(p)). $
+  // We divide by $g(a)$ and get
+  // $ f(a)/g(a) = (f'(p))/(g'(p)) + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
+  // which we rewrite as
+  // $ f(a)/g(a) - L = (f'(p))/(g'(p)) - L + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
+  ]
+]
+
+#important-box[
+  This is only an implication, not an equivalence,
+  so there may exist some other solution if this method fails.
+]
+
+== Asymptotes
+
+#definition(title: [Asymptote])[
+  The line $y = k x + m$ is an _oblique_ asymptote of $f$ if
+  $ lim_(x->infinity) (f(x) - (k x + m)) = 0. $
+
+  The line $x = c$ is a _vertical_ asymptote of $f$ if
+  $ lim_(x->c+) f(x) = plus.minus infinity #h(1.5em) "or" #h(1.5em) lim_(x->c-) f(x) = plus.minus infinity. $
+
+  The line $y = b$ is a _horizontal_ asymptote of $f$ if
+  $ lim_(x->infinity) f(x) = b #h(1.5em) "or" #h(1.5em) lim_(x->-infinity) f(x) = b. $
+]
+
+#theorem(title: [Oblique Asymptote])[ 
+  If $f(x)$ has an oblique asymptote $y = k x + m$, then
+  $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
+]
+
+#theorem(title: [Basic Derivatives], 
+  grid(
+    columns: (1fr, 1fr),
+    [$
+      &derivative(,x) (arctan x) = 1 / (1 + x^2) \
+      &derivative(,x) (arcsin x) = 1 / sqrt(1 - x^2) \
+      &derivative(,x) (arccos x) = -1 / sqrt(1 - x^2) \
+      &derivative(,x) (ln abs(x)) = 1 / x \
+      &derivative(,x) (x^a) = a x^(a - 1) #h(1em) (a != 0) \
+    $],
+    [$
+      &derivative(,x) (sin x) = cos x \
+      &derivative(,x) (cos x) = -sin x \
+      &derivative(,x) (tan x) = 1 / cos^2 x \
+      &derivative(,x) (e^x) = e^x \
+    $],
+  )
+)
