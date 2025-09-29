@@ -476,3 +476,24 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 #definition(title: [Concave])[
   On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
 ]
+
+== Taylor's Theorem
+
+#theorem(title: [Taylor's])[
+  Let $f(x)$ be $n + 1$ times differentiable at $a$. Then,
+  $ f(x) = P_n (x) + R_n (x), $
+  where the _Taylor polynomial_ of degree $n$ is
+  $ P_n (x) = sum_(k=0)^(n) (f^((k))(a))/k! (x - a)^k $
+  and the _Lagrange remainder_ of degree $n$ is
+  $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - a)^(n+1) $
+  for some $xi$ between $a$ and $x$.
+
+  #proof[We first see that the identity holds for $x = 0$. Now, for $x != 0$ let
+  $ C = (f(x) - P_n (x)) / (x - a)^(n+1) $
+  and note that the Taylor identity is equivalent to
+  $ C (n+1)! = f^((n+1)) (xi). $
+
+  Remark that
+  $$
+  ]
+]
