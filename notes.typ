@@ -14,7 +14,31 @@
   size: 12pt,
 )
 
-= The real numbers
+#theorem(title: [Induction])[
+  If $s in NN$ such that
+  + $1 in S$ and
+  + when $n in S$ it follows that $n + 1 in S$
+  it follows that $S = NN$.
+]
+
+#definition(title: [Injective/Surjective/Bijective])[
+  $f : X -> Y$ is _injective_ (or one-to-one) if $x_1 != x_2 ==> f(x_1) != f(x_2)$
+  or equivalently if $f(x_1) = f(x_2) ==> x_1 = x_2$.
+  
+  $f$ is _surjective_ if $forall y space exists x : f(x) = y$.
+  
+  $f$ is _bijective_ if is both injective and surjective or equivalently if each $y$ is mapped to exactly one $x$.
+]
+
+= The Real Numbers
+
+== Reals
+
+=== Comparison
+
+#definition(title: [Equality])[
+  $a  = b <==> (forall epsilon > 0 => |a - b| < epsilon)$
+]
 
 #theorem(title: [Triangle Inequalities])[
   + $|a + b| <= |a| + |b|$
@@ -24,20 +48,7 @@
   The reverse triangle inequality (iii) is seldom used.
 ]
 
-#definition(title: [Equality])[
-  $a  = b <==> (forall epsilon > 0 => |a - b| < epsilon)$
-]
-
-#theorem(title: [Induction])[
-  If $s in NN$ such that
-  + $1 in S$ and
-  + when $n in S$ it follows that $n + 1 in S$
-  it follows that $S = NN$.
-]
-
-#theorem(title: [Nested Interval Property])[
-  The intervals $ RR supset.eq I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c$
-  all contain a point $a = inter.big_(n=1)^infinity I_n $.]
+=== Bounds
 
 #axiom(title: [Supremum Property or Axiom of Completeness])[
   Every bounded, non-empty set of real numbers has a least upper bound.
@@ -48,21 +59,6 @@
 #definition(title: [Least Upper Bound])[
   Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
   $ s = sup A #h(1em) <==> #h(1em) forall epsilon > 0 space exists a in A : s - epsilon < a. $
-]
-
-#theorem(title: [Density of $QQ$ in $RR$])[
-  + $forall a < b in RR space exists r in QQ : a < r < b$
-
-  + $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
-]
-
-#definition(title: [Injective/Surjective/Bijective])[
-  $f : X -> Y$ is _injective_ (or one-to-one) if $x_1 != x_2 ==> f(x_1) != f(x_2)$
-  or equivalently if $f(x_1) = f(x_2) ==> x_1 = x_2$.
-  
-  $f$ is _surjective_ if $forall y space exists x : f(x) = y$.
-  
-  $f$ is _bijective_ if is both injective and surjective or equivalently if each $y$ is mapped to exactly one $x$.
 ]
 
 == Cardinality
@@ -94,18 +90,60 @@
   #proof[$II = RR backslash QQ$ where $QQ$ is countable.]
 ]
 
-== Sequences and Series
+#theorem(title: [Density of $QQ$ in $RR$])[
+  + $forall a < b in RR space exists r in QQ : a < r < b$
 
-#theorem(title: [Infinite Series])[
-  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
-  The sum of the infinite series is defined as
-  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n = lim_(n->infinity) sum^n_(j=0) a_j. $
+  + $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
 ]
 
-#caution-box[Beware of treating infinite series like elementary algebra,
-e.g., by rearranging terms.]
+== Topology
 
-=== Convergence
+=== Points
+
+#definition(title: [Limit Point])[
+  $x$ is a _limit point_ of $A$ if every $V_epsilon (x)$ intersects $A$ at some point other than $x$.
+]
+
+#theorem(title: [Sequential Limit Point])[
+  $x$ is a limit point of $A$ if $x = lim a_n$ for some $(a_n) subset.eq A : a_n != x space forall n in NN.$
+]
+
+#theorem(title: [Nested Interval Property])[
+  The intervals $ RR supset.eq I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c$
+  all contain a point $a = inter.big_(n=1)^infinity I_n $.
+]
+
+=== Opened and Closed Sets
+
+#definition(title: [Open/Closed Set])[
+  $A subset.eq RR$ is _open_ if $forall a in A space exists V_epsilon (a) subset.eq A$ or equivalently if its complement is closed.
+  
+  $A subset.eq RR$ is _closed_ if it contains its limit points or equivalently if its complement is open.
+]
+
+#theorem(title: [Clopen Sets])[
+  $RR$ and $emptyset$ are _clopen_ (both opened and closed).
+]
+
+#theorem(title: [Unions/Intersections])[
+  The union of open (closed) sets is open (closed).
+  
+  The intersection of finitely many open (closed) sets is open (closed).  
+]
+
+=== Compactness
+
+#definition(title: [Compact])[
+  A set $K$ in a topological space is _compact_ if every open cover has a finite subcover.
+]
+
+#theorem(title: [Heine--Borel])[
+  A set $K subset.eq RR^n$ is compact if and only if it is closed and bounded.
+]
+
+#note-box[Compactness is like a generalization of closed intervals.]
+
+== Sequences
 
 #definition(title: [Sequence])[
   A _sequence_ is a function whose domain is $NN.$
@@ -131,6 +169,8 @@ e.g., by rearranging terms.]
   The limit of a sequence, if it exists, is unique.
 ]
 
+=== Bounded
+
 #definition(title: [Bounded])[
   A sequence is _bounded_ if $exists M > 0 : |a_n| < M space forall n in NN$.
 ]
@@ -147,14 +187,7 @@ e.g., by rearranging terms.]
   Every bounded sequence contains a convergent subsequence.
 ]
 
-#theorem(title: [Series Term Test])[
-  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
-]
-
-#theorem(title: [Cauchy Condensation Test])[
-  Let $(a_n)$ be a decreasing sequence of non-negative real numbers.
-  Then $sum_(n=1)^(infinity) a_n$ converges if and only if $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
-]
+=== Cauchy
 
 #definition(title: [Cauchy Sequence])[
   A sequence $(a_n)$ is a _Cauchy sequence_ if
@@ -163,6 +196,26 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Cauchy Criterion])[
   A sequence converges if and only if it is a Cauchy sequence.
+]
+
+== Series
+
+#definition(title: [Infinite Series])[
+  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
+  The sum of the infinite series is defined as
+  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n = lim_(n->infinity) sum^n_(j=0) a_j. $
+]
+
+#caution-box[Beware of treating infinite series like elementary algebra,
+e.g., by rearranging terms.]
+
+#theorem(title: [Series Term Test])[
+  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
+]
+
+#theorem(title: [Cauchy Condensation Test])[
+  Let $(a_n)$ be a decreasing sequence of non-negative real numbers.
+  Then $sum_(n=1)^(infinity) a_n$ converges if and only if $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
 ]
 
 // Add theorem 2.7.2
@@ -181,42 +234,6 @@ e.g., by rearranging terms.]
 ]
 
 // Chapter 2.8 can be added.
-
-== Topology
-
-#definition(title: [Limit Point])[
-  $x$ is a _limit point_ of $A$ if every $V_epsilon (x)$ intersects $A$ at some point other than $x$.
-]
-
-#theorem(title: [Sequential Limit Point])[
-  $x$ is a limit point of $A$ if $x = lim a_n$ for some $(a_n) subset.eq A : a_n != x space forall n in NN.$
-]
-
-#definition(title: [Open/Closed Set])[
-  $A subset.eq RR$ is _open_ if $forall a in A space exists V_epsilon (a) subset.eq A$ or equivalently if its complement is closed.
-  
-  $A subset.eq RR$ is _closed_ if it contains its limit points or equivalently if its complement is open.
-]
-
-#theorem(title: [Clopen Sets])[
-  $RR$ and $emptyset$ are _clopen_ (both opened and closed).
-]
-
-#theorem(title: [Unions/Intersections])[
-  The union of open (closed) sets is open (closed).
-  
-  The intersection of finitely many open (closed) sets is open (closed).  
-]
-
-#definition(title: [Compact])[
-  A set $K$ in a topological space is _compact_ if every open cover has a finite subcover.
-]
-
-#theorem(title: [Heine--Borel])[
-  A set $K subset.eq RR^n$ is compact if and only if it is closed and bounded.
-]
-
-#note-box[Compactness is like a generalization of closed intervals.]
 
 = Real functions
 
@@ -241,20 +258,16 @@ e.g., by rearranging terms.]
 
 == Continuity
 
-#definition(title: [Continuity])[
-  A function $f : A -> R$ is _continuous_ at $c in RR$ if
-  $ forall epsilon > 0 space exists delta > 0 : |x - c| < delta ==> |f(x) - f(c)| < epsilon, $
-  where $x in A$. 
-] <def:continuity>
-
-#theorem(title: [Continuity Characterizations])[
+#theorem(title: [Continuity])[
   The following are equivalent:
-  
-  + $f$ is continuous (see @def:continuity).
-  + $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$.
+  + $f : A -> RR$ is _continuous_ at $c in RR$.
+  + $forall epsilon > 0 space exists delta > 0 : |x - c| < delta ==> |f(x) - f(c)| < epsilon$, where $x in A$.
+  + $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$
   + $x_n -> c$, where $(x_n) subset.eq A$, implies $f(x_n) -> f(c)$.
   If $c$ is a limit point of $A$:
-  4. $lim_(x->c) f(x) = f(c)$, also written $lim_(h->0)f(c + h) - f(c) = 0$.
+  5.  $lim_(x->c) f(x) = f(c)$, also written $lim_(h->0)f(c + h) - f(c) = 0$.
+
+  Note that (ii) defines (i). Mostly (v) is used in practice.
 ]
 
 #theorem(title: [Isolated Continuity])[
@@ -265,6 +278,8 @@ e.g., by rearranging terms.]
   The Dirichlet function $f : RR -> RR$ such that $f(x) = 1$ if $x in QQ$ and
   $f(x) = 0$ if $x in II$ is discontinuous everywhere.
 ]
+
+=== Composition
 
 #theorem(title: [Composition])[ 
   Given $f : A -> B$ and $g : B -> RR$ with $f(A) subset.eq B$,
@@ -277,13 +292,15 @@ e.g., by rearranging terms.]
   $ lim_(x->c) f(g(x)) = f(lim_(x->c) g(x)) = f(y). $ 
 ]
 
-#theorem(title: [Weierstrass Extreme Value])[
-  If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
-] <thm:extreme>
+=== Results
 
 #theorem(title: [Intermediate Value])[
   If $f$ is continuous on $[a, b]$, then for any $y$ between $f(a)$ and $f(b)$, there exists some $c in (a, b)$ such that $f(c) = y$.
 ]
+
+#theorem(title: [Weierstrass Extreme Value])[
+  If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
+] <thm:extreme>
 
 == Derivatives
 
@@ -384,15 +401,6 @@ e.g., by rearranging terms.]
   The method fails if it iterates endlessly or $f'(x_n) = 0$.
 ]
 
-#theorem(title: [Convexity])[
-  Let $f$ be twice differentiable on $(a, b)$.
-  Then, $f''(x) >= 0$ if and only if $f$ is convex on $(a, b)$.
-]
-
-#definition(title: [Concave])[
-  On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
-]
-
 === The Mean Value Theorems
 
 Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
@@ -420,7 +428,27 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   #proof[Let $h = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$ and then apply @thm:rolles.]
 ] <thm:gmv>
 
-== Asymptotes
+== Function Graphs
+
+#tip-box(title: [Tip (Sketching Graphs)])[
+  ==== Information
+  + split into cases
+  + symmetries
+  + domain → vertical asymptotes
+  + factorize → oblique asymptotes & roots
+  + first and second derivative and their roots
+  + sign tables
+  + calculate interesting points: intersection with $y$-axis, defined non-differentiable points, local extremums, endpoints, inflection points
+  
+  ==== Sketching
+  + Axes
+  + Symmetries
+  + Asymptotes
+  + Interesting points
+  + Curves
+]
+
+=== Asymptotes
 
 #definition(title: [Asymptote])[
   The line $y = k x + m$ is an _oblique_ asymptote of $f$ if
@@ -438,20 +466,13 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
 ]
 
-#tip-box(title: [Tip: Sketching Graphs])[
-  ==== Information
-  + split into cases
-  + symmetries
-  + domain → vertical asymptotes
-  + factorize → oblique asymptotes & roots
-  + first and second derivative and their roots
-  + sign tables
-  + calculate interesting points: intersection with $y$-axis, defined non-differentiable points, local extremums, endpoints, inflection points
-  
-  ==== Sketching
-  + Axes
-  + Symmetries
-  + Asymptotes
-  + Interesting points
-  + Curves
+=== Convexity
+
+#theorem(title: [Convexity])[
+  Let $f$ be twice differentiable on $(a, b)$.
+  Then, $f''(x) >= 0$ if and only if $f$ is convex on $(a, b)$.
+]
+
+#definition(title: [Concave])[
+  On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
 ]
