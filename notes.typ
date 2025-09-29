@@ -521,3 +521,32 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   for some $xi$ between $a$ and $x$.
   ]
 ]
+
+=== Function Order
+
+#definition(title: [Big _O_ at Infinity])[
+  Let $f$ and $g$ be defined in $(a, infinity)$.
+  We say that $f$ belongs to the set _O_ of $g$ as $x -> infinity$,
+  writing $O(g(x))$, if there exists $M$ and $x_0$ such that
+  $ abs(f(x)) <= M abs(g(x)), $
+  for every $x > x_0$.
+]
+
+#definition(title: [Big _O_ at a Point])[
+  Let $f$ and $g$ be defined in a neighborhood of $a$.
+  We say that $f$ belongs to the set _O_ of $g$ around $a$,
+  writing $O(g(x))$, if there exists $M$ and $delta > 0$ such that
+  $ abs(f(x)) <= M abs(g(x)) $
+  for every $x in (a - delta, a + delta)$.
+]
+
+#theorem(title: [Big _O_ Behavior])[
+  Suppose $f$ and $g$ have $O(f(x))$ and $O(g(x))$
+  defined around a point or infinity. Then,
+  $ O(f(x)) O(g(x)) = O(f(x) g(x)). $
+
+  If $m <= n$ then around $0$
+  $ O(x^m) + O(x^n) = O(x^m) $
+  and around $infinity$
+  $ O(x^m) + O(x^n) = O(x^n). $
+]
