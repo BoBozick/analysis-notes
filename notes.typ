@@ -14,14 +14,11 @@
   size: 12pt,
 )
 
-#show outline.entry.where(
-  level: 1
-): set text(weight: "bold")
-#show outline.entry.where(
-  level: 3
-): set text(style: "italic")
+= The Real Numbers
 
-#outline(depth: 3)
+== Reals
+
+=== Prerequisites
 
 #theorem(title: [Induction])[
   If $s in NN$ such that
@@ -38,10 +35,6 @@
   
   $f$ is _bijective_ if is both injective and surjective or equivalently if each $y$ is mapped to exactly one $x$.
 ]
-
-= The Real Numbers
-
-== Reals
 
 === Comparison
 

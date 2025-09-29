@@ -39,6 +39,12 @@ show heading.where(level: 3): it =>{
 show heading.where(level: 4): it =>{
   it
 }
+show outline.entry.where(
+  level: 1
+): set text(weight: "bold")
+show outline.entry.where(
+  level: 3
+): set text(style: "italic")
 set text(
   size: size,
   font: "New Computer Modern",
@@ -74,6 +80,8 @@ let make_title(course_name, course_code) = {
   }
 }
 make_title(course_name, course_code)
+
+outline(depth: 3)
 
 doc
 }
