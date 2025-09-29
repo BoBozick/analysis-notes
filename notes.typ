@@ -14,6 +14,15 @@
   size: 12pt,
 )
 
+#show outline.entry.where(
+  level: 1
+): set text(weight: "bold")
+#show outline.entry.where(
+  level: 3
+): set text(style: "italic")
+
+#outline(depth: 3)
+
 #theorem(title: [Induction])[
   If $s in NN$ such that
   + $1 in S$ and
@@ -441,11 +450,11 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   + calculate interesting points: intersection with $y$-axis, defined non-differentiable points, local extremums, endpoints, inflection points
   
   ==== Sketching
-  + Axes
-  + Symmetries
-  + Asymptotes
-  + Interesting points
-  + Curves
+  + axes
+  + symmetries
+  + asymptotes
+  + interesting points
+  + curves
 ]
 
 === Asymptotes
@@ -513,7 +522,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ f(a + h) - p_n (h) =
   (f^((n+1))(xi))/(n + 1)! h^(n+1), $
   finally yielding
-  $ f(a + h) = p_n (h) + r_n (h), $
+  $ f(a + h) = p_n (h) + r_n (h) $
   or, in the original notation,
   $ f(x) = P_n (x) + R_n (x) $
   for some $xi$ between $a$ and $x$.

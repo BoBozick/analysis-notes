@@ -42,7 +42,7 @@ show heading.where(level: 4): it =>{
 set text(
   size: size,
   font: "New Computer Modern",
-  lang: "sv",
+  lang: "en",
   region: "SE"
 )
 set par(
