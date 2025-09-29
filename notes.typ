@@ -488,12 +488,34 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - a)^(n+1) $
   for some $xi$ between $a$ and $x$.
 
-  #proof[We first see that the identity holds for $x = 0$. Now, for $x != 0$ let
-  $ C = (f(x) - P_n (x)) / (x - a)^(n+1) $
-  and note that the Taylor identity is equivalent to
-  $ C (n+1)! = f^((n+1)) (xi). $
+  #proof[Let $h = x - a$ be the deviation from the point. Then,
+  $ f(x) = f(a + h) = sum_(k=0)^(n) (f^((k))(a))/k! h^k
+  + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h), $
+  where $p_n (h)$ and $r_n (h)$ are like $P_n (x)$ and $R_n (x)$.
 
-  Remark that
-  $$
+  We introduce a helper function
+  $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (a + h- t)^k, $
+  with $F_(n,h)(a) = p_n(h)$ and $F_(n,h)(a + h) = f(a + h)$, and the derivative
+  $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (a + h - xi)^n. $
+
+  We introduce another helper function
+  $ g_(n,h) (t) = (a + h - t)^(n+1), $
+  with $g_(n,h)(a) = h^(n+1)$ and $g_(n,h)(a + h) = 0$ as well as
+  $ g'_(n,h)(xi) = -(n + 1)(a + h - xi)^n. $
+
+  @thm:gmv states that
+  $ (F_(n,h)(a+h) - F_(n,h)(a)) / (g_(n,h)(a+h) - g_(n,h)(a))
+  = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
+  for some $xi$ between $a$ and $a + h$. Now we substitute the terms to get
+  $ (f(a + h) - p_n (h))/(0 - h^(n+1)) =
+  (f^((n+1))(xi) (a + h - xi)^n slash n!)/(-(n + 1)(a + h - xi)^n) $
+  which we simplify as
+  $ f(a + h) - p_n (h) =
+  (f^((n+1))(xi))/(n + 1)! h^(n+1), $
+  finally yielding
+  $ f(a + h) = p_n (h) + r_n (h), $
+  or, in the original notation,
+  $ f(x) = P_n (x) + R_n (x) $
+  for some $xi$ between $a$ and $x$.
   ]
 ]
