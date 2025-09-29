@@ -39,12 +39,19 @@ show heading.where(level: 3): it =>{
 show heading.where(level: 4): it =>{
   it
 }
+
+show outline.entry: it => link(
+  it.element.location(),
+  // Drop the fill and the page.
+  it.indented(it.prefix(), it.body()),
+)
 show outline.entry.where(
   level: 1
 ): set text(weight: "bold")
 show outline.entry.where(
-  level: 3
-): set text(style: "italic")
+  level: 2
+): smallcaps
+
 set text(
   size: size,
   font: "New Computer Modern",

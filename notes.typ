@@ -237,7 +237,7 @@ e.g., by rearranging terms.]
 
 // Chapter 2.8 can be added.
 
-= Real functions
+= Real Functions
 
 == Limits
 
