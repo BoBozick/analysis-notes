@@ -222,7 +222,7 @@ e.g., by rearranging terms.]
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
 
   #proof[
-    
+
   ]
 ]
 
@@ -523,14 +523,13 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 == Taylor's Theorem
 
 #theorem(title: [Taylor's])[
-  Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
-  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Then,
+  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Fix $c in [a, b]$. Then,
   $ f(x) = P_n (x) + R_n (x), $
-  where the _Taylor polynomial_ of degree $n$ about $c$ is
+  where the _Taylor polynomial_ of degree $n$ around $c$ is
   $ P_n (x) = sum_(k=0)^(n) (f^((k))(c))/k! (x - c)^k $
-  and the _Lagrange remainder_ of degree $n$ is
+  and the _Lagrange remainder_ of degree $n$ around $c$ is
   $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - c)^(n+1) $
-  for some $xi$ between $c$ and $x$.
+  for some $xi$ strictly between $c$ and $x$.
 
   Note that other remainder forms exist.
 
@@ -561,7 +560,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ f(c + h) = p_n (h) + r_n (h) $
   or in $x$-notation
   $ f(x) = P_n (x) + R_n (x) $
-  with $xi$ between $c$ and $x$.
+  with $xi$ strictly between $c$ and $x$.
   ]
 ]
 
@@ -570,7 +569,6 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   The _radius of convergence_ is the greatest $r$ such that
   $ abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
   which implies that $f(x) = P_infinity (x)$.
-  
 ]
 
 === Function Order
