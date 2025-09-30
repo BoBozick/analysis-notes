@@ -206,6 +206,8 @@
   Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
   The sum of the infinite series is defined as
   $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n = lim_(n->infinity) sum^n_(j=0) a_j. $
+
+  If $a_j >= 0$ for every $j$ we say that the series is _positive_.
 ]
 
 #caution-box[Beware of treating infinite series like elementary algebra,
@@ -213,6 +215,23 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Series Term Test])[
   If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
+  However, the reverse implication is false.
+]
+
+#theorem[
+  The series $sum_(j=1)^infinity 1 slash j$ is divergent.
+
+  #proof[
+    
+  ]
+]
+
+#theorem()[
+  The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if $p > 1$.
+  
+  #proof[
+    
+  ]
 ]
 
 #theorem(title: [Cauchy Condensation Test])[
@@ -221,6 +240,13 @@ e.g., by rearranging terms.]
 ]
 
 // Add theorem 2.7.2
+
+#theorem()[
+  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$ be positive series with terms such that
+  $ lim_(j->infinity) a_j/b_j = K $
+  for some $K != 0.$
+  Then, $sum_(j=0)^infinity a_j$ converges if and only if $sum_(j=0)^infinity b_j$ converges.
+]
 
 #theorem(title: [Comparison Test])[
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
@@ -233,6 +259,21 @@ e.g., by rearranging terms.]
   + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
   + $(a_n) -> 0$.
   Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
+]
+
+#definition(title: [Absolutely Convergent])[
+  A series $sum_(j=0)^infinity a_j$ is _absolutely convergent_ if $sum_(j=0)^infinity abs(a_j)$ is convergent.
+]
+
+#theorem()[
+  If a series is absolutely convergent then it is convergent.
+]
+
+#theorem(title: [Geometric Series])[
+  If $abs(x) < 1$, then
+  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
+  since
+  $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
 ]
 
 // Chapter 2.8 can be added.
@@ -482,50 +523,60 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 == Taylor's Theorem
 
 #theorem(title: [Taylor's])[
-  Let $f(x)$ be $n + 1$ times differentiable at $a$. Then,
+  Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
+  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Then,
   $ f(x) = P_n (x) + R_n (x), $
-  where the _Taylor polynomial_ of degree $n$ is
-  $ P_n (x) = sum_(k=0)^(n) (f^((k))(a))/k! (x - a)^k $
+  where the _Taylor polynomial_ of degree $n$ about $c$ is
+  $ P_n (x) = sum_(k=0)^(n) (f^((k))(c))/k! (x - c)^k $
   and the _Lagrange remainder_ of degree $n$ is
-  $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - a)^(n+1) $
-  for some $xi$ between $a$ and $x$.
+  $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - c)^(n+1) $
+  for some $xi$ between $c$ and $x$.
 
-  #proof[Let $h = x - a$ be the deviation from the point. Then,
-  $ f(x) = f(a + h) = sum_(k=0)^(n) (f^((k))(a))/k! h^k
+  Note that other remainder forms exist.
+
+  #proof[Let $h = x - c$ be the deviation from the point. Then,
+  $ f(x) = f(c + h) = sum_(k=0)^(n) (f^((k))(c))/k! h^k
   + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h), $
-  where $p_n (h)$ and $r_n (h)$ are like $P_n (x)$ and $R_n (x)$.
+  where $p_n (h)$ and $r_n (h)$ correspond to $P_n (x)$ and $R_n (x)$.
 
-  We introduce a helper function
-  $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (a + h- t)^k, $
-  with $F_(n,h)(a) = p_n(h)$ and $F_(n,h)(a + h) = f(a + h)$, and the derivative
-  $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (a + h - xi)^n. $
+  Define
+  $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (c + h - t)^k, $
+  with $F_(n,h)(c) = p_n(h)$ and $F_(n,h)(c + h) = f(c + h)$, and derivative
+  $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (c + h - xi)^n. $
 
-  We introduce another helper function
-  $ g_(n,h) (t) = (a + h - t)^(n+1), $
-  with $g_(n,h)(a) = h^(n+1)$ and $g_(n,h)(a + h) = 0$ as well as
-  $ g'_(n,h)(xi) = -(n + 1)(a + h - xi)^n. $
+  Also let
+  $ g_(n,h) (t) = (c + h - t)^(n+1), $
+  with $g_(n,h)(c) = h^(n+1)$ and $g_(n,h)(c + h) = 0$ and
+  $ g'_(n,h)(xi) = -(n + 1)(c + h - xi)^n. $
 
-  @thm:gmv states that
-  $ (F_(n,h)(a+h) - F_(n,h)(a)) / (g_(n,h)(a+h) - g_(n,h)(a))
+  @thm:gmv gives
+  $ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
   = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
-  for some $xi$ between $a$ and $a + h$. Now we substitute the terms to get
-  $ (f(a + h) - p_n (h))/(0 - h^(n+1)) =
-  (f^((n+1))(xi) (a + h - xi)^n slash n!)/(-(n + 1)(a + h - xi)^n) $
-  which we simplify as
-  $ f(a + h) - p_n (h) =
-  (f^((n+1))(xi))/(n + 1)! h^(n+1), $
-  finally yielding
-  $ f(a + h) = p_n (h) + r_n (h) $
-  or, in the original notation,
+  for some $xi$ between $c$ and $c + h$. Substituting,
+  $ (f(c + h) - p_n (h))/(0 - h^(n+1)) =
+  (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n) $
+  so
+  $ f(c + h) - p_n (h) = (f^((n+1))(xi))/(n + 1)! h^(n+1). $
+  Hence
+  $ f(c + h) = p_n (h) + r_n (h) $
+  or in $x$-notation
   $ f(x) = P_n (x) + R_n (x) $
-  for some $xi$ between $a$ and $x$.
+  with $xi$ between $c$ and $x$.
   ]
+]
+
+#definition(title: [Radius of Convergence])[
+  Fix $x$ and let $R_n (x)$ be the remainder to a Taylor polynomial around a point $c$.
+  The _radius of convergence_ is the greatest $r$ such that
+  $ abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
+  which implies that $f(x) = P_infinity (x)$.
+  
 ]
 
 === Function Order
 
 #definition(title: [Big _O_ at Infinity])[
-  Let $f$ and $g$ be defined in $(a, infinity)$.
+  Let $f$ and $g$ be defined on $(c, infinity)$.
   We say that $f$ belongs to the set _O_ of $g$ as $x -> infinity$,
   writing $O(g(x))$, if there exists $M$ and $x_0$ such that
   $ abs(f(x)) <= M abs(g(x)), $
@@ -533,11 +584,11 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 ]
 
 #definition(title: [Big _O_ at a Point])[
-  Let $f$ and $g$ be defined in a neighborhood of $a$.
-  We say that $f$ belongs to the set _O_ of $g$ around $a$,
+  Let $f$ and $g$ be defined on a neighborhood of $c$.
+  We say that $f$ belongs to the set _O_ of $g$ around $c$,
   writing $O(g(x))$, if there exists $M$ and $delta > 0$ such that
   $ abs(f(x)) <= M abs(g(x)) $
-  for every $x in (a - delta, a + delta)$.
+  for every $x in (c - delta, c + delta)$.
 ]
 
 #theorem(title: [Big _O_ Behavior])[
@@ -549,4 +600,12 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ O(x^m) + O(x^n) = O(x^m) $
   and around $infinity$
   $ O(x^m) + O(x^n) = O(x^n). $
+]
+
+#theorem()[
+  Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
+  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Then,
+  $ f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1)) "as" x-> c. $
+
+  Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each $(x - c)^k$.
 ]
