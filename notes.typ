@@ -21,10 +21,10 @@
 === Prerequisites
 
 #theorem(title: [Induction])[
-  If $s in NN$ such that
-  + $1 in S$ and
-  + when $n in S$ it follows that $n + 1 in S$
-  it follows that $S = NN$.
+  Let $S subset.eq NN$. If
+  + $1 in S$, and
+  + $n in S ==> n + 1 in S$ (inductive step),
+  then $S = NN$.
 ]
 
 #definition(title: [Injective/Surjective/Bijective])[
@@ -115,7 +115,7 @@
   all contain a point $a = inter.big_(n=1)^infinity I_n $.
 ]
 
-=== Opened and Closed Sets
+=== Open and Closed Sets
 
 #definition(title: [Open/Closed Set])[
   $A subset.eq RR$ is _open_ if $forall a in A space exists V_epsilon (a) subset.eq A$ or equivalently if its complement is closed.
@@ -144,6 +144,8 @@
 ]
 
 #note-box[Compactness is like a generalization of closed intervals.]
+
+= Limits
 
 == Sequences
 
@@ -177,12 +179,12 @@
   A sequence is _bounded_ if $exists M > 0 : |a_n| < M space forall n in NN$.
 ]
 
-#theorem(title: [Convergent/Monotone])[
-  Every convergent series is bounded.
+#theorem(title: [Convergent])[
+  Every convergent sequence is bounded.
 
   If a sequence is monotone and bounded it converges.
 
-  Subsequences of a convergent series converge to the same limit.
+  Subsequences of a convergent sequence converge to the same limit.
 ]
 
 #theorem(title: [Bolzano--Weierstrass])[
@@ -213,7 +215,12 @@
 #caution-box[Beware of treating infinite series like elementary algebra,
 e.g., by rearranging terms.]
 
-#theorem(title: [Series Term Test])[
+#theorem(title: [Cauchy Criterion for Series])[
+  The series $sum_(k=0)^infinity a_k$ converges if and only if
+  $ forall epsilon > 0 space exists N : n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n) < epsilon. $
+]
+
+#corollary(title: [Series Term Test])[
   If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
   However, the reverse implication is false.
 ]
@@ -232,6 +239,15 @@ e.g., by rearranging terms.]
   #proof[
     
   ]
+]
+
+#theorem(title: [Ratio Test])[
+  Let $(a_n)$ be a sequence of positive terms and define
+  $ L = limsup_(n->infinity) abs(a_(n+1)/a_n). $
+  Then:
+  + If $L < 1$, the series $sum_(n=1)^infinity a_n$ converges.
+  + If $L > 1$ (including $L = infinity$), the series diverges.
+  + If $L = 1$, the test is inconclusive.
 ]
 
 #theorem(title: [Cauchy Condensation Test])[
@@ -278,9 +294,7 @@ e.g., by rearranging terms.]
 
 // Chapter 2.8 can be added.
 
-= Real Functions
-
-== Limits
+== Functions
 
 #theorem(title: [Function Limit])[ 
   Given $f : A -> RR$ with the limit point $c$,
@@ -300,6 +314,8 @@ e.g., by rearranging terms.]
 ]
 
 == Continuity
+
+=== Existence
 
 #theorem(title: [Continuity])[
   The following are equivalent:
@@ -345,14 +361,21 @@ e.g., by rearranging terms.]
   If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
 ] <thm:extreme>
 
-== Derivatives
+= Calculus
+
+== The Derivative
 
 === Differentiation
+
+#definition(title: [Derivative at a Point])[
+  Let $f : A -> RR$ and $c$ a limit point of $A$. If
+  $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $ exists (finite), we say $f$ is _differentiable_ at $c$.
+]
 
 #theorem(title: [Chain Rule])[
   Let $f : X -> Y$ and $g : Y -> RR$.
   If $f$ is differentiable at $c in X$ and $g$ is differentiable at $f(c) in Y$,
-  then $g compose f$ is differentable at $c$ with
+  then $g compose f$ is differentiable at $c$ with
   $ (g compose f)'(c) = g'(f(c)) f'(c). $
 ]
 
@@ -371,16 +394,16 @@ e.g., by rearranging terms.]
       &derivative(,x) (cos x) = -sin x \
       &derivative(,x) (tan x) = 1 / (cos^2 x) \
       &derivative(,x) (ln abs(x)) = 1 / x \
-      &(f^(-1))'(y) = -1/(f'(x)) #h(0.7em) (f'(x) != 0)
+  &(f^(-1))'(y) = 1/(f'(x)) #h(0.7em) (y = f(x), f'(x) != 0)
     $],
   )
 )
 
 #theorem(title: [L'Hôpital's Rule])[
-  Let $f(x)$ and $g(x)$ be defined and, with the possible exception of at the limit point $c$, differentiable. If
-  + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0 "or" plus.minus infinity$ and
-  + $g'(x) != 0$ for all $x != c$, then
-  $ lim_(x->c) (f'(x))/(g'(x)) = L #h(0.7em) ==> #h(0.7em) lim_(x->c) (f(x))/(g(x)) = L. $
+  Let $f$ and $g$ be differentiable on an open interval containing $c$ (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
+  + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$ (or both $plus.minus infinity$), and
+  + $lim_(x->c) (f'(x))/(g'(x)) = L$ exists (or $plus.minus infinity$).
+  Then $ lim_(x->c) (f(x))/(g(x)) = L. $
 
   #proof(title: "Proof of the zero case")[Assume the limits are zero.
 
@@ -590,14 +613,9 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 ]
 
 #theorem(title: [Big _O_ Behavior])[
-  Suppose $f$ and $g$ have $O(f(x))$ and $O(g(x))$
-  defined around a point or infinity. Then,
-  $ O(f(x)) O(g(x)) = O(f(x) g(x)). $
+  If $h(x) = O(f(x))$ and $k(x) = O(g(x))$ (same limiting regime), then $h(x) k(x) = O(f(x) g(x))$.
 
-  If $m <= n$ then around $0$
-  $ O(x^m) + O(x^n) = O(x^m) $
-  and around $infinity$
-  $ O(x^m) + O(x^n) = O(x^n). $
+  If $m <= n$ then as $x -> 0$, $x^n = O(x^m)$ so $O(x^m) + O(x^n) = O(x^m)$. As $x -> infinity$, $x^m = O(x^n)$ so $O(x^m) + O(x^n) = O(x^n)$.
 ]
 
 #theorem()[
@@ -607,3 +625,46 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
   Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each $(x - c)^k$.
 ]
+
+=== Taylor Series
+
+#theorem()[
+  The Taylor series $e^k = sum_(n=0)^infinity k^n slash n!. $
+]
+
+== The Integral
+
+=== The Riemann Integral
+
+#definition(title: [Riemann Integral])[Let $f : [a,b] -> RR$ be bounded. For a partition $P : a = x_0 < x_1 < dots.h.c < x_n = b$ define
+  $ U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)) $ and
+  $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)). $
+  The function $f$ is _Riemann integrable_ if $sup_P L(f,P) = inf_P U(f,P)$; the common value is denoted $ integral_a^b f(x) dd(x)$.]
+
+=== Rules
+
+#theorem(title: [Mean Value for Integrals])[
+  If $f$ is continuous on $[a, b]$, then there exists some $xi in (a, b)$ such that
+  $ integral_a^b f(x) dd(x) = f(xi) (b - a). $
+]
+
+#theorem(title: [Generalized Mean Value for Integrals])[
+  If $f$ is continuous and $g$ is integrable and does not change sign on $[a, b]$,
+  then there exists some $xi in (a, b)$ such that
+  $ integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
+]
+
+#theorem(title: [Fundamental of Calculus])[
+  Let $f$ be continuous on $[a, b]$ and define $F(x) = integral_a^x f(t) dd(t)$.
+  Then, $F$ is differentiable and $F'(x) = f(x)$ for all $x in [a, b]$.
+
+  Furthermore, if $F$ is any antiderivative of $f$ on $[a, b]$, then
+  $ integral_a^b f(x) dd(x) = F(b) - F(a). $
+]
+
+
+
+
+== Ordinary Differential Equations
+
+#v(10em)
