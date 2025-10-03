@@ -82,9 +82,6 @@
   set enum(
     numbering: "(i)"
   )
-  set list(
-    marker: "(a)"
-  )
 
   // Layout
   set par(
