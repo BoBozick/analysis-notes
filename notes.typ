@@ -331,13 +331,27 @@ e.g., by rearranging terms.]
   Note that (ii) defines (i). Mostly (v) is used in practice.
 ]
 
-#theorem(title: [Isolated Continuity])[
+#corollary(title: [Isolated Continuity])[
   All functions are continuous at isolated points.
 ]
 
 #theorem(title: [Dirichlet Discontinuous])[ 
   The Dirichlet function $f : RR -> RR$ such that $f(x) = 1$ if $x in QQ$ and
   $f(x) = 0$ if $x in II$ is discontinuous everywhere.
+]
+
+#definition(title: [Uniform Continuity])[
+  We say $f$ is _uniformly continuous_ on $I$ if
+  $ forall epsilon > 0 space exists delta > 0 :
+  x, y in RR, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
+]
+
+#theorem()[
+  If a function is uniformly continuous, it is also continuous.
+]
+
+#theorem(title: [Heine--Cantor])[
+  If $f$ is continuous and defined on a compact set $K$, then it is also uniformly continuous on $K$.
 ]
 
 === Composition
@@ -642,43 +656,84 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 == The Riemann Integral
 
-=== Darboux Definition
+=== Definition
 
-#theorem(title: [Darboux Integral])[
-  The Darboux and Riemann integrals are equivalent.
+#definition(title: [Partition])[
+  A _partition_ of $[a,b]$ is a finite set $ P = {x_0, x_1, dots.h.c, x_n} $
+  such that $ a = x_0 < x_1 < dots.h.c < x_n = b, $
+  
+  The partition $P$ has _subintervals_
+  $ [x_(i-1), x_i] quad i = 1, 2, ..., n $
+  of which the length of the largest is its _mesh_ or _norm_
+  $ norm(P) = max_(1<=i<=n) (x_i - x_(i-1)). $
+  A smaller such is indicative of a finer partition.
+]
+
+Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
+
+#definition(title: [Darboux Integral])[
+  Define the _lower sum_
+  $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)). $
+  and the _upper sum_
+  $ U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)) $
+  The function $f$ is _Darboux integrable_ if $sup_P L(f,P) = inf_P U(f,P)$. 
+  The common value is denoted as the _definite integral_ $ integral_a^b f(x) dd(x)$.
 ]
 
 #definition(title: [Darboux Integral])[
-  Let $f : [a,b] -> RR$ be bounded. For a partition
-  $ P : a = x_0 < x_1 < dots.h.c < x_n = b $
-  define
-  $ U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)) $ and
-  $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)). $
-  The function $f$ is _Darboux integrable_ if $sup_P L(f,P) = inf_P U(f,P)$; the common value is denoted $ integral_a^b f(x) dd(x)$.
-
-  ==== Alternative
-
-
+  Let $Phi$ and $Psi$ be the _lower and upper step functions_ such that
+  $ Phi(x) <= f(x) <= Psi(x) quad forall x in [a, b], $
+  forming the _lower integral_
+  $ L(f) = sup{integral_a^b Phi(x) dd(x) : Phi "is a lower step function to" f} $
+  and the _upper integral_
+  $ U(f) = inf{integral_a^b Psi(x) dd(x) : Psi "is an upper step function to" f} $
+  which, if equal, give the definite integral.
 ]
 
-#theorem(title: [Riemann Integrable])[
-  If $f$ is continuous on $[a, b]$, then it is Riemann integrable.
+#definition(title: [Riemann Integral])[
+  From a partition $P$ of $[a, b]$ pick sample points
+  $ t_i in [x_(i-1), x_i], quad i = 1, 2, ..., n $
+   and form the (tagged) _Riemann sum_
+  $ S(f, P, (t_i)) = sum_(i=1)^n f(t_i) (x_i - x_(i-1)). $
 
-  If $f$ is monotone on $[a, b]$, then it is Riemann integrable.
+  We say $f$ is _Riemann integrable_ if there exists $L in RR$ such that
+  $ forall epsilon > 0 space exists delta > 0 : norm(P) < delta ==> |S(f,P,(t_i)) - L| < epsilon $
+  for every choice of sample points $(t_i)$. In that case we write
+  $ L = integral_a^b f(x) dd(x). $
+]
+
+#theorem()[
+  The Darboux and Riemann integrals are equivalent.
+]
+
+#theorem()[
+  The following are equivalent:
+  + $f$ is Riemann integrable.
+  + $f$ is Darboux integrable.
+  + Riemann refinement:
+
+    $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon. $
+    Equivalently,
+    $ exists (P_n), space norm(P_n) -> 0 : space U(f,P_n) - L(f,P_n) -> 0. $
+  + Darboux difference:
+    $ forall epsilon > 0 space exists Phi, Psi :
+    integral_a^b Psi(x) dd(x) - integral_a^b Phi(x) dd(x) < epsilon, $
+    where $Phi$ and $Psi$ are lower and upper step functions.
+
+  The previous are also implied by the following:
+  5. $f$ is _monotone_ on $[a, b]$
+  + Lebesgue criterion for Riemann integrability:
+
+    $f$ is _continuous_ on $[a, b]$ except at
+    - finitely many points or
+    
+    
+    (a) 
+    (b) countably many points where it has removable or jump  discontinuities.
+    In other words, set of discontinuities has Lebesgue measure zero.
 ]
 
 === Properties
-
-#theorem(title: [Refinement / Integrability Criterion])[
-  A bounded $f : [a,b] -> RR$ is Riemann integrable if and only if
-  $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon. $
-  Equivalently, there exists a sequence of partitions $(P_n)$ with mesh$(P_n) -> 0$ such that
-  $ U(f,P_n) - L(f,P_n) -> 0. $
-]
-
-#theorem(title: [Integrable Discontinuities])[
-  If $f$ is bounded on $[a,b]$ and continuous except at finitely (or countably) many points where it has simple jump (removable) discontinuities, then $f$ is Riemann integrable.
-]
 
 #theorem(title: [Linearity])[
   If $f,g$ are integrable and $alpha, beta in RR$, then
@@ -754,7 +809,6 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   Furthermore, if $F$ is any antiderivative of $f$ on $[a, b]$, then
   $ integral_a^b f(x) dd(x) = F(b) - F(a). $
 ]
-
 
 
 
