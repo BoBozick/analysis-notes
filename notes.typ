@@ -669,7 +669,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   A smaller such is indicative of a finer partition.
 ]
 
-Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
+Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #definition(title: [Darboux Integral])[
   Define the _lower sum_
@@ -680,7 +680,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
   The common value is denoted as the _definite integral_ $ integral_a^b f(x) dd(x)$.
 ]
 
-#definition(title: [Darboux Integral])[
+#definition(title: [Alternative Darboux Integral])[
   Let $Phi$ and $Psi$ be the _lower and upper step functions_ such that
   $ Phi(x) <= f(x) <= Psi(x) quad forall x in [a, b], $
   forming the _lower integral_
@@ -688,10 +688,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
   and the _upper integral_
   $ U(f) = inf{integral_a^b Psi(x) dd(x) : Psi "is an upper step function to" f} $
   which, if equal, give the definite integral.
+
+  Note that the integral of a step function is simply its signed area.
 ]
 
 #definition(title: [Riemann Integral])[
-  From a partition $P$ of $[a, b]$ pick sample points
+  From a partition $P$ of $[a, b]$ pick _sample points_
   $ t_i in [x_(i-1), x_i], quad i = 1, 2, ..., n $
    and form the (tagged) _Riemann sum_
   $ S(f, P, (t_i)) = sum_(i=1)^n f(t_i) (x_i - x_(i-1)). $
@@ -706,31 +708,37 @@ Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
   The Darboux and Riemann integrals are equivalent.
 ]
 
-#theorem()[
+#theorem(title: [Integrability])[
   The following are equivalent:
-  + $f$ is Riemann integrable.
-  + $f$ is Darboux integrable.
-  + Riemann refinement:
+  + (Riemann refinement)
 
-    $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon. $
-    Equivalently,
+    $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon $
+    or equivalently
     $ exists (P_n), space norm(P_n) -> 0 : space U(f,P_n) - L(f,P_n) -> 0. $
-  + Darboux difference:
+  + (Darboux convergence) // I made this name up.
+
     $ forall epsilon > 0 space exists Phi, Psi :
     integral_a^b Psi(x) dd(x) - integral_a^b Phi(x) dd(x) < epsilon, $
     where $Phi$ and $Psi$ are lower and upper step functions.
 
-  The previous are also implied by the following:
-  5. $f$ is _monotone_ on $[a, b]$
-  + Lebesgue criterion for Riemann integrability:
+  The previous are also implied by the following sufficient conditions:
+  3. $f$ is _monotone_ on $[a, b]$
+  + (Lebesgue criterion for Riemann integrability)
 
     $f$ is _continuous_ on $[a, b]$ except at
     - finitely many points or
-    
-    
-    (a) 
-    (b) countably many points where it has removable or jump  discontinuities.
-    In other words, set of discontinuities has Lebesgue measure zero.
+    - countably many points where it has removable or jump discontinuities.
+
+    That is, the set of discontinuities has Lebesgue measure zero.
+]
+
+#theorem(title: [Fundamental Theorems of Calculus])[
+  If $f$ is continuous on $[a, b]$, then the two theorems follow:
+  + Let $F(x) = integral_a^x f(t) dd(t)$ for $x in [a, b]$.
+    Then, $F$ is continuous on $[a, b]$,
+    differentiable on $(a, b)$, and $F'(x) = f(x).$
+  + If $F'(x) = f(x)$ for $x in (a, b)$, then
+  $ integral_a^b f(x) dd(x) = F(b) - F(a). $
 ]
 
 === Properties
@@ -801,16 +809,6 @@ Let $f : [a,b] -> RR$ be bounded. We now define if $f$ is integrable.
   then there exists some $xi in (a, b)$ such that
   $ integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
 ]
-
-#theorem(title: [Fundamental of Calculus])[
-  Let $f$ be continuous on $[a, b]$ and define $F(x) = integral_a^x f(t) dd(t)$.
-  Then, $F$ is differentiable and $F'(x) = f(x)$ for all $x in [a, b]$.
-
-  Furthermore, if $F$ is any antiderivative of $f$ on $[a, b]$, then
-  $ integral_a^b f(x) dd(x) = F(b) - F(a). $
-]
-
-
 
 == Ordinary Differential Equations
 
