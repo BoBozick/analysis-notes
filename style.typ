@@ -6,7 +6,7 @@
 
   size: 12pt,
   margin: 0.5cm, // 0.5 for computer, 0.1 for phone (cm)
-  width: 11cm, // 16 for computer, 8 for phone (cm)
+  width: 11cm,   // 16 for computer, 8 for phone (cm)
   height: auto,
   heading_break: false,
   contents: false,
@@ -24,7 +24,6 @@
     }
   )
 
-  let is_outline = true
   show heading.where(level: 1): it =>{
     if heading_break and not it.body == [Contents] {
       pagebreak()
@@ -75,7 +74,7 @@
     size: size,
     font: "New Computer Modern",
     lang: "en",
-    region: "SE"
+    region: "SE",
   )
   set terms(
     separator: " "
@@ -86,7 +85,7 @@
 
   // Layout
   set par(
-    leading: 0.80em
+    leading: 0.80em,
   )
   set page(
     margin: margin,
