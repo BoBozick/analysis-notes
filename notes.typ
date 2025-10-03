@@ -1,5 +1,7 @@
+#import "style.typ": styling
+#import "@preview/theorion:0.4.0": *
+#import cosmos.rainbow: *
 #import "@preview/physica:0.9.5": dd, derivative, arccot
-#import "style.typ": *
 
 #show: show-theorion
 #show: styling.with(
@@ -8,10 +10,12 @@
   title_size: 30pt,
   title_space: 0em, 
 
+  size: 12pt,
   margin: 0.5cm,
   width: 15cm,
   height: auto,
-  size: 12pt,
+  heading_break: true,
+  contents: true,
 )
 
 = The Real Numbers
@@ -292,8 +296,6 @@ e.g., by rearranging terms.]
   $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
 ]
 
-// Chapter 2.8 can be added.
-
 == Functions
 
 #theorem(title: [Function Limit])[ 
@@ -498,8 +500,8 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #tip-box(title: [Tip (Sketching Graphs)])[
   ==== Information
-  + split into cases
   + symmetries
+  + split into cases
   + domain → vertical asymptotes
   + factorize → oblique asymptotes & roots
   + first and second derivative and their roots
@@ -594,6 +596,18 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   which implies that $f(x) = P_infinity (x)$.
 ]
 
+#theorem(title: [Common Maclaurin Series])[
+  The following functions have a Maclaurin series with radius of convergence $r = infinity$:
+  #block[$
+  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
+  & sin x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1)! = x - x^3/3! + x^5/5! - dots.h.c \
+  & cos x = sum_(k=0)^infinity (-1)^k x^{2k} / (2k)! = 1 - x^2/2! + x^4/4! - dots.h.c \
+  & arctan x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1) = x - x^3/3 + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
+  & ln(1 + x) = sum_(k=1)^infinity (-1)^{k+1} x^k / k = x - x^2/2 + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
+  & (1 + x)^a = sum_(k=0)^infinity binom(a, k) x^k quad(|x| < 1) \
+  $]
+]
+
 === Function Order
 
 #definition(title: [Big _O_ at Infinity])[
@@ -626,20 +640,99 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each $(x - c)^k$.
 ]
 
-=== Taylor Series
+== The Riemann Integral
 
-#theorem()[
-  The Taylor series $e^k = sum_(n=0)^infinity k^n slash n!. $
+=== Darboux Definition
+
+#theorem(title: [Darboux Integral])[
+  The Darboux and Riemann integrals are equivalent.
 ]
 
-== The Integral
-
-=== The Riemann Integral
-
-#definition(title: [Riemann Integral])[Let $f : [a,b] -> RR$ be bounded. For a partition $P : a = x_0 < x_1 < dots.h.c < x_n = b$ define
+#definition(title: [Darboux Integral])[
+  Let $f : [a,b] -> RR$ be bounded. For a partition
+  $ P : a = x_0 < x_1 < dots.h.c < x_n = b $
+  define
   $ U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)) $ and
   $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] }) (x_i - x_(i-1)). $
-  The function $f$ is _Riemann integrable_ if $sup_P L(f,P) = inf_P U(f,P)$; the common value is denoted $ integral_a^b f(x) dd(x)$.]
+  The function $f$ is _Darboux integrable_ if $sup_P L(f,P) = inf_P U(f,P)$; the common value is denoted $ integral_a^b f(x) dd(x)$.
+
+  ==== Alternative
+
+
+]
+
+#theorem(title: [Riemann Integrable])[
+  If $f$ is continuous on $[a, b]$, then it is Riemann integrable.
+
+  If $f$ is monotone on $[a, b]$, then it is Riemann integrable.
+]
+
+=== Properties
+
+#theorem(title: [Refinement / Integrability Criterion])[
+  A bounded $f : [a,b] -> RR$ is Riemann integrable if and only if
+  $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon. $
+  Equivalently, there exists a sequence of partitions $(P_n)$ with mesh$(P_n) -> 0$ such that
+  $ U(f,P_n) - L(f,P_n) -> 0. $
+]
+
+#theorem(title: [Integrable Discontinuities])[
+  If $f$ is bounded on $[a,b]$ and continuous except at finitely (or countably) many points where it has simple jump (removable) discontinuities, then $f$ is Riemann integrable.
+]
+
+#theorem(title: [Linearity])[
+  If $f,g$ are integrable and $alpha, beta in RR$, then
+  $ integral_a^b (alpha f(x) + beta g(x)) dd(x)
+  = alpha integral_a^b f(x) dd(x)  + space  beta integral_a^b g(x) dd(x). $
+]
+
+#theorem(title: [Additivity of the Interval])[
+  If $c in (a,b)$ and $f$ integrable on $[a,b]$, then
+  $ integral_a^b f(x) dd(x) = integral_a^c f(x) dd(x) + integral_c^b f(x) dd(x). $
+  It follows that $ integral_a^a f(x) dd(x) = 0$ and $integral_b^a f(x) dd(x) = - integral_a^b f(x) dd(x).$
+]
+
+#theorem(title: [Order / Comparison])[
+  If $f,g$ integrable and $f(x) <= g(x)$ on $[a,b]$, then
+  $ integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x). $
+]
+
+#corollary(title: [Positivity])[
+  If $f(x) >= 0$ on $[a,b]$, then $ integral_a^b f(x) dd(x) >= 0$. Moreover, if $f$ is continuous and the integral is $0$, then $f equiv 0$.
+]
+
+#theorem(title: [Bounding by a Supremum])[
+  If $|f(x)| <= M$ on $[a,b]$, then
+  $ abs(integral_a^b f(x) dd(x)) <= M (b - a). $
+]
+
+#theorem(title: [Absolute Value / Triangle])[
+  If $f$ integrable, then $|f|$ integrable and
+  $ abs(integral_a^b f(x) dd(x)) <= integral_a^b |f(x)| dd(x). $
+]
+
+#theorem(title: [Products and Composition])[
+  If $f,g$ integrable, then $f g$ is integrable.
+  If $f$ integrable and $phi$ continuous on a set containing $f([a,b])$, then $phi compose f$ is integrable.
+]
+
+#theorem(title: [Uniform Limit])[
+  If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly, then $f$ is integrable and
+  $ integral_a^b f_n(x) dd(x) -> integral_a^b f(x) dd(x). $
+]
+
+=== Techniques
+
+#theorem(title: [Change of Variables / Substitution])[
+  Let $u = phi(x)$ with $phi$ continuously differentiable and strictly monotone on $[a,b]$.
+  If $f$ is continuous on $[phi(a), phi(b)]$, then
+  $ integral_a^b f(phi(x)) phi'(x) dd(x) = integral_(phi(a))^(phi(b)) f(u) dd(u). $
+]
+
+#theorem(title: [Integration by Parts])[
+  If $f,g$ are continuously differentiable on $[a,b]$, then
+  $ integral_a^b f'(x) g(x) dd(x) = [f(x) g(x)]_a^b - integral_a^b f(x) g'(x) dd(x). $
+]
 
 === Rules
 
