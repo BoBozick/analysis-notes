@@ -74,8 +74,11 @@
 ]
 
 #definition(title: [Countable/Uncountable])[
-  $A$ is _countable_ if $NN tilde A$.
-  Otherwise, $A$ is _uncountable_ if there are infinite elements or _finite_ if there are finite elements.
+  $A$ is _countably infinite_ if $NN tilde A$.
+
+  $A$ is _countable_ if it is finite or countably infinite.
+
+  Otherwise, $A$ is _uncountable_.
 ]
 
 #theorem(title: [Countability of $QQ$, $RR$])[
@@ -115,8 +118,10 @@
 ]
 
 #theorem(title: [Nested Interval Property])[
-  The intervals $ RR supset.eq I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c$
-  all contain a point $a = inter.big_(n=1)^infinity I_n $.
+  Let $(I_n)$ be a nested sequence of nonempty closed and bounded intervals with
+  $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c $.
+  Then $ inter.big_(n=1)^infinity I_n != emptyset $.
+  In particular, there exists $a in inter.big_(n=1)^infinity I_n$.
 ]
 
 === Open and Closed Sets
@@ -132,9 +137,9 @@
 ]
 
 #theorem(title: [Unions/Intersections])[
-  The union of open (closed) sets is open (closed).
+  + Arbitrary unions of open sets are open; finite intersections of open sets are open.
   
-  The intersection of finitely many open (closed) sets is open (closed).  
+  + Arbitrary intersections of closed sets are closed; finite unions of closed sets are closed.  
 ]
 
 === Compactness
@@ -231,18 +236,10 @@ e.g., by rearranging terms.]
 
 #theorem[
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
-
-  #proof[
-
-  ]
 ]
 
 #theorem()[
   The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if $p > 1$.
-  
-  #proof[
-    
-  ]
 ]
 
 #theorem(title: [Ratio Test])[
@@ -258,8 +255,6 @@ e.g., by rearranging terms.]
   Let $(a_n)$ be a decreasing sequence of non-negative real numbers.
   Then $sum_(n=1)^(infinity) a_n$ converges if and only if $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
 ]
-
-// Add theorem 2.7.2
 
 #theorem()[
   Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$ be positive series with terms such that
@@ -321,9 +316,9 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Continuity])[
   The following are equivalent:
-  + $f : A -> RR$ is _continuous_ at $c in RR$.
+  + $f : A subset.eq RR -> RR$ is _continuous_ at $c in A$.
   + $forall epsilon > 0 space exists delta > 0 : |x - c| < delta ==> |f(x) - f(c)| < epsilon$, where $x in A$.
-  + $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta inter A ==> f(x) in V_epsilon$
+  + $forall V_epsilon (f(c)) space exists V_delta (c) : x in V_delta (c) inter A ==> f(x) in V_epsilon (f(c))$
   + $x_n -> c$, where $(x_n) subset.eq A$, implies $f(x_n) -> f(c)$.
   If $c$ is a limit point of $A$:
   5.  $lim_(x->c) f(x) = f(c)$, also written $lim_(h->0)f(c + h) - f(c) = 0$.
@@ -343,7 +338,7 @@ e.g., by rearranging terms.]
 #definition(title: [Uniform Continuity])[
   We say $f$ is _uniformly continuous_ on $I$ if
   $ forall epsilon > 0 space exists delta > 0 :
-  x, y in RR, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
+  x, y in I, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
 ]
 
 #theorem()[
@@ -376,6 +371,10 @@ e.g., by rearranging terms.]
 #theorem(title: [Weierstrass Extreme Value])[
   If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
 ] <thm:extreme>
+
+#theorem(title: [Limit of Bounded Function])[
+  If $f$ is bounded then $lim_(h->0) f(h) h = 0.$
+]
 
 = Calculus
 
@@ -462,7 +461,7 @@ e.g., by rearranging terms.]
   In other words, if $f$ is differentiable on an interval,
   then $f'$ satisfies the Intermediate Value Property (IVP).
 
-  #proof[Assume that $f'(a) < y < f'(b).$ // why not ≤? 
+  #proof[Assume that $f'(a) < y < f'(b).$
 
   Let $g(x) = f(x) - y x$ with $g'(x) = f'(x) - y$. Note that $f'(c) = y$ if $g'(c) = 0$ for some $c in (a, b)$.
   
@@ -490,7 +489,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 #theorem(title: [Rolle's])[
   $ f(a) = f(b) ==> exists c in (a, b) : f'(c) = 0 $
 
-  #proof[$f(x)$ is bounded and $f'(x) = 0$ at its extreme points.]
+  #proof[$f(x)$ is bounded and $f'(x) = 0$ at its interior extreme points.]
 ] <thm:rolles>
 
 #theorem(title: [Mean Value])[
@@ -604,10 +603,10 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 ]
 
 #definition(title: [Radius of Convergence])[
-  Fix $x$ and let $R_n (x)$ be the remainder to a Taylor polynomial around a point $c$.
-  The _radius of convergence_ is the greatest $r$ such that
-  $ abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
-  which implies that $f(x) = P_infinity (x)$.
+  Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
+  The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
+  $ forall x : abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
+  which implies that the Taylor series converges to $f(x)$ for all such $x$ (so $f(x) = P_infinity (x)$).
 ]
 
 #theorem(title: [Common Maclaurin Series])[
@@ -709,27 +708,22 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Integrability])[
-  The following are equivalent:
-  + (Riemann refinement)
+  Let $f : [a, b] -> RR$ be bounded.
 
-    $ forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon $
-    or equivalently
-    $ exists (P_n), space norm(P_n) -> 0 : space U(f,P_n) - L(f,P_n) -> 0. $
-  + (Darboux convergence) // I made this name up.
-
-    $ forall epsilon > 0 space exists Phi, Psi :
+  The function is integrable if and only if:
+  + $forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon$.
+  + $forall (P_n) : norm(P_n) -> 0 ==> U(f,P_n) - L(f,P_n) -> 0.$
+  + $ forall epsilon > 0 space exists Phi, Psi :
     integral_a^b Psi(x) dd(x) - integral_a^b Phi(x) dd(x) < epsilon, $
     where $Phi$ and $Psi$ are lower and upper step functions.
-
-  The previous are also implied by the following sufficient conditions:
+  
+  The function is integrable if:
   3. $f$ is _monotone_ on $[a, b]$
   + (Lebesgue criterion for Riemann integrability)
 
-    $f$ is _continuous_ on $[a, b]$ except at
-    - finitely many points or
-    - countably many points where it has removable or jump discontinuities.
+    $f$ is Riemann integrable on $[a,b]$ if and only if the set of its discontinuities has Lebesgue measure zero.
 
-    That is, the set of discontinuities has Lebesgue measure zero.
+    In particular, it suffices that $f$ is continuous except at finitely many points, or at countably many points where it has only removable or jump discontinuities.
 ]
 
 #theorem(title: [Fundamental Theorems of Calculus])[
@@ -776,12 +770,23 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Products and Composition])[
   If $f,g$ integrable, then $f g$ is integrable.
+  
   If $f$ integrable and $phi$ continuous on a set containing $f([a,b])$, then $phi compose f$ is integrable.
 ]
 
 #theorem(title: [Uniform Limit])[
   If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly, then $f$ is integrable and
-  $ integral_a^b f_n(x) dd(x) -> integral_a^b f(x) dd(x). $
+  $ integral_a^b f_n (x) dd(x) -> integral_a^b f(x) dd(x). $
+]
+
+#theorem(title: [Mean Value for Integrals])[
+  If $f$ is continuous on $[a, b]$,
+  $ exists xi in (a, b) : integral_a^b f(x) dd(x) = f(xi) (b - a). $
+]
+
+#theorem(title: [Generalized Mean Value for Integrals])[
+  If $f$ is continuous and $g$ is integrable and does not change sign on $[a, b]$,
+  $ exists xi in (a, b) : integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
 ]
 
 === Techniques
@@ -795,19 +800,6 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Integration by Parts])[
   If $f,g$ are continuously differentiable on $[a,b]$, then
   $ integral_a^b f'(x) g(x) dd(x) = [f(x) g(x)]_a^b - integral_a^b f(x) g'(x) dd(x). $
-]
-
-=== Rules
-
-#theorem(title: [Mean Value for Integrals])[
-  If $f$ is continuous on $[a, b]$, then there exists some $xi in (a, b)$ such that
-  $ integral_a^b f(x) dd(x) = f(xi) (b - a). $
-]
-
-#theorem(title: [Generalized Mean Value for Integrals])[
-  If $f$ is continuous and $g$ is integrable and does not change sign on $[a, b]$,
-  then there exists some $xi in (a, b)$ such that
-  $ integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
 ]
 
 == Ordinary Differential Equations
