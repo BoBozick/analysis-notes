@@ -1,3 +1,6 @@
+#import "@preview/theorion:0.4.0": *
+#import cosmos.rainbow: *
+
 #let styling(
   course_name: "",
   course_code: "",
@@ -100,3 +103,10 @@
   if contents {outline()}
   doc
 }
+
+#let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
+  "corollary",
+  theorion-i18n-map.at("corollary"),
+  counter: theorem-counter,
+  render: render-fn.with(fill: red.darken(20%)),
+  )

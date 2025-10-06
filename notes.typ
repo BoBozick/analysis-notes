@@ -1,6 +1,4 @@
-#import "style.typ": styling
-#import "@preview/theorion:0.4.0": *
-#import cosmos.rainbow: *
+#import "style.typ": *
 #import "@preview/physica:0.9.5": dd, derivative, arccot
 
 #show: show-theorion
@@ -547,7 +545,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
 ]
 
-=== Derivative Tests
+=== Convexity
 
 #theorem(title: [Convexity])[
   Let $f$ be twice differentiable on $(a, b)$.
@@ -558,31 +556,47 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
 ]
 
+=== Points
+
+#definition(title: [Local Extremum])[
+  A _local maximum_ of $f : D subset.eq RR -> RR$ is a point $c$ for which
+  there exists an open neighborhood $N(c) subset.eq D$ such that
+  $ f(c) >= f(x) quad forall x in N(c). $
+]
+
+#definition(title: [Stationary])[
+  The point $c$ is a _stationary point_ of $f$ if $f'(c)=0$.
+
+  The _stationary order_ is the smallest $n>=2$ such that
+  $ f'(c) =  f''(c)=dots.h.c=f^((n-1))(c)=0 space "but" space f^((n))(c)!=0. $
+]
+
+#definition(title: [Critical])[
+  The point $c$ is a _critical point_ if $f(c)$ is stationary or undefined.
+]
+
 #definition(title: [Inflection])[
   A point $c$ is an _inflection point_ of $f$ if $f$ is continuous at $c$ and if $f$ is convex on one side of $c$ and concave on the other side.
 ]
 
-#theorem(title: [Inflection Test])[
-  In the special case of $f''$ continuous at $c$ and $f''(c) = 0$, it holds that $c$ is an inflection point of $f$.
-]
-
-#definition(title: [Stationary])[
-  $c$ is a _stationary point_ of $f$ if $f'(c)=0$.
-  The _stationary order_ is the smallest $n>=2$ such that
-  $ f''(c)=f^(3)(c)=...=f^((n-1))(c)=0 $
-  but $f^((n))(c)!=0$. Then,
-  $ f(x)=f(c)+f^((n))(c)/n! (x-c)^n+o((x-c)^n). $
-
-  $c$ is a _critical point_ if $f(c)$ is stationary or undefined.
-]
-
 #theorem(title: [First Nonzero Derivative])[
-  Assume $f$ is $n$ times differentiable near $c$ and that
-  $ f'(c)=f''(c)=...=f^((n-1))(c)=0 space "while" space f^((n))(c)!=0. $
-  Then:
-  - If $n$ is _even_ $->$ $f$ has a local extremum at $c$.  
+  If $f$ has stationary order $n$, then:
+  - If $n$ is _even_ $->$ $f$ has a local extremum at $c$.
+
     Furthermore: $f^((n))(c)>0$ $->$ local minimum, $f^((n))(c)<0$ $->$ local maximum.
   - If $n$ is _odd_ $->$ $c$ is a stationary inflection point.
+
+  #proof[The Taylor series with remainder simplifies to
+  $ f(c +  h)=f(c)+(f^((n))(c))/n! h^n+O(h^(n+1)). $
+  Its change close to $c$ is thus
+  $ f(c + h) - f(c) approx (f^((n))(c))/n! h^n, $
+  which changes sign if and only if $n$ is odd.
+  Similarly,
+  $  f'(c + h) - f'(c) approx (f^((n-1))(c))/(n-1)! h^(n-1) $
+  for the first derivative and
+  $ f''(c + h) - f''(c) approx (f^((n-2))(c))/(n-2)! h^(n-2) $
+  for the second derivative.
+  ]
 ]
 
 #corollary(title: [Second Derivative Test])[
@@ -590,10 +604,10 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f''(c)>0$ $->$ local minimum.
   - $f''(c)<0$ $->$ local maximum.
   - $f''(c)=0$ and $f^((3))(c)!=0$ $->$ stationary inflection point.  
-  Note: $f''(c)=0$ alone is **not** sufficient for an inflection; the curvature must change sign.
+  Note: $f''(c)=0$ alone is insufficient for an inflection; the curvature must change sign.
 ]
 
-#example(title: [Prototypes])[
+#example(title: [Examples])[
   - $f(x)=x^3$: $f'(0)=f''(0)=0$, $f^((3))(0)=6!=0$ (odd $n=3$) $->$ stationary inflection at $0$.
   - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$) $->$ local minimum at $0$, no inflection.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
