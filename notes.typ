@@ -57,7 +57,7 @@
 === Bounds
 
 #axiom(title: [Supremum Property or Axiom of Completeness])[
-  Every bounded, non-empty set of real numbers has a least upper bound.
+  Every bounded, nonempty set of real numbers has a least upper bound.
 ]
 
 #note-box[The same does not apply for the rationals.]
@@ -252,7 +252,7 @@ e.g., by rearranging terms.]
 ]
 
 #theorem(title: [Cauchy Condensation Test])[
-  Let $(a_n)$ be a decreasing sequence of non-negative real numbers.
+  Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
   Then $sum_(n=1)^(infinity) a_n$ converges if and only if $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
 ]
 
@@ -519,7 +519,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   + factorize → oblique asymptotes & roots
   + first and second derivative and their roots
   + sign tables
-  + calculate interesting points: intersection with $y$-axis, defined non-differentiable points, local extremums, endpoints, inflection points
+  + calculate interesting points: intersection with $y$-axis, defined nondifferentiable points, local extremums, endpoints, inflection points
   
   ==== Sketching
   + axes
@@ -547,7 +547,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ k = lim_(x->infinity) (f(x))/x $ and $ m = lim_(x->infinity) (f(x) - k x). $
 ]
 
-=== Convexity
+=== Derivative Tests
 
 #theorem(title: [Convexity])[
   Let $f$ be twice differentiable on $(a, b)$.
@@ -556,6 +556,47 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #definition(title: [Concave])[
   On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
+]
+
+#definition(title: [Inflection])[
+  A point $c$ is an _inflection point_ of $f$ if $f$ is continuous at $c$ and if $f$ is convex on one side of $c$ and concave on the other side.
+]
+
+#theorem(title: [Inflection Test])[
+  In the special case of $f''$ continuous at $c$ and $f''(c) = 0$, it holds that $c$ is an inflection point of $f$.
+]
+
+#definition(title: [Stationary])[
+  $c$ is a _stationary point_ of $f$ if $f'(c)=0$.
+  The _stationary order_ is the smallest $n>=2$ such that
+  $ f''(c)=f^(3)(c)=...=f^((n-1))(c)=0 $
+  but $f^((n))(c)!=0$. Then,
+  $ f(x)=f(c)+f^((n))(c)/n! (x-c)^n+o((x-c)^n). $
+
+  $c$ is a _critical point_ if $f(c)$ is stationary or undefined.
+]
+
+#theorem(title: [First Nonzero Derivative])[
+  Assume $f$ is $n$ times differentiable near $c$ and that
+  $ f'(c)=f''(c)=...=f^((n-1))(c)=0 space "while" space f^((n))(c)!=0. $
+  Then:
+  - If $n$ is _even_ $->$ $f$ has a local extremum at $c$.  
+    Furthermore: $f^((n))(c)>0$ $->$ local minimum, $f^((n))(c)<0$ $->$ local maximum.
+  - If $n$ is _odd_ $->$ $c$ is a stationary inflection point.
+]
+
+#corollary(title: [Second Derivative Test])[
+  If $f''$ is continuous at $c$ and $f'(c)=0$, then:
+  - $f''(c)>0$ $->$ local minimum.
+  - $f''(c)<0$ $->$ local maximum.
+  - $f''(c)=0$ and $f^((3))(c)!=0$ $->$ stationary inflection point.  
+  Note: $f''(c)=0$ alone is **not** sufficient for an inflection; the curvature must change sign.
+]
+
+#example(title: [Prototypes])[
+  - $f(x)=x^3$: $f'(0)=f''(0)=0$, $f^((3))(0)=6!=0$ (odd $n=3$) $->$ stationary inflection at $0$.
+  - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$) $->$ local minimum at $0$, no inflection.
+  - $f(x)=-x^4$: local maximum at $0$, no inflection.
 ]
 
 == Taylor's Theorem
