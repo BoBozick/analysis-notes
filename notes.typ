@@ -196,7 +196,7 @@
 
 #theorem(title: [Bolzano--Weierstrass])[
   Every bounded sequence contains a convergent subsequence.
-]
+] <thm:bolzano-weierstrass>
 
 === Cauchy
 
@@ -337,6 +337,7 @@ e.g., by rearranging terms.]
   We say $f$ is _uniformly continuous_ on $I$ if
   $ forall epsilon > 0 space exists delta > 0 :
   x, y in I, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
+  In particular, $delta$ can be chosen independent of $y$.
 ]
 
 #theorem()[
@@ -345,6 +346,23 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Heine--Cantor])[
   If $f$ is continuous and defined on a compact set $K$, then it is also uniformly continuous on $K$.
+
+  #proof[Assume the opposite, that $f$ is continuous but not uniformly.
+  Since $f$ is not uniformly continuous,
+  $ exists epsilon_0 > 0 : forall delta > 0 space exists x, y in K :
+  space abs(x - y) < delta "but" abs(f(x) - f(y)) >= epsilon_0. $
+
+  Now, choose $(x_n)$ and $(y_n)$ such that
+  $ abs(x_n - y_n) < 1/n space "and" space abs(f(x_n) - f(y_n)) >= epsilon_0. $
+  @thm:bolzano-weierstrass asserts that there exists some subsequence
+  $x_n_k -> x_0$ for some $x_0 in K$.
+  From $abs(x_n - y_n) < 1/n$ it follows that $y_n_k -> x_0$. Thus,
+  $ abs(x_n_k - y_n_k) -> 0, $
+  and, because $f$ is continuous with $f(x_n_k) -> x_0$ and $f(y_n_k) -> x_0$,
+  $ abs(f(x_n_k) - f(x_n_k)) -> 0. $
+  However, this contradicts our assumption that
+  $ abs(f(x_n_k) -> f(y_n_k)) >= epsilon_0. $
+  ]
 ]
 
 === Composition
@@ -364,10 +382,11 @@ e.g., by rearranging terms.]
 
 #theorem(title: [Intermediate Value])[
   If $f$ is continuous on $[a, b]$, then for any $y$ between $f(a)$ and $f(b)$, there exists some $c in (a, b)$ such that $f(c) = y$.
-]
+] <thm:intermediate>
 
 #theorem(title: [Weierstrass Extreme Value])[
-  If $f$ is continuous on the compact set $K$, then $f$ attains a maximum and a minimum value on $K$.
+  If $f$ is continuous on the compact set $K$,
+  then $f$ attains a maximum and a minimum value on $K$.
 ] <thm:extreme>
 
 #theorem(title: [Limit of Bounded Function])[
@@ -382,12 +401,14 @@ e.g., by rearranging terms.]
 
 #definition(title: [Derivative at a Point])[
   Let $f : A -> RR$ and $c$ a limit point of $A$. If
-  $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $ exists (finite), we say $f$ is _differentiable_ at $c$.
+  $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $
+  exists (finite), we say $f$ is _differentiable_ at $c$.
 ]
 
 #theorem(title: [Chain Rule])[
   Let $f : X -> Y$ and $g : Y -> RR$.
-  If $f$ is differentiable at $c in X$ and $g$ is differentiable at $f(c) in Y$,
+  If $f$ is differentiable at $c in X$ and
+  $g$ is differentiable at $f(c) in Y$,
   then $g compose f$ is differentiable at $c$ with
   $ (g compose f)'(c) = g'(f(c)) f'(c). $
 ]
@@ -413,8 +434,10 @@ e.g., by rearranging terms.]
 )
 
 #theorem(title: [L'Hôpital's Rule])[
-  Let $f$ and $g$ be differentiable on an open interval containing $c$ (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
-  + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$ (or both $plus.minus infinity$), and
+  Let $f$ and $g$ be differentiable on an open interval containing $c$
+  (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
+  + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$
+  (or both $plus.minus infinity$), and
   + $lim_(x->c) (f'(x))/(g'(x)) = L$ exists (or $plus.minus infinity$).
   Then $ lim_(x->c) (f(x))/(g(x)) = L. $
 
@@ -429,14 +452,16 @@ e.g., by rearranging terms.]
 
   #proof(title: "Proof of the infinity case")[The proof is too complicated.
   // Assume the limits are infinite. We will only prove the right-hand limit.
-  // Let $c < a < b$. The @thm:gmv states that there exists a $p in (a, b)$ such that
+  // Let $c < a < b$.
+  // The @thm:gmv states that there exists a $p in (a, b)$ such that
   // $ f'(p)[g(b) - g(a)] = g'(p)[f(b) - f(a)]. $
   // Solving for $f(a)$, we get 
   // $ f(a) = f(b) + (f'(p)(g(a) - g(b)))/(g'(p)). $
   // We divide by $g(a)$ and get
   // $ f(a)/g(a) = (f'(p))/(g'(p)) + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
   // which we rewrite as
-  // $ f(a)/g(a) - L = (f'(p))/(g'(p)) - L + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
+  // $ f(a)/g(a) - L =
+  // (f'(p))/(g'(p)) - L + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
   ]
 ]
 
@@ -448,9 +473,11 @@ e.g., by rearranging terms.]
 === Function Character
 
 #theorem(title: [Fermat's or Interior Extremum])[
-  Let $f : (a, b) -> RR$  be differentiable at the local extremum $c in (a, b)$. Then $f'(x) = 0$.
+  Let $f : (a, b) -> RR$  be differentiable at the local extremum
+  $c in (a, b)$. Then $f'(x) = 0$.
 
-  However, note that a zero-derivative point may also be a stationary point of inflection. 
+  However, note that a zero-derivative point may also be
+  a stationary point of inflection. 
 ] <thm:fermat>
 
 #theorem(title: [Darboux's])[
@@ -781,6 +808,19 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     In particular, it suffices that $f$ is continuous except at finitely many points, or at countably many points where it has only removable or jump discontinuities.
 ]
 
+#theorem()[
+  Assume $f$ is continuous on $[a, b]$. Let
+  $ M_i = max_(x in [x_(i-1), x_i]) f(x)
+  space "and" space
+  m_i = min_(x in [x_(i-1), x_i]) f(x). $
+  Then,
+  $
+  lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1)) =
+  lim_(norm(P)->0) sum_(i=1)^n m_i (x_i - x_(i-1)) =
+  integral_a^b f(x) dd(x).
+  $
+]
+
 #theorem(title: [Fundamental Theorems of Calculus])[
   If $f$ is continuous on $[a, b]$, then the two theorems follow:
   + Let $F(x) = integral_a^x f(t) dd(t)$ for $x in [a, b]$.
@@ -807,7 +847,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Order / Comparison])[
   If $f,g$ integrable and $f(x) <= g(x)$ on $[a,b]$, then
   $ integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x). $
-]
+] <thm:integral-comparison>
 
 #corollary(title: [Positivity])[
   If $f(x) >= 0$ on $[a,b]$, then $ integral_a^b f(x) dd(x) >= 0$. Moreover, if $f$ is continuous and the integral is $0$, then $f equiv 0$.
@@ -840,8 +880,19 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Generalized Mean Value for Integrals])[
-  If $f$ is continuous and $g$ is integrable and does not change sign on $[a, b]$,
-  $ exists xi in (a, b) : integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
+  If $f$ is continuous and $g$ is integrable and
+  does not change sign on $[a, b]$,
+  $ exists xi in (a, b) :
+  integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
+
+  #proof[Let $m = min f(x)$ and $M = max f(x)$ for $x in [a, b].$ Then,
+    $ m integral_a^b g(x) <= integral_a^b f(x) g(x) <= M integral_a^b g(x) $
+    by @thm:integral-comparison, or rewritten,
+    $ m <= 1/(integral_a^b g(x)) integral_a^b f(x) g(x) <= M. $
+    Since $m <= f(x) <= M$, @thm:intermediate gives that
+    $ f(xi) = 1/(integral_a^b g(x)) integral_a^b f(x) g(x) $
+    for some $xi in [a, b]$. Rewritten, this is the theorem.
+  ]
 ]
 
 === Techniques
@@ -854,7 +905,17 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Integration by Parts])[
   If $f,g$ are continuously differentiable on $[a,b]$, then
-  $ integral_a^b f'(x) g(x) dd(x) = [f(x) g(x)]_a^b - integral_a^b f(x) g'(x) dd(x). $
+  $ integral_a^b f(x) g(x) dd(x) = [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dd(x). $
+]
+
+#tip-box(title: [LIATE Rule])[
+  The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
+  - Logarithmic: $ln(x)$, $log_a(x)$
+  - Inverse trigonometric: $arctan(x)$, $arcsin(x)$, $arccos(x)$
+  - Algebraic: $x$, $x^2$, $x^3$, etc.
+  - Trigonometric: $sin(x)$, $cos(x)$, $tan(x)$, etc.
+  - Exponential: $e^x$, $a^x$
+  Choose $g(x)$ as the function that appears first in this list.
 ]
 
 == Ordinary Differential Equations
