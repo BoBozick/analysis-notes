@@ -898,9 +898,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 === Techniques
 
 #theorem(title: [Change of Variables / Substitution])[
-  Let $u = phi(x)$ with $phi$ continuously differentiable and strictly monotone on $[a,b]$.
-  If $f$ is continuous on $[phi(a), phi(b)]$, then
-  $ integral_a^b f(phi(x)) phi'(x) dd(x) = integral_(phi(a))^(phi(b)) f(u) dd(u). $
+  Let $u = g(x)$ with $g$ continuously differentiable and strictly monotone on $[a,b]$.
+  If $f$ is continuous on $[g(a), g(b)]$, then
+  $ integral_a^b f(g(x)) g'(x) dd(x) = integral_(g(a))^(g(b)) f(u) dd(u). $
 ]
 
 #theorem(title: [Integration by Parts])[
