@@ -411,7 +411,7 @@ e.g., by rearranging terms.]
   $g$ is differentiable at $f(c) in Y$,
   then $g compose f$ is differentiable at $c$ with
   $ (g compose f)'(c) = g'(f(c)) f'(c). $
-]
+] <thm:chain>
 
 #theorem(title: [Basic Derivatives], 
   grid(
@@ -640,101 +640,6 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
 ]
 
-== Taylor's Theorem
-
-#theorem(title: [Taylor's])[
-  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Fix $c in [a, b]$. Then,
-  $ f(x) = P_n (x) + R_n (x), $
-  where the _Taylor polynomial_ of degree $n$ around $c$ is
-  $ P_n (x) = sum_(k=0)^(n) (f^((k))(c))/k! (x - c)^k $
-  and the _Lagrange remainder_ of degree $n$ around $c$ is
-  $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - c)^(n+1) $
-  for some $xi$ strictly between $c$ and $x$.
-
-  Note that other remainder forms exist.
-
-  #proof[Let $h = x - c$ be the deviation from the point. Then,
-  $ f(x) = f(c + h) = sum_(k=0)^(n) (f^((k))(c))/k! h^k
-  + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h), $
-  where $p_n (h)$ and $r_n (h)$ correspond to $P_n (x)$ and $R_n (x)$.
-
-  Define
-  $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (c + h - t)^k, $
-  with $F_(n,h)(c) = p_n(h)$ and $F_(n,h)(c + h) = f(c + h)$, and derivative
-  $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (c + h - xi)^n. $
-
-  Also let
-  $ g_(n,h) (t) = (c + h - t)^(n+1), $
-  with $g_(n,h)(c) = h^(n+1)$ and $g_(n,h)(c + h) = 0$ and
-  $ g'_(n,h)(xi) = -(n + 1)(c + h - xi)^n. $
-
-  @thm:gmv gives
-  $ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
-  = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
-  for some $xi$ between $c$ and $c + h$. Substituting,
-  $ (f(c + h) - p_n (h))/(0 - h^(n+1)) =
-  (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n) $
-  so
-  $ f(c + h) - p_n (h) = (f^((n+1))(xi))/(n + 1)! h^(n+1). $
-  Hence
-  $ f(c + h) = p_n (h) + r_n (h) $
-  or in $x$-notation
-  $ f(x) = P_n (x) + R_n (x) $
-  with $xi$ strictly between $c$ and $x$.
-  ]
-]
-
-#definition(title: [Radius of Convergence])[
-  Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
-  The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
-  $ forall x : abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
-  which implies that the Taylor series converges to $f(x)$ for all such $x$ (so $f(x) = P_infinity (x)$).
-]
-
-#theorem(title: [Common Maclaurin Series])[
-  The following functions have a Maclaurin series with radius of convergence $r = infinity$:
-  #block[$
-  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
-  & sin x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1)! = x - x^3/3! + x^5/5! - dots.h.c \
-  & cos x = sum_(k=0)^infinity (-1)^k x^{2k} / (2k)! = 1 - x^2/2! + x^4/4! - dots.h.c \
-  & arctan x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1) = x - x^3/3 + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
-  & ln(1 + x) = sum_(k=1)^infinity (-1)^{k+1} x^k / k = x - x^2/2 + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
-  & (1 + x)^a = sum_(k=0)^infinity binom(a, k) x^k quad(|x| < 1) \
-  $]
-]
-
-=== Function Order
-
-#definition(title: [Big _O_ at Infinity])[
-  Let $f$ and $g$ be defined on $(c, infinity)$.
-  We say that $f$ belongs to the set _O_ of $g$ as $x -> infinity$,
-  writing $O(g(x))$, if there exists $M$ and $x_0$ such that
-  $ abs(f(x)) <= M abs(g(x)), $
-  for every $x > x_0$.
-]
-
-#definition(title: [Big _O_ at a Point])[
-  Let $f$ and $g$ be defined on a neighborhood of $c$.
-  We say that $f$ belongs to the set _O_ of $g$ around $c$,
-  writing $O(g(x))$, if there exists $M$ and $delta > 0$ such that
-  $ abs(f(x)) <= M abs(g(x)) $
-  for every $x in (c - delta, c + delta)$.
-]
-
-#theorem(title: [Big _O_ Behavior])[
-  If $h(x) = O(f(x))$ and $k(x) = O(g(x))$ (same limiting regime), then $h(x) k(x) = O(f(x) g(x))$.
-
-  If $m <= n$ then as $x -> 0$, $x^n = O(x^m)$ so $O(x^m) + O(x^n) = O(x^m)$. As $x -> infinity$, $x^m = O(x^n)$ so $O(x^m) + O(x^n) = O(x^n)$.
-]
-
-#theorem()[
-  Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
-  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Then,
-  $ f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1)) "as" x-> c. $
-
-  Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each $(x - c)^k$.
-]
-
 == The Riemann Integral
 
 === Definition
@@ -828,7 +733,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     differentiable on $(a, b)$, and $F'(x) = f(x).$
   + If $F'(x) = f(x)$ for $x in (a, b)$, then
   $ integral_a^b f(x) dd(x) = F(b) - F(a). $
-]
+] <thm:fundamental>
 
 === Properties
 
@@ -897,16 +802,34 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Techniques
 
-#theorem(title: [Change of Variables / Substitution])[
-  Let $u = g(x)$ with $g$ continuously differentiable and strictly monotone on $[a,b]$.
-  If $f$ is continuous on $[g(a), g(b)]$, then
+#theorem(title: [Integration by Substitution])[
+  Also known as _change of variables_ or _u-substitution_.
+
+  Let $g$ be continuously differentiable on $[a,b]$
+  and let $f$ be continuous on $g([a, b])$.
+  Then, with $u = g(x)$ and $dd(u) = g'(x) dd(x)$,
   $ integral_a^b f(g(x)) g'(x) dd(x) = integral_(g(a))^(g(b)) f(u) dd(u). $
+
+  Equivalently, if $g$ is strictly monotonic and 
+  thus invertible as $x = g^(-1)(u)$,
+  $ integral_a^b f(x) dd(x) =
+  integral_(g^(-1)(a))^(g^(-1)(b)) f'(g(u)) g'(u) dd(u). $
+
+  #proof[We prove the first formulation of the theorem. We have,
+    $
+    integral_a^b f(g(x)) g'(x)
+    = [f(g(x))]_a^b
+    = [f(u)]_(g(a))^(g(b))
+    = integral_(g(a))^(g(b)) f(u) dd(u)
+    $   
+    according to @thm:fundamental (ii) and @thm:chain.
+  ]
 ]
 
 #theorem(title: [Integration by Parts])[
   If $f,g$ are continuously differentiable on $[a,b]$, then
   $ integral_a^b f(x) g(x) dd(x) = [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dd(x). $
-]
+] <thm:parts>
 
 #tip-box(title: [LIATE Rule])[
   The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
@@ -916,6 +839,111 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   - Trigonometric: $sin(x)$, $cos(x)$, $tan(x)$, etc.
   - Exponential: $e^x$, $a^x$
   Choose $g(x)$ as the function that appears first in this list.
+]
+
+== Taylor's Theorem
+
+#theorem(title: [Taylor's])[
+  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Fix $c in [a, b]$. Then,
+  $ f(x) = P_n (x) + R_n (x), $
+  where the _Taylor polynomial_ of degree $n$ around $c$ is
+  $ P_n (x) = sum_(k=0)^(n) (f^((k))(c))/k! (x - c)^k $
+  and the _Lagrange remainder_ of degree $n$ around $c$ is
+  $ R_n (x) = (f^((n+1))(xi))/(n+1)! (x - c)^(n+1) $
+  for some $xi$ strictly between $c$ and $x$.
+
+  Note that other remainder forms exist.
+
+  #proof[Let $h = x - c$ be the deviation from the point. Then,
+    $ f(x) = f(c + h) = sum_(k=0)^(n) (f^((k))(c))/k! h^k
+    + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h), $
+    where $p_n (h)$ and $r_n (h)$ correspond to $P_n (x)$ and $R_n (x)$.
+
+    Define
+    $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (c + h - t)^k, $
+    with $F_(n,h)(c) = p_n(h)$ and $F_(n,h)(c + h) = f(c + h)$, and derivative
+    $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (c + h - xi)^n. $
+
+    Also let
+    $ g_(n,h) (t) = (c + h - t)^(n+1), $
+    with $g_(n,h)(c) = h^(n+1)$ and $g_(n,h)(c + h) = 0$ and
+    $ g'_(n,h)(xi) = -(n + 1)(c + h - xi)^n. $
+
+    @thm:gmv gives
+    $ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
+    = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
+    for some $xi$ between $c$ and $c + h$. Substituting,
+    $ (f(c + h) - p_n (h))/(0 - h^(n+1)) =
+    (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n) $
+    so
+    $ f(c + h) - p_n (h) = (f^((n+1))(xi))/(n + 1)! h^(n+1). $
+    Hence
+    $ f(c + h) = p_n (h) + r_n (h) $
+    or in $x$-notation
+    $ f(x) = P_n (x) + R_n (x) $
+    with $xi$ strictly between $c$ and $x$.
+  ]
+  
+  #proof(title: [Proof using integrals])[From @thm:fundamental (ii) we have
+    $ integral_c^x f'(t) dd(t) = f(t) - f(c) $
+    which we expand using @thm:parts as
+    // continue here
+    $ f(t)
+    &= f(c) + integral_c^x 1 dot f'(t) dd(t) \
+    &= f(c) + 
+    $
+  ]
+]
+
+#definition(title: [Radius of Convergence])[
+  Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
+  The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
+  $ forall x : abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
+  which implies that the Taylor series converges to $f(x)$ for all such $x$ (so $f(x) = P_infinity (x)$).
+]
+
+#theorem(title: [Common Maclaurin Series])[
+  The following functions have a Maclaurin series with radius of convergence $r = infinity$:
+  #block[$
+  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
+  & sin x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1)! = x - x^3/3! + x^5/5! - dots.h.c \
+  & cos x = sum_(k=0)^infinity (-1)^k x^{2k} / (2k)! = 1 - x^2/2! + x^4/4! - dots.h.c \
+  & arctan x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1) = x - x^3/3 + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
+  & ln(1 + x) = sum_(k=1)^infinity (-1)^{k+1} x^k / k = x - x^2/2 + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
+  & (1 + x)^a = sum_(k=0)^infinity binom(a, k) x^k quad(|x| < 1) \
+  $]
+]
+
+=== Function Order
+
+#definition(title: [Big _O_ at Infinity])[
+  Let $f$ and $g$ be defined on $(c, infinity)$.
+  We say that $f$ belongs to the set _O_ of $g$ as $x -> infinity$,
+  writing $O(g(x))$, if there exists $M$ and $x_0$ such that
+  $ abs(f(x)) <= M abs(g(x)), $
+  for every $x > x_0$.
+]
+
+#definition(title: [Big _O_ at a Point])[
+  Let $f$ and $g$ be defined on a neighborhood of $c$.
+  We say that $f$ belongs to the set _O_ of $g$ around $c$,
+  writing $O(g(x))$, if there exists $M$ and $delta > 0$ such that
+  $ abs(f(x)) <= M abs(g(x)) $
+  for every $x in (c - delta, c + delta)$.
+]
+
+#theorem(title: [Big _O_ Behavior])[
+  If $h(x) = O(f(x))$ and $k(x) = O(g(x))$ (same limiting regime), then $h(x) k(x) = O(f(x) g(x))$.
+
+  If $m <= n$ then as $x -> 0$, $x^n = O(x^m)$ so $O(x^m) + O(x^n) = O(x^m)$. As $x -> infinity$, $x^m = O(x^n)$ so $O(x^m) + O(x^n) = O(x^n)$.
+]
+
+#theorem()[
+  Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
+  Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and $n + 1$ times on $(a, b)$. Then,
+  $ f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1)) "as" x-> c. $
+
+  Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each $(x - c)^k$.
 ]
 
 == Ordinary Differential Equations
