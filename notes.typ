@@ -195,7 +195,9 @@
 ]
 
 #theorem(title: [Bolzano--Weierstrass])[
-  Every bounded sequence contains a convergent subsequence.
+  In a compact set $K subset.eq RR$,
+  every bounded sequence contains a convergent subsequence
+  whose limit point is in $K$.
 ] <thm:bolzano-weierstrass>
 
 === Cauchy
@@ -694,23 +696,23 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The Darboux and Riemann integrals are equivalent.
 ]
 
+=== Integrability
+
 #theorem(title: [Integrability])[
   Let $f : [a, b] -> RR$ be bounded.
 
   The function is integrable if and only if:
   + $forall epsilon > 0 space exists P : U(f,P) - L(f,P) < epsilon$.
   + $forall (P_n) : norm(P_n) -> 0 ==> U(f,P_n) - L(f,P_n) -> 0.$
+  + (Lebesgue Criterion for Riemann Integrability) \
+    Its set of discontinuities has Lebesgue measure zero.
   + $ forall epsilon > 0 space exists Phi, Psi :
     integral_a^b Psi(x) dd(x) - integral_a^b Phi(x) dd(x) < epsilon, $
     where $Phi$ and $Psi$ are lower and upper step functions.
   
   The function is integrable if:
   3. $f$ is _monotone_ on $[a, b]$
-  + (Lebesgue criterion for Riemann integrability)
-
-    $f$ is Riemann integrable on $[a,b]$ if and only if the set of its discontinuities has Lebesgue measure zero.
-
-    In particular, it suffices that $f$ is continuous except at finitely many points, or at countably many points where it has only removable or jump discontinuities.
+  + $f$ is continuous except at finitely many points, or at countably many points where it has only removable or jump discontinuities.
 ]
 
 #theorem()[
@@ -726,14 +728,21 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $
 ]
 
-#theorem(title: [Fundamental Theorems of Calculus])[
-  If $f$ is continuous on $[a, b]$, then the two theorems follow:
-  + Let $F(x) = integral_a^x f(t) dd(t)$ for $x in [a, b]$.
-    Then, $F$ is continuous on $[a, b]$,
-    differentiable on $(a, b)$, and $F'(x) = f(x).$
-  + If $F'(x) = f(x)$ for $x in (a, b)$, then
-  $ integral_a^b f(x) dd(x) = F(b) - F(a). $
-] <thm:fundamental>
+#theorem(title: [Absolute Value / Triangle])[
+  If $f$ integrable, then $|f|$ integrable and
+  $ abs(integral_a^b f(x) dd(x)) <= integral_a^b |f(x)| dd(x). $
+]
+
+#theorem(title: [Products and Composition])[
+  If $f,g$ integrable, then $f g$ is integrable.
+  
+  If $f$ integrable and $phi$ continuous on a set containing $f([a,b])$, then $phi compose f$ is integrable.
+]
+
+#theorem(title: [Uniform Limit])[
+  If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly, then $f$ is integrable and
+  $ integral_a^b f_n (x) dd(x) -> integral_a^b f(x) dd(x). $
+]
 
 === Properties
 
@@ -763,33 +772,20 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ abs(integral_a^b f(x) dd(x)) <= M (b - a). $
 ]
 
-#theorem(title: [Absolute Value / Triangle])[
-  If $f$ integrable, then $|f|$ integrable and
-  $ abs(integral_a^b f(x) dd(x)) <= integral_a^b |f(x)| dd(x). $
-]
-
-#theorem(title: [Products and Composition])[
-  If $f,g$ integrable, then $f g$ is integrable.
-  
-  If $f$ integrable and $phi$ continuous on a set containing $f([a,b])$, then $phi compose f$ is integrable.
-]
-
-#theorem(title: [Uniform Limit])[
-  If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly, then $f$ is integrable and
-  $ integral_a^b f_n (x) dd(x) -> integral_a^b f(x) dd(x). $
-]
-
 #theorem(title: [Mean Value for Integrals])[
-  If $f$ is continuous on $[a, b]$,
-  $ exists xi in (a, b) : integral_a^b f(x) dd(x) = f(xi) (b - a). $
-]
+  If $f$ is continuous on $[a, b]$, then
+  $ integral_a^b f(x) dd(x) = f(xi) (b - a). $
+  for some $xi in [a, b]$ or,
+  to be more strict if $f$ is not constant, $xi in (a, b)$.
+] <thm:mean-integrals>
 
 #theorem(title: [Generalized Mean Value for Integrals])[
   If $f$ is continuous and $g$ is integrable and
   does not change sign on $[a, b]$,
-  $ exists xi in (a, b) :
-  integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x). $
-
+  $ integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x) $
+  for some $xi in [a, b]$ or,
+  to be more strict if $f$ is not constant, $xi in (a, b)$.
+  
   #proof[Let $m = min f(x)$ and $M = max f(x)$ for $x in [a, b].$ Then,
     $ m integral_a^b g(x) <= integral_a^b f(x) g(x) <= M integral_a^b g(x) $
     by @thm:integral-comparison, or rewritten,
@@ -800,7 +796,41 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   ]
 ]
 
-=== Techniques
+#theorem(title: [Fundamental Theorems of Calculus])[
+  If $f$ is continuous on $[a, b]$, then the two theorems follow:
+  
+  + Let $F(x) = integral_a^x f(t) dd(t)$ for $x in [a, b]$.
+    Then, $F$ is continuous on $[a, b]$,
+    differentiable on $(a, b)$, and $F'(x) = f(x).$
+
+    #proof[We want to show that $F'(x) = f(x)$.
+
+      Applying the definition of derivatives,
+      $ F'(x) = lim_(h->0) 1/h (F(x+h) - F(x))
+      = lim_(h->0) 1/h integral_x^(x+h) f(x) dd(x), $ 
+      where $x$ and $x + h$ are in $(a, b)$.
+      By @thm:mean-integrals,
+      $ integral_x^(x+h) f(t) dd(t) = f(xi) h $
+      for some $xi$ between $x$ and $x + h$,
+      which in our previous result gives
+      $ F'(x) = lim_(h->0) f(xi) = f(x) $
+      since $f$ is continuous.
+    ]
+    
+  + If $F'(x) = f(x)$ for $x in (a, b)$, then
+    $ integral_a^b f(x) dd(x) = F(b) - F(a). $
+
+    #proof[Let $G(x)$ have $G'(x) = f(x) = F'(x)$ for all $x in (a, b)$.
+    Then, $G'(x) - F'(x) = 0$ gives that $G(x) - F(x) = C$ for some constant.
+    We have $G(a) - F(a) = C$, but
+    $ G(a) = integral_a^a f(t) dd(t) = 0, $
+    so $C = -F(a)$ and hence $G(b) = F(b) - F(a)$, but by definition
+    $ G(b) = integral_a^b f(t) dd(t), $
+    so the statement holds.
+    ]
+] <thm:fundamental>
+
+=== Integration Techniques
 
 #theorem(title: [Integration by Substitution])[
   Also known as _change of variables_ or _u-substitution_.
@@ -831,7 +861,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ integral_a^b f(x) g(x) dd(x) = [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dd(x). $
 ] <thm:parts>
 
-#tip-box(title: [LIATE Rule])[
+#tip-box(title: [LIATE])[
   The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
   - Logarithmic: $ln(x)$, $log_a(x)$
   - Inverse trigonometric: $arctan(x)$, $arcsin(x)$, $arccos(x)$
@@ -839,6 +869,23 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   - Trigonometric: $sin(x)$, $cos(x)$, $tan(x)$, etc.
   - Exponential: $e^x$, $a^x$
   Choose $g(x)$ as the function that appears first in this list.
+]
+
+#tip-box(title: [Arctangent Rules])[
+  + Addition: $(a b < 1, "otherwise add or subtract" pi slash 2)$
+    $ arctan(a) + arctan(b) = arctan((a + b)/(1 - a b)) $
+  + Subtraction: $(a b > 1, "otherwise add or subtract" pi slash 2)$
+    $ arctan(a) - arctan(b) = arctan((a - b)/(1 + a b)) $
+  + Inverse:
+    $ arctan(x) = -arctan(-x) $
+  + Integration:
+    $
+    integral a/(b^2 + c^2 x^2) dd(x)
+    &= a/b^2 integral 1/(1 + c^2 x^2 slash b^2) \
+    &= vec(u &= c x slash b, dd(u) &= c slash b, delim: "{") \
+    &= a/(b c) integral 1/(1 + u^2) dd(u) \
+    &= a/(b c) arctan((c x)/b)
+    $
 ]
 
 == Taylor's Theorem
@@ -887,10 +934,15 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   #proof(title: [Proof using integrals])[From @thm:fundamental (ii) we have
     $ integral_c^x f'(t) dd(t) = f(t) - f(c) $
     which we expand using @thm:parts as
-    // continue here
-    $ f(t)
+    $ f(x)
     &= f(c) + integral_c^x 1 dot f'(t) dd(t) \
-    &= f(c) + 
+    &= f(c) + [(t-x)f'(t)]_c^x  - integral_c^x (t-x)f''(x) dd(t) \
+    &= f(c) + f'(c)(x - c) - ([(t-x)^2/2 f''(t)]_c^x -
+    integral_c^x (t-x)^2/2 f^((3))(t) dd(t)) \
+    &= f(c) + f'(c)(x-c) + (f''(t))/2 (x-c)^2 +
+    integral_c^x (t-x)^2/2 f^((3))(t) dd(t) \
+    &= dots.h.c \
+    &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dd(t)
     $
   ]
 ]
