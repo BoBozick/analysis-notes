@@ -110,3 +110,10 @@
   counter: theorem-counter,
   render: render-fn.with(fill: red.darken(20%)),
   )
+
+#let (lemma-counter, lemma-box, lemma, show-lemma) = make-frame(
+  "lemma",
+  theorion-i18n-map.at("lemma"),
+  counter: theorem-counter,
+  render: render-fn.with(fill: red.darken(20%)),
+  )

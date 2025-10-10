@@ -117,8 +117,8 @@
 
 #theorem(title: [Nested Interval Property])[
   Let $(I_n)$ be a nested sequence of nonempty closed and bounded intervals with
-  $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c $.
-  Then $ inter.big_(n=1)^infinity I_n != emptyset $.
+  $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c. $
+  Then $ inter.big_(n=1)^infinity I_n != emptyset. $
   In particular, there exists $a in inter.big_(n=1)^infinity I_n$.
 ]
 
@@ -163,8 +163,10 @@
 #definition(title: [Convergence])[
   A sequence _converges_ to $a$ if
   $ forall epsilon > 0 space exists N in NN : n >= N ==> |a_n - a| < epsilon $
-  or equivalently if for any $V_epsilon (a)$ there exists a point in the sequence after which all terms are in $V_epsilon (a)$.
-  In other words if every $epsilon$-neighborhood contains all but a finite number of the terms in $(a_n)$.
+  or equivalently if for any $V_epsilon (a)$ there exists a point
+  in the sequence after which all terms are in $V_epsilon (a)$.
+  In other words, if every $epsilon$-neighborhood of some point
+  contains all but a finite number of the terms in $(a_n)$.
 
   We write this $lim_(n->infinity) a_n = lim a_n = a$ or $a_n -> a$.
 
@@ -234,7 +236,7 @@ e.g., by rearranging terms.]
   However, the reverse implication is false.
 ]
 
-#theorem[
+#lemma[
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
 ]
 
@@ -430,7 +432,7 @@ e.g., by rearranging terms.]
       &derivative(,x) (cos x) = -sin x \
       &derivative(,x) (tan x) = 1 / (cos^2 x) \
       &derivative(,x) (ln abs(x)) = 1 / x \
-  &(f^(-1))'(y) = 1/(f'(x)) #h(0.7em) (y = f(x), f'(x) != 0)
+      &(f^(-1))'(y) = 1/(f'(x)) #h(0.7em) (y = f(x), f'(x) != 0)
     $],
   )
 )
@@ -439,9 +441,9 @@ e.g., by rearranging terms.]
   Let $f$ and $g$ be differentiable on an open interval containing $c$
   (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
   + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$
-  (or both $plus.minus infinity$), and
+    (or both $plus.minus infinity$), and
   + $lim_(x->c) (f'(x))/(g'(x)) = L$ exists (or $plus.minus infinity$).
-  Then $ lim_(x->c) (f(x))/(g(x)) = L. $
+  Then, $ lim_(x->c) (f(x))/(g(x)) = L. $
 
   #proof(title: "Proof of the zero case")[Assume the limits are zero.
 
@@ -610,10 +612,10 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #theorem(title: [First Nonzero Derivative])[
   If $f$ has stationary order $n$, then:
-  - If $n$ is _even_ $->$ $f$ has a local extremum at $c$.
+  - If $n$ is _even_ $==>$ $f$ has a local extremum at $c$.
 
-    Furthermore: $f^((n))(c)>0$ $->$ local minimum, $f^((n))(c)<0$ $->$ local maximum.
-  - If $n$ is _odd_ $->$ $c$ is a stationary inflection point.
+    Furthermore: $f^((n))(c)>0$ $==>$ local minimum, $f^((n))(c)<0$ $==>$ local maximum.
+  - If $n$ is _odd_ $==>$ $c$ is a stationary inflection point.
 
   #proof[The Taylor series with remainder simplifies to
   $ f(c +  h)=f(c)+(f^((n))(c))/n! h^n+O(h^(n+1)). $
@@ -630,15 +632,15 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #corollary(title: [Second Derivative Test])[
   If $f''$ is continuous at $c$ and $f'(c)=0$, then:
-  - $f''(c)>0$ $->$ local minimum.
-  - $f''(c)<0$ $->$ local maximum.
-  - $f''(c)=0$ and $f^((3))(c)!=0$ $->$ stationary inflection point.  
+  - $f''(c)>0$ $==>$ local minimum.
+  - $f''(c)<0$ $==>$ local maximum.
+  - $f''(c)=0$ and $f^((3))(c)!=0$ $==>$ stationary inflection point.  
   Note: $f''(c)=0$ alone is insufficient for an inflection; the curvature must change sign.
 ]
 
 #example(title: [Examples])[
-  - $f(x)=x^3$: $f'(0)=f''(0)=0$, $f^((3))(0)=6!=0$ (odd $n=3$) $->$ stationary inflection at $0$.
-  - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$) $->$ local minimum at $0$, no inflection.
+  - $f(x)=x^3$: $f'(0)=f''(0)=0$, $f^((3))(0)=6!=0$ (odd $n=3$) $==>$ stationary inflection at $0$.
+  - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$) $==>$ local minimum at $0$, no inflection.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
 ]
 
