@@ -168,7 +168,7 @@
 
 #note-box[Compactness is like a generalization of closed intervals.]
 
-= Limits
+= The Basics of Limits
 
 == Sequences
 
