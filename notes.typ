@@ -232,104 +232,6 @@
   A sequence converges if and only if it is a Cauchy sequence.
 ]
 
-== Series
-
-#definition(title: [Infinite Series])[
-  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
-  The sum of the infinite series is defined as
-  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n
-  = lim_(n->infinity) sum^n_(j=0) a_j. $
-
-  If $a_j >= 0$ for every $j$ we say that the series is _positive_.
-]
-
-#warning-box[
-  Beware of treating infinite series like elementary algebra,
-  e.g., by rearranging terms.
-]
-
-#theorem(title: [Geometric Series])[
-  If $abs(x) < 1$, then
-  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
-  since
-  $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
-]
-
-=== Convergence
-
-#theorem(title: [Cauchy Criterion for Series])[
-  The series $sum_(k=0)^infinity a_k$ converges if and only if
-  $ forall epsilon > 0 space exists N :
-  n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
-  < epsilon. $
-]
-
-#corollary(title: [Series Term Test])[
-  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
-  However, the reverse is not implied.
-] <thm:term>
-
-#lemma[
-  The series $sum_(j=1)^infinity 1 slash j$ is divergent.
-]
-
-#theorem(title: [Inverse Power Series])[
-  The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if
-  $p > 1$.
-] <thm:inverse-power>
-
-#theorem(title: [Ratio Test])[
-  Let $(a_n)$ be a sequence of positive terms and define
-  $ L = limsup_(n->infinity) abs(a_(n+1)/a_n). $
-  Then:
-  + If $L < 1$, the series $sum_(n=1)^infinity a_n$ converges.
-  + If $L > 1$ (including $L = infinity$), the series diverges.
-  + If $L = 1$, the test is inconclusive.
-] <thm:ratio>
-
-#theorem(title: [Cauchy Condensation Test])[
-  Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
-  Then $sum_(n=1)^(infinity) a_n$ converges if and only if
-  $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
-]
-
-#definition(title: [Positive Series])[
-  A series is _positive_ if all its terms are nonnegative.
-]
-
-#theorem(title: [Constant Ratio Test])[
-  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$
-  be positive series with terms such that
-  $ lim_(j->infinity) a_j/b_j = K $
-  for some $K != 0.$
-  Then, $sum_(j=0)^infinity a_j$ converges if and only if
-  $sum_(j=0)^infinity b_j$ converges.
-] <thm:constant-ratio>
-
-#theorem(title: [Comparison Test])[
-  Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
-  + $sum^infinity_(k=1) (a_k)$ converges if
-  $sum^infinity_(k=1) (b_k)$  converges.
-  + $sum^infinity_(k=1) (b_k)$ diverges if
-  $sum^infinity_(k=1) (a_k)$  diverges.
-] <thm:comparison>
-
-#theorem(title: [Alternating Series Test])[
-  Let $(a_n)$ satisfy
-  + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
-  + $(a_n) -> 0$.
-  Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
-] <thm:alternating>
-
-#definition(title: [Absolutely Convergent])[
-  A series $sum_(j=0)^infinity a_j$ is _absolutely convergent_ if
-  $sum_(j=0)^infinity abs(a_j)$ is convergent.
-]
-
-#theorem()[
-  If a series is absolutely convergent then it is convergent.
-] <thm:absolutely-convergent>
-
 == Functions
 
 #theorem(title: [Function Limit])[ 
@@ -715,6 +617,8 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
 ]
 
+== Ordinary Differential Equations
+
 == The Riemann Integral
 
 === Definition
@@ -980,9 +884,105 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $
 ]
 
+= Infinitely Many Terms
+
+== Series
+
+#definition(title: [Infinite Series])[
+  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
+  The sum of the infinite series is defined as
+  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n
+  = lim_(n->infinity) sum^n_(j=0) a_j. $
+
+  If $a_j >= 0$ for every $j$ we say that the series is _positive_.
+]
+
+#warning-box[
+  Beware of treating infinite series like elementary algebra,
+  e.g., by rearranging terms.
+]
+
+#theorem(title: [Geometric Series])[
+  If $abs(x) < 1$, then
+  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
+  since
+  $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
+]
+
+=== Convergence
+
+#theorem(title: [Cauchy Criterion for Series])[
+  The series $sum_(k=0)^infinity a_k$ converges if and only if
+  $ forall epsilon > 0 space exists N :
+  n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
+  < epsilon. $
+]
+
+#corollary(title: [Series Term Test])[
+  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
+  However, the reverse is not implied.
+] <thm:term>
+
+#lemma[
+  The series $sum_(j=1)^infinity 1 slash j$ is divergent.
+]
+
+#theorem(title: [Inverse Power Series])[
+  The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if
+  $p > 1$.
+] <thm:inverse-power>
+
+#theorem(title: [Ratio Test])[
+  Let $(a_n)$ be a sequence of positive terms and define
+  $ L = limsup_(n->infinity) abs(a_(n+1)/a_n). $
+  Then:
+  + If $L < 1$, the series $sum_(n=1)^infinity a_n$ converges.
+  + If $L > 1$ (including $L = infinity$), the series diverges.
+  + If $L = 1$, the test is inconclusive.
+] <thm:ratio>
+
+#theorem(title: [Cauchy Condensation Test])[
+  Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
+  Then $sum_(n=1)^(infinity) a_n$ converges if and only if
+  $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
+]
+
+#theorem(title: [Constant Ratio Test])[
+  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$
+  be positive series with terms such that
+  $ lim_(j->infinity) a_j/b_j = K $
+  for some $K != 0.$
+  Then, $sum_(j=0)^infinity a_j$ converges if and only if
+  $sum_(j=0)^infinity b_j$ converges.
+] <thm:constant-ratio>
+
+#theorem(title: [Comparison Test])[
+  Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
+  + $sum^infinity_(k=1) (a_k)$ converges if
+  $sum^infinity_(k=1) (b_k)$  converges.
+  + $sum^infinity_(k=1) (b_k)$ diverges if
+  $sum^infinity_(k=1) (a_k)$  diverges.
+] <thm:comparison>
+
+#theorem(title: [Alternating Series Test])[
+  Let $(a_n)$ satisfy
+  + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
+  + $(a_n) -> 0$.
+  Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
+] <thm:alternating>
+
+#definition(title: [Absolutely Convergent])[
+  A series $sum_(j=0)^infinity a_j$ is _absolutely convergent_ if
+  $sum_(j=0)^infinity abs(a_j)$ is convergent.
+]
+
+#theorem()[
+  If a series is absolutely convergent then it is convergent.
+] <thm:absolutely-convergent>
+
 == Indefinite Integrals
 
-=== Unlimited intervals
+=== Unlimited Intervals
 
 #definition()[
   Let $f$ be integrable on $[a, R]$ for all $R > a$.
@@ -1016,6 +1016,23 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The following does not apply.
   #compact-restate((<thm:term>, <thm:alternating>, <thm:ratio>))
 ]
+
+#theorem[
+  Let $f$ be decreasing on $[m, n]$, where $m < n$ are integers.
+  Then,
+  $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dd(x) <= sum_(j=m)^(n-1) f(j) $
+  and
+  $ f(n) + integral_m^n f(x) dd(x) <= sum_(j=m)^n f(j) <=
+  f(m) + integral_m^n f(x) dd(x). $
+
+  Let $f$ instead be increasing. Then,
+  $ sum_(j=m)^(n-1) f(j) <= integral_m^n f(x) dd(x) <= sum_(j=m+1)^n f(j) $
+  and
+  $ f(m) + integral_m^n f(x) dd(x) <= sum_(j=m)^n f(j) <=
+  f(n) + integral_m^n f(x) dd(x). $
+]
+
+=== Open Intervals
 
 == Taylor's Theorem
 
@@ -1140,7 +1157,3 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each
   $(x - c)^k$.
 ]
-
-== Ordinary Differential Equations
-
-#v(10em)
