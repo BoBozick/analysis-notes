@@ -2,16 +2,16 @@
 #import cosmos.rainbow: *
 
 #let styling(
-  course_name: "",
-  course_code: "",
-  title_size: 30pt,
-  title_space: 0em,
+  course-name: "",
+  course-code: "",
+  title-size: 30pt,
+  title-space: 0em,
 
   size: 12pt,
   margin: 0.5cm, // 0.5 for computer, 0.1 for phone (cm)
   width: 11cm,   // 16 for computer, 8 for phone (cm)
   height: auto,
-  heading_break: false,
+  heading-break: false,
   contents: false,
 
   doc
@@ -28,7 +28,7 @@
   )
 
   show heading.where(level: 1): it =>{
-    if heading_break and not it.body == [Contents] {
+    if heading-break and not it.body == [Contents] {
       pagebreak()
     }
     set text(size: size + 8pt)
@@ -46,14 +46,14 @@
     outlined: false
   )
 
-  let make_title(course_name, course_code) = {
-    if course_name != "" {
+  let make-title(course-name, course-code) = {
+    if course-name != "" {
       align(center, {
         v(0em)
-        text(size: title_size, course_name)
+        text(size: title-size, course-name)
         v(-2em)
-        text(size: 16pt, course_code)
-        v(title_space)
+        text(size: 16pt, course-code)
+        v(title-space)
         }
       )
     }
@@ -97,23 +97,36 @@
   )
 
   show image: it => align(center, it)
+  show math.equation.where(block: false): box // Prevent equation line wrapping.
 
   // Make document
-  make_title(course_name, course_code)
+  make-title(course-name, course-code)
   if contents {outline()}
   doc
 }
 
+// theorion package
 #let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
   "corollary",
   theorion-i18n-map.at("corollary"),
   counter: theorem-counter,
   render: render-fn.with(fill: red.darken(20%)),
-  )
+)
 
 #let (lemma-counter, lemma-box, lemma, show-lemma) = make-frame(
   "lemma",
   theorion-i18n-map.at("lemma"),
   counter: theorem-counter,
   render: render-fn.with(fill: red.darken(20%)),
+)
+
+#let compact-restate(labels) = {
+  theorion-restate(
+    filter: it => labels.contains(it.label),
+    render: it => (
+      prefix: none, title: "", full-title: auto, body
+      ) => block[
+        *#full-title* \ #body
+      ]
   )
+}

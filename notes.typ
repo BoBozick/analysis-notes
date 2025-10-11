@@ -1,18 +1,18 @@
 #import "style.typ": *
-#import "@preview/physica:0.9.5": dd, derivative, arccot
+#import "@preview/physica:0.9.6": dd, derivative, arccot
 
 #show: show-theorion
 #show: styling.with(
-  course_name: "Analys i en variabel",
-  course_code: "SF1673 (HT25)",
-  title_size: 30pt,
-  title_space: 0em, 
+  course-name: "Analys i en variabel",
+  course-code: "SF1673 (HT25)",
+  title-size: 30pt,
+  title-space: 0em, 
 
   size: 12pt,
   margin: 0.5cm,
   width: 15cm,
   height: auto,
-  heading_break: true,
+  heading-break: true,
   contents: true,
 )
 
@@ -226,6 +226,15 @@
 #caution-box[Beware of treating infinite series like elementary algebra,
 e.g., by rearranging terms.]
 
+#theorem(title: [Geometric Series])[
+  If $abs(x) < 1$, then
+  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
+  since
+  $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
+]
+
+=== Convergence
+
 #theorem(title: [Cauchy Criterion for Series])[
   The series $sum_(k=0)^infinity a_k$ converges if and only if
   $ forall epsilon > 0 space exists N : n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n) < epsilon. $
@@ -284,13 +293,6 @@ e.g., by rearranging terms.]
 
 #theorem()[
   If a series is absolutely convergent then it is convergent.
-]
-
-#theorem(title: [Geometric Series])[
-  If $abs(x) < 1$, then
-  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
-  since
-  $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
 ]
 
 == Functions
@@ -837,7 +839,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Integration by Substitution])[
   Also known as _change of variables_ or _u-substitution_.
 
-  Let $g$ be continuously differentiable on $[a,b]$
+  Let $g$ be injective and continuously differentiable on $[a,b]$
   and let $f$ be continuous on $g([a, b])$.
   Then, with $u = g(x)$ and $dd(u) = g'(x) dd(x)$,
   $ integral_a^b f(g(x)) g'(x) dd(x) = integral_(g(a))^(g(b)) f(u) dd(u). $
@@ -888,6 +890,37 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     &= a/(b c) integral 1/(1 + u^2) dd(u) \
     &= a/(b c) arctan((c x)/b)
     $
+]
+
+== Indefinite Integrals
+
+=== Unlimited intervals
+
+#definition()[
+  Let $f$ be integrable on $[a, R]$ for all $R > a$.
+  Then the integral is defined
+  $ integral_a^infinity f(x) dd(x) = lim_(R->infinity) integral_a^R f(x) dd(x). $
+  If this limit exists, then the integral is said to be convergent.
+]
+
+#definition()[
+  Let $f$ be integrable on every closed and bounded interval.
+  If _both_
+  $ integral_(-infinity)^a f(x) dd(x) space "and" space
+  integral_(-infinity)^a f(x) dd(x) $
+  are convergent, then for any real $a$ we define the convergent integral
+  $ integral_(-infinity)^infinity f(x) dd(x) =
+  integral_(-infinity)^a f(x) dd(x) + integral_(-infinity)^a f(x). $
+]
+
+
+
+#theorem(title: [Properties])[
+  Let $f$ and $g$ be integrable on $[a, R]$.
+  The following theorems we know from working with series apply.
+
+  #compact-restate((<thm:gmv>, <thm:bolzano-weierstrass>))
+  // this is a work in progress
 ]
 
 == Taylor's Theorem
