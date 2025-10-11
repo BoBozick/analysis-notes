@@ -97,7 +97,8 @@
   )
 
   show image: it => align(center, it)
-  show math.equation.where(block: false): box // Prevent equation line wrapping.
+  show math.equation.where(block: false): box // Prevent line wrapping.
+  show: show-theorion
 
   // Make document
   make-title(course-name, course-code)
@@ -105,7 +106,7 @@
   doc
 }
 
-// theorion package
+// Modify TheOrion
 #let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
   "corollary",
   theorion-i18n-map.at("corollary"),

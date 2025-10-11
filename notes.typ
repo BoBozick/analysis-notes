@@ -1,7 +1,6 @@
 #import "style.typ": *
 #import "@preview/physica:0.9.6": dd, derivative, arccot
 
-#show: show-theorion
 #show: styling.with(
   course-name: "Analys i en variabel",
   course-code: "SF1673 (HT25)",
