@@ -165,6 +165,12 @@
   it is closed and bounded.
 ]
 
+#theorem()[
+  $RR$ is not compact.
+
+  $emptyset$ is compact.
+]
+
 #note-box[Compactness is like a generalization of closed intervals.]
 
 = The Basics of Limits
@@ -214,7 +220,7 @@
 ]
 
 #theorem(title: [Bolzano--Weierstrass])[
-  In a compact set $K subset.eq RR$,
+  In a compact set $K subset RR$,
   every bounded sequence contains a convergent subsequence
   whose limit point is in $K$.
 ] <thm:bolzano-weierstrass>
@@ -377,7 +383,7 @@
     [$
       &derivative(,x) (sin x) = cos x \
       &derivative(,x) (cos x) = -sin x \
-      &derivative(,x) (tan x) = 1 / (cos^2 x) \\
+      &derivative(,x) (tan x) = 1 / (cos^2 x) \
       &derivative(,x) (ln abs(x)) = 1 / x \
       &(f^(-1))'(y) = 1/(f'(x)) #h(0.7em)
       (y = f(x), f'(x) != 0)
@@ -451,7 +457,7 @@
   More precisely $c in (a, b)$ since, from the assumption,
   $g'(a) < 0$ and $g'(b) > 0$.
   Furthermore, $g'(c) = 0$ according to @thm:fermat.
-  More precisely $c in (a, b)$ since, from the assumption, $g'(a) < 0$ and
+  More precisely $c in (a, b)$ since, per assumption, $g'(a) < 0$ and
   $g'(b) > 0$.
   ]
 ]
@@ -494,8 +500,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   If $g'$ is never zero on $(a, b)$, then the above can be stated as
   $ (f'(c))/(g'(c)) = (f(b) - f(a))/(g(b) - g(a)). $
 
-  #proof[
-    Let $h = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$
+  #proof[Let $h(x) = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]$
     and then apply @thm:rolles.
   ]
 ] <thm:gmv>
@@ -511,7 +516,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   + first and second derivative and their roots
   + sign tables
   + calculate interesting points: intersection with $y$-axis, defined
-  nondifferentiable points, local extremums, endpoints, inflection points
+    nondifferentiable points, local extremums, endpoints, inflection
   
   ==== Sketching
   + axes
