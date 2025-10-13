@@ -888,7 +888,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $
 ]
 
-= Infinitely Many Terms
+= Infinite Series
 
 == Series
 
@@ -963,9 +963,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Comparison Test])[
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
   + $sum^infinity_(k=1) (a_k)$ converges if
-  $sum^infinity_(k=1) (b_k)$  converges.
+    $sum^infinity_(k=1) (b_k)$  converges.
   + $sum^infinity_(k=1) (b_k)$ diverges if
-  $sum^infinity_(k=1) (a_k)$  diverges.
+    $sum^infinity_(k=1) (a_k)$  diverges.
 ] <thm:comparison>
 
 #theorem(title: [Alternating Series Test])[
@@ -1040,6 +1040,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 == Taylor's Theorem
 
+=== Statement
+
 #theorem(title: [Taylor's])[
   Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and
   $n + 1$ times on $(a, b)$. Fix $c in [a, b]$. Then,
@@ -1111,15 +1113,15 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The following functions have a Maclaurin series with radius of
   convergence $r = infinity$:
   #block[$
-  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \\
+  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
   & sin x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1)! = x - x^3/3!
-    + x^5/5! - dots.h.c \\
+    + x^5/5! - dots.h.c \
   & cos x = sum_(k=0)^infinity (-1)^k x^{2k} / (2k)! = 1 - x^2/2!
-    + x^4/4! - dots.h.c \\
+    + x^4/4! - dots.h.c \
   & arctan x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1) = x - x^3/3
-    + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \\
+    + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
   & ln(1 + x) = sum_(k=1)^infinity (-1)^{k+1} x^k / k = x - x^2/2
-    + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \\
+    + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
   & (1 + x)^a = sum_(k=0)^infinity binom(a, k) x^k quad(|x| < 1) \
   $]
 ]
