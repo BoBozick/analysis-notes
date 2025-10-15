@@ -871,7 +871,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Choose $g(x)$ as the function that appears first in this list.
 ]
 
-#tip-box(title: [Arctangent Rules])[
+#tip-box(title: [Trigonometric Functions])[
+  ==== Arctangent
   + Addition: $(a b < 1, "otherwise add or subtract" pi slash 2)$
     $ arctan(a) + arctan(b) = arctan((a + b)/(1 - a b)) $
   + Subtraction: $(a b > 1, "otherwise add or subtract" pi slash 2)$
@@ -886,6 +887,29 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     &= a/(b c) integral 1/(1 + u^2) dd(u) \
     &= a/(b c) arctan((c x)/b)
     $
+  
+  ==== Elementary
+  + Double angle formulas:
+    $ sin(2x) = 2 sin(x) cos(x) $
+    $ cos(2x) = cos^2(x) - sin^2(x) = 2 cos^2(x) - 1 = 1 - 2 sin^2(x) $
+    $ tan(2x) = (2 tan(x)) / (1 - tan^2(x)) $
+  + Half angle formulas:
+    $ sin^2(x) = (1 - cos(2x))/2 $
+    $ cos^2(x) = (1 + cos(2x))/2 $
+    $ tan^2(x) = (1 - cos(2x))/(1 + cos(2x)) $
+    $ tan(x/2) = (1-cos(x))/sin(x) = sin(x)/(1+cos(x)) $
+    (Weierstrass Substitution) 
+    Let $t = tan(x slash 2)$, then:
+    $
+    sin(x) &= (2t)/(1 + t^2) \
+    cos(x) &= (1 - t^2)/(1 + t^2) \
+    tan(x) &= (2t)/(1 - t^2) \
+    dd(x) &= (2 dd(t))/(1 + t^2)
+    $
+    This substitution is especially useful for integrating rational functions of trigonometric expressions.
+  + Antiderivatives:
+
+    $sin(x^2), cos(x^2), "and" tan(x^2)$ lack elementary antiderivatives.
 ]
 
 = Infinite Series
@@ -931,7 +955,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
 ]
 
-#theorem(title: [Inverse Power Series])[
+#theorem(title: [Inverse Power Series Test])[
   The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if
   $p > 1$.
 ] <thm:inverse-power>
@@ -945,28 +969,22 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   + If $L = 1$, the test is inconclusive.
 ] <thm:ratio>
 
-#theorem(title: [Cauchy Condensation Test])[
-  Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
-  Then $sum_(n=1)^(infinity) a_n$ converges if and only if
-  $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
-]
-
-#theorem(title: [Constant Ratio Test])[
-  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$
-  be positive series with terms such that
-  $ lim_(j->infinity) a_j/b_j = K $
-  for some $K != 0.$
-  Then, $sum_(j=0)^infinity a_j$ converges if and only if
-  $sum_(j=0)^infinity b_j$ converges.
-] <thm:constant-ratio>
-
-#theorem(title: [Comparison Test])[
+#theorem(title: [Direct Comparison Test])[
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
   + $sum^infinity_(k=1) (a_k)$ converges if
     $sum^infinity_(k=1) (b_k)$  converges.
   + $sum^infinity_(k=1) (b_k)$ diverges if
     $sum^infinity_(k=1) (a_k)$  diverges.
-] <thm:comparison>
+] <thm:direct-comparison>
+
+#theorem(title: [Limit Comparison Test])[
+  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$
+  be positive series with terms such that
+  $ lim_(j->infinity) a_j/b_j = K $
+  for some finite $K != 0.$
+  Then, $sum_(j=0)^infinity a_j$ converges if and only if
+  $sum_(j=0)^infinity b_j$ converges.
+] <thm:limit-comparison>
 
 #theorem(title: [Alternating Series Test])[
   Let $(a_n)$ satisfy
@@ -983,6 +1001,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem()[
   If a series is absolutely convergent then it is convergent.
 ] <thm:absolutely-convergent>
+
+#theorem(title: [Cauchy Condensation Test])[
+  Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
+  Then $sum_(n=1)^(infinity) a_n$ converges if and only if
+  $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
+]
+
+#theorion-restate(filter: it => it.label == <thm:integral>)
 
 == Indefinite Integrals
 
@@ -1011,8 +1037,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Let $f$ and $g$ be integrable on $[a, R]$.
   The following applies.
   #compact-restate((
-    <thm:inverse-power>, <thm:constant-ratio>,
-    <thm:comparison>, <thm:absolutely-convergent>,
+    <thm:inverse-power>, <thm:limit-comparison>,
+    <thm:direct-comparison>, <thm:absolutely-convergent>,
   ))
 ]
 
@@ -1035,6 +1061,16 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ f(m) + integral_m^n f(x) dd(x) <= sum_(j=m)^n f(j) <=
   f(n) + integral_m^n f(x) dd(x). $
 ]
+
+#corollary(title: [Integral Test])[ // AKA Maclaurin--Cauchy Test
+  Let $f$ be continuous, positive, and decreasing on $[m, infinity)$,
+  where $m in NN$.
+  Then,
+  $ sum_(n=m)^infinity f(n) $
+  converges if and only if
+  $ integral_m^infinity f(x) dd(x) $
+  converges.
+] <thm:integral>
 
 === Open Intervals
 
