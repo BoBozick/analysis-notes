@@ -955,7 +955,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
 ]
 
-#theorem(title: [Inverse Power Series Test])[
+#theorem(title: [Inverse Power Series])[
   The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if
   $p > 1$.
 ] <thm:inverse-power>
