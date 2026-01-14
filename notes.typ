@@ -1,19 +1,23 @@
-#import "style.typ": *
-#import "@preview/physica:0.9.6": dd, derivative, arccot
-
-#show: styling.with(
-  course-name: "Analys i en variabel",
-  course-code: "SF1673 (HT25)",
+#import "@local/probonotes:0.1.4": *
+#show: style.with(
+  course-name: "Analysis",
+  course-code: "SF1673, SF1674",
   title-size: 30pt,
-  title-space: 0em, 
+  subtitle-size: 16pt,
+  title-space: 0em,
 
   size: 12pt,
   margin: 0.5cm,
-  width: 15cm,
+  width: 14cm,
   height: auto,
-  heading-break: true,
+  end-space: 40em,
+  heading-break: false,
+
+  language: "en",
   contents: true,
+  memes: false,
 )
+
 
 = The Real Numbers
 
@@ -56,7 +60,7 @@
 
 === Bounds
 
-#axiom(title: [Supremum Property or Axiom of Completeness])[
+#definition(title: [Supremum Property or Axiom of Completeness])[
   Every bounded, nonempty set of real numbers has a least upper bound.
 ]
 
@@ -424,7 +428,7 @@
   ]
 ]
 
-#important-box[
+#warning-box()[
   This is only an implication, not an equivalence,
   so there may exist some other solution if this method fails.
 ]
@@ -650,17 +654,17 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The function $f$ is _Darboux integrable_ if
   $sup_P L(f,P) = inf_P U(f,P)$. 
   The common value is denoted as the _definite integral_
-  $ integral_a^b f(x) dd(x)$.
+  $ integral_a^b f(x) dif x$.
 ]
 
 #definition(title: [Alternative Darboux Integral])[
   Let $Phi$ and $Psi$ be the _lower and upper step functions_ such that
   $ Phi(x) <= f(x) <= Psi(x) quad forall x in [a, b], $
   forming the _lower integral_
-  $ L(f) = sup{integral_a^b Phi(x) dd(x) :
+  $ L(f) = sup{integral_a^b Phi(x) dif x :
   Phi "is a lower step function to" f} $
   and the _upper integral_
-  $ U(f) = inf{integral_a^b Psi(x) dd(x) :
+  $ U(f) = inf{integral_a^b Psi(x) dif x :
   Psi "is an upper step function to" f} $
   which, if equal, give the definite integral.
 
@@ -677,7 +681,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ forall epsilon > 0 space exists delta > 0 :
   norm(P) < delta ==> |S(f,P,(t_i)) - L| < epsilon $
   for every choice of sample points $(t_i)$. In that case we write
-  $ L = integral_a^b f(x) dd(x). $
+  $ L = integral_a^b f(x) dif x. $
 ]
 
 #theorem()[
@@ -696,7 +700,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   + (Lebesgue Criterion for Riemann Integrability) \
     Its set of discontinuities has Lebesgue measure zero.
   + $ forall epsilon > 0 space exists Phi, Psi :
-    integral_a^b Psi(x) dd(x) - integral_a^b Phi(x) dd(x) < epsilon, $
+    integral_a^b Psi(x) dif x - integral_a^b Phi(x) dif x < epsilon, $
     where $Phi$ and $Psi$ are lower and upper step functions.
   
   The function is integrable if:
@@ -714,13 +718,13 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $
   lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1)) =
   lim_(norm(P)->0) sum_(i=1)^n m_i (x_i - x_(i-1)) =
-  integral_a^b f(x) dd(x).
+  integral_a^b f(x) dif x.
   $
 ]
 
 #theorem(title: [Absolute Value / Triangle])[
   If $f$ integrable, then $|f|$ integrable and
-  $ abs(integral_a^b f(x) dd(x)) <= integral_a^b |f(x)| dd(x). $
+  $ abs(integral_a^b f(x) dif x) <= integral_a^b |f(x)| dif x. $
 ]
 
 #theorem(title: [Products and Composition])[
@@ -733,44 +737,44 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Uniform Limit])[
   If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly,
   then $f$ is integrable and
-  $ integral_a^b f_n (x) dd(x) -> integral_a^b f(x) dd(x). $
+  $ integral_a^b f_n (x) dif x -> integral_a^b f(x) dif x. $
 ]
 
 === Properties
 
 #theorem(title: [Linearity])[
   If $f,g$ are integrable and $alpha, beta in RR$, then
-  $ integral_a^b (alpha f(x) + beta g(x)) dd(x)
-  = alpha integral_a^b f(x) dd(x)
-   + space  beta integral_a^b g(x) dd(x). $
+  $ integral_a^b (alpha f(x) + beta g(x)) dif x
+  = alpha integral_a^b f(x) dif x
+   + space  beta integral_a^b g(x) dif x. $
 ]
 
 #theorem(title: [Additivity of the Interval])[
   If $c in (a,b)$ and $f$ integrable on $[a,b]$, then
-  $ integral_a^b f(x) dd(x) = integral_a^c f(x) dd(x)
-   + integral_c^b f(x) dd(x). $
-  It follows that $ integral_a^a f(x) dd(x) = 0$ and
-  $integral_b^a f(x) dd(x) = - integral_a^b f(x) dd(x).$
+  $ integral_a^b f(x) dif x = integral_a^c f(x) dif x
+   + integral_c^b f(x) dif x. $
+  It follows that $ integral_a^a f(x) dif x = 0$ and
+  $integral_b^a f(x) dif x = - integral_a^b f(x) dif x.$
 ]
 
 #theorem(title: [Order / Comparison])[
   If $f,g$ integrable and $f(x) <= g(x)$ on $[a,b]$, then
-  $ integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x). $
+  $ integral_a^b f(x) dif x <= integral_a^b g(x) dif x. $
 ] <thm:integral-comparison>
 
 #corollary(title: [Positivity])[
-  If $f(x) >= 0$ on $[a,b]$, then $ integral_a^b f(x) dd(x) >= 0$.
+  If $f(x) >= 0$ on $[a,b]$, then $ integral_a^b f(x) dif x >= 0$.
   Moreover, if $f$ is continuous and the integral is $0$, then $f equiv 0$.
 ]
 
 #theorem(title: [Bounding by a Supremum])[
   If $|f(x)| <= M$ on $[a,b]$, then
-  $ abs(integral_a^b f(x) dd(x)) <= M (b - a). $
+  $ abs(integral_a^b f(x) dif x) <= M (b - a). $
 ]
 
 #theorem(title: [Mean Value for Integrals])[
   If $f$ is continuous on $[a, b]$, then
-  $ integral_a^b f(x) dd(x) = f(xi) (b - a). $
+  $ integral_a^b f(x) dif x = f(xi) (b - a). $
   for some $xi in [a, b]$ or,
   to be more strict if $f$ is not constant, $xi in (a, b)$.
 ] <thm:mean-integrals>
@@ -778,7 +782,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Generalized Mean Value for Integrals])[
   If $f$ is continuous and $g$ is integrable and
   does not change sign on $[a, b]$,
-  $ integral_a^b f(x) g(x) dd(x) = f(xi) integral_a^b g(x) dd(x) $
+  $ integral_a^b f(x) g(x) dif x = f(xi) integral_a^b g(x) dif x $
   for some $xi in [a, b]$ or,
   to be more strict if $f$ is not constant, $xi in (a, b)$.
   
@@ -797,7 +801,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Fundamental Theorems of Calculus])[
   If $f$ is continuous on $[a, b]$, then the two theorems follow:
   
-  + Let $F(x) = integral_a^x f(t) dd(t)$ for $x in [a, b]$.
+  + Let $F(x) = integral_a^x f(t) dif t$ for $x in [a, b]$.
     Then, $F$ is continuous on $[a, b]$,
     differentiable on $(a, b)$, and $F'(x) = f(x).$
 
@@ -805,10 +809,10 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
       Applying the definition of derivatives,
   $ F'(x) = lim_(h->0) 1/h (F(x+h) - F(x))
-  = lim_(h->0) 1/h integral_x^(x+h) f(x) dd(x), $ 
+  = lim_(h->0) 1/h integral_x^(x+h) f(x) dif x, $ 
       where $x$ and $x + h$ are in $(a, b)$.
       By @thm:mean-integrals,
-  $ integral_x^(x+h) f(t) dd(t) = f(xi) h $
+  $ integral_x^(x+h) f(t) dif t = f(xi) h $
       for some $xi$ between $x$ and $x + h$,
       which in our previous result gives
       $ F'(x) = lim_(h->0) f(xi) = f(x) $
@@ -816,14 +820,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     ]
     
   + If $F'(x) = f(x)$ for $x in (a, b)$, then
-    $ integral_a^b f(x) dd(x) = F(b) - F(a). $
+    $ integral_a^b f(x) dif x = F(b) - F(a). $
 
     #proof[Let $G(x)$ have $G'(x) = f(x) = F'(x)$ for all $x in (a, b)$.
     Then, $G'(x) - F'(x) = 0$ gives that $G(x) - F(x) = C$ for some constant.
     We have $G(a) - F(a) = C$, but
-    $ G(a) = integral_a^a f(t) dd(t) = 0, $
+    $ G(a) = integral_a^a f(t) dif t = 0, $
     so $C = -F(a)$ and hence $G(b) = F(b) - F(a)$, but by definition
-    $ G(b) = integral_a^b f(t) dd(t), $
+    $ G(b) = integral_a^b f(t) dif t, $
     so the statement holds.
     ]
 ] <thm:fundamental>
@@ -835,21 +839,21 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
   Let $g$ be injective and continuously differentiable on $[a,b]$
   and let $f$ be continuous on $g([a, b])$.
-  Then, with $u = g(x)$ and $dd(u) = g'(x) dd(x)$,
-  $ integral_a^b f(g(x)) g'(x) dd(x)
-   = integral_(g(a))^(g(b)) f(u) dd(u). $
+  Then, with $u = g(x)$ and $dif u = g'(x) dif x$,
+  $ integral_a^b f(g(x)) g'(x) dif x
+   = integral_(g(a))^(g(b)) f(u) dif u. $
 
   Equivalently, if $g$ is strictly monotonic and 
   thus invertible as $x = g^(-1)(u)$,
-  $ integral_a^b f(x) dd(x) =
-  integral_(g^(-1)(a))^(g^(-1)(b)) f'(g(u)) g'(u) dd(u). $
+  $ integral_a^b f(x) dif x =
+  integral_(g^(-1)(a))^(g^(-1)(b)) f'(g(u)) g'(u) dif u. $
 
   #proof[We prove the first formulation of the theorem. We have,
     $
     integral_a^b f(g(x)) g'(x)
     = [f(g(x))]_a^b
     = [f(u)]_(g(a))^(g(b))
-    = integral_(g(a))^(g(b)) f(u) dd(u)
+    = integral_(g(a))^(g(b)) f(u) dif u
     $   
     according to @thm:fundamental (ii) and @thm:chain.
   ]
@@ -857,8 +861,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Integration by Parts])[
   If $f,g$ are continuously differentiable on $[a,b]$, then
-  $ integral_a^b f(x) g(x) dd(x) =
-  [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dd(x). $
+  $ integral_a^b f(x) g(x) dif x =
+  [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x. $
 ] <thm:parts>
 
 #tip-box(title: [LIATE])[
@@ -881,10 +885,10 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $ arctan(x) = -arctan(-x) $
   + Integration:
     $
-    integral a/(b^2 + c^2 x^2) dd(x)
+    integral a/(b^2 + c^2 x^2) dif x
     &= a/b^2 integral 1/(1 + c^2 x^2 slash b^2) \
-    &= vec(u &= c x slash b, dd(u) &= c slash b, delim: "{") \
-    &= a/(b c) integral 1/(1 + u^2) dd(u) \
+    &= vec(u &= c x slash b, dif u &= c slash b, delim: "{") \
+    &= a/(b c) integral 1/(1 + u^2) dif u \
     &= a/(b c) arctan((c x)/b)
     $
   
@@ -904,7 +908,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     sin(x) &= (2t)/(1 + t^2) \
     cos(x) &= (1 - t^2)/(1 + t^2) \
     tan(x) &= (2t)/(1 - t^2) \
-    dd(x) &= (2 dd(t))/(1 + t^2)
+    dif x &= (2 dif t)/(1 + t^2)
     $
     This substitution is especially useful for integrating rational functions of trigonometric expressions.
   + Antiderivatives:
@@ -1017,19 +1021,19 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #definition()[
   Let $f$ be integrable on $[a, R]$ for all $R > a$.
   Then the integral is defined
-  $ integral_a^infinity f(x) dd(x) = lim_(R->infinity)
-  integral_a^R f(x) dd(x). $
+  $ integral_a^infinity f(x) dif x = lim_(R->infinity)
+  integral_a^R f(x) dif x. $
   If this limit exists, then the integral is said to be convergent.
 ]
 
 #definition()[
   Let $f$ be integrable on every closed and bounded interval.
   If _both_
-  $ integral_(-infinity)^a f(x) dd(x) space "and" space
-  integral_(-infinity)^a f(x) dd(x) $
+  $ integral_(-infinity)^a f(x) dif x space "and" space
+  integral_(-infinity)^a f(x) dif x $
   are convergent, then for any real $a$ we define the convergent integral
-  $ integral_(-infinity)^infinity f(x) dd(x) =
-  integral_(-infinity)^a f(x) dd(x)
+  $ integral_(-infinity)^infinity f(x) dif x =
+  integral_(-infinity)^a f(x) dif x
    + integral_(-infinity)^a f(x). $
 ]
 
@@ -1050,16 +1054,16 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem[
   Let $f$ be decreasing on $[m, n]$, where $m < n$ are integers.
   Then,
-  $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dd(x) <= sum_(j=m)^(n-1) f(j) $
+  $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dif x <= sum_(j=m)^(n-1) f(j) $
   and
-  $ f(n) + integral_m^n f(x) dd(x) <= sum_(j=m)^n f(j) <=
-  f(m) + integral_m^n f(x) dd(x). $
+  $ f(n) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
+  f(m) + integral_m^n f(x) dif x. $
 
   Let $f$ instead be increasing. Then,
-  $ sum_(j=m)^(n-1) f(j) <= integral_m^n f(x) dd(x) <= sum_(j=m+1)^n f(j) $
+  $ sum_(j=m)^(n-1) f(j) <= integral_m^n f(x) dif x <= sum_(j=m+1)^n f(j) $
   and
-  $ f(m) + integral_m^n f(x) dd(x) <= sum_(j=m)^n f(j) <=
-  f(n) + integral_m^n f(x) dd(x). $
+  $ f(m) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
+  f(n) + integral_m^n f(x) dif x. $
 ]
 
 #corollary(title: [Integral Test])[ // AKA Maclaurin--Cauchy Test
@@ -1068,7 +1072,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Then,
   $ sum_(n=m)^infinity f(n) $
   converges if and only if
-  $ integral_m^infinity f(x) dd(x) $
+  $ integral_m^infinity f(x) dif x $
   converges.
 ] <thm:integral>
 
@@ -1122,17 +1126,17 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   ]
   
   #proof(title: [Proof using integrals])[From @thm:fundamental (ii) we have
-    $ integral_c^x f'(t) dd(t) = f(t) - f(c) $
+    $ integral_c^x f'(t) dif t = f(t) - f(c) $
     which we expand using @thm:parts as
     $ f(x)
-    &= f(c) + integral_c^x 1 dot f'(t) dd(t) \
-    &= f(c) + [(t-x)f'(t)]_c^x  - integral_c^x (t-x)f''(x) dd(t) \
+    &= f(c) + integral_c^x 1 dot f'(t) dif t \
+    &= f(c) + [(t-x)f'(t)]_c^x  - integral_c^x (t-x)f''(x) dif t \
     &= f(c) + f'(c)(x - c) - ([(t-x)^2/2 f''(t)]_c^x -
-    integral_c^x (t-x)^2/2 f^((3))(t) dd(t)) \
+    integral_c^x (t-x)^2/2 f^((3))(t) dif t) \
     &= f(c) + f'(c)(x-c) + (f''(t))/2 (x-c)^2 +
-    integral_c^x (t-x)^2/2 f^((3))(t) dd(t) \
+    integral_c^x (t-x)^2/2 f^((3))(t) dif t \
     &= dots.h.c \
-    &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dd(t)
+    &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t
     $
   ]
 ]
