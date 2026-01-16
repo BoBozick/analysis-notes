@@ -150,11 +150,11 @@
 ]
 
 #theorem(title: [Unions/Intersections])[
-  + Arbitrary unions of open sets are open; finite intersections of open
-  sets are open.
+  Arbitrary unions of open sets are open;
+  finite intersections of open sets are open.
   
-  + Arbitrary intersections of closed sets are closed; finite unions of
-  closed sets are closed.  
+  Arbitrary intersections of closed sets are closed;
+  finite unions of closed sets are closed.  
 ]
 
 === Compactness
@@ -208,6 +208,11 @@
   The limit of a sequence, if it exists, is unique.
 ]
 
+#theorem()[
+  A sequence $(ve(a))_n in RR^m$ converges to a limit $ve(b)$
+  if and only if $a_i -> b_i$ for all coordinates $i in {1, 2, ..., m}$.
+]
+
 === Bounded
 
 #definition(title: [Bounded])[
@@ -259,6 +264,16 @@
 #definition(title: [Infinite Limit])[
   Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = infinity$ if
   $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
+]
+
+#theorem()[
+  Let $f$ and $g$ be functions from $D subset.eq RR^n$ to $RR^m$.
+  If $f(x) -> A$ and $g(x) -> B$ as $x -> c in dash(D)$, then
+  + $f(x) + g(x) -> A + B$
+  + $f(x) dot g(x) -> A dot B$
+  + $f(x)/g(x) -> A/B$ if $m = 1$ and $B != 0$
+  + $A <= B$ if $m = 1$ and $f(x) <= g(x)$
+    for all $x$ in a punctured neighborhood to $c$
 ]
 
 == Continuity
@@ -361,10 +376,23 @@
 === Differentiation
 
 #definition(title: [Derivative at a Point])[
-  Let $f : A -> RR$ and $c$ a limit point of $A$. If
+  Let $f : A -> RR$ and $c$ a limit point of $A$. If a finite
   $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $
-  exists (finite), we say $f$ is _differentiable_ at $c$.
+  exists, we say $f$ is _differentiable_ at $c$ with _derivative_ $f'(c)$.
 ]
+
+#definition()[
+  Let $D subset.eq RR^n$ be an open subset and let $k$ be a positive integer.
+  The set $C^k (D)$ is the set of all functions $f : D -> RR$
+  with partial derivatives that exist and are continuous on $D$
+  up to order $k$.
+]
+
+#theorem()[
+  If $f in C^1 (D)$ then $f$ is differentiable on $D$.
+]
+
+=== Rules of Calculation
 
 #theorem(title: [Chain Rule])[
   Let $f : X -> Y$ and $g : Y -> RR$.
@@ -446,23 +474,21 @@
 #theorem(title: [Darboux's])[
   If $f$ is differentiable on $[a, b]$ and if $y$ lies strictly between
   $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
-  Let $g(x) = f(x) - y x$ with $g'(x) = f'(x) - y$. Note that $f'(c) = y$ if
-  $g'(c) = 0$ for some $c in (a, b)$.
 
   In other words, if $f$ is differentiable on an interval,
   then $f'$ satisfies the Intermediate Value Property (IVP).
 
   #proof[Assume that $f'(a) < y < f'(b).$
 
-  Let $g(x) = f(x) - y x$ with $g'(x) = f'(x) - y$.
-  Note that $f'(c) = y$ if $g'(c) = 0$ for some $c in (a, b)$.
-  
-  @thm:extreme states that $g$ must have a minimum point $c in [a, b]$.
-  More precisely $c in (a, b)$ since, from the assumption,
-  $g'(a) < 0$ and $g'(b) > 0$.
-  Furthermore, $g'(c) = 0$ according to @thm:fermat.
-  More precisely $c in (a, b)$ since, per assumption, $g'(a) < 0$ and
-  $g'(b) > 0$.
+    Let $g(x) = f(x) - y x$ with $g'(x) = f'(x) - y$.
+    Note that $f'(c) = y$ if $g'(c) = 0$ for some $c in (a, b)$.
+    
+    @thm:extreme states that $g$ must have a minimum point $c in [a, b]$.
+    More precisely $c in (a, b)$ since, from the assumption,
+    $g'(a) < 0$ and $g'(b) > 0$.
+    Furthermore, $g'(c) = 0$ according to @thm:fermat.
+    More precisely $c in (a, b)$ since, per assumption, $g'(a) < 0$ and
+    $g'(b) > 0$.
   ]
 ]
 
@@ -715,11 +741,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   space "and" space
   m_i = min_(x in [x_(i-1), x_i]) f(x). $
   Then,
-  $
-  lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1)) =
-  lim_(norm(P)->0) sum_(i=1)^n m_i (x_i - x_(i-1)) =
-  integral_a^b f(x) dif x.
-  $
+  $ lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1))
+  = lim_(norm(P)->0) sum_(i=1)^n m_i (x_i - x_(i-1))
+  = integral_a^b f(x) dif x. $
 ]
 
 #theorem(title: [Absolute Value / Triangle])[
@@ -746,7 +770,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If $f,g$ are integrable and $alpha, beta in RR$, then
   $ integral_a^b (alpha f(x) + beta g(x)) dif x
   = alpha integral_a^b f(x) dif x
-   + space  beta integral_a^b g(x) dif x. $
+  + space  beta integral_a^b g(x) dif x. $
 ]
 
 #theorem(title: [Additivity of the Interval])[
@@ -1131,13 +1155,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $ f(x)
     &= f(c) + integral_c^x 1 dot f'(t) dif t \
     &= f(c) + [(t-x)f'(t)]_c^x  - integral_c^x (t-x)f''(x) dif t \
-    &= f(c) + f'(c)(x - c) - ([(t-x)^2/2 f''(t)]_c^x -
-    integral_c^x (t-x)^2/2 f^((3))(t) dif t) \
+    &= f(c) + f'(c)(x - c) -
+      ([(t-x)^2/2 f''(t)]_c^x - integral_c^x (t-x)^2/2 f^((3))(t) dif t) \
     &= f(c) + f'(c)(x-c) + (f''(t))/2 (x-c)^2 +
-    integral_c^x (t-x)^2/2 f^((3))(t) dif t \
+      integral_c^x (t-x)^2/2 f^((3))(t) dif t \
     &= dots.h.c \
-    &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t
-    $
+    &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t $
   ]
 ]
 
