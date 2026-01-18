@@ -1,4 +1,4 @@
-#import "@local/probonotes:0.1.4": *
+#import "@local/probonotes:0.1.5": *
 #show: style.with(
   course-name: "Analysis",
   course-code: "SF1673, SF1674",
@@ -276,6 +276,14 @@
     for all $x$ in a punctured neighborhood to $c$
 ]
 
+#theorem()[
+  Let $Omega subset RR^n$ be a neighborhood around the origin and
+  $f : Omega -> RR$ be a map with
+  $ abs(f(ve(x)) - A) <= M(norm(ve(x))) -> 0 $
+  as $norm(ve(x)) -> 0$. Then,
+  $ lim_(ve(x)->ve(0)) f(ve(x)) = A. $
+]
+
 == Continuity
 
 === Existence
@@ -360,6 +368,12 @@
   $f(b)$, there exists some $c in (a, b)$ such that $f(c) = y$.
 ] <thm:intermediate>
 
+#theorem(title: [Intermediate Value in $RR^n$])[
+  Let $D subset.eq RR^n$ be an arcwise connected domain and let $f : D -> RR$.
+  Then if $f$ assumes two values $f(a)$ and $f(b)$,
+  $f$ assumes all intermediate values.
+]
+
 #theorem(title: [Weierstrass Extreme Value])[
   If $f$ is continuous on the compact set $K$,
   then $f$ attains a maximum and a minimum value on $K$.
@@ -379,6 +393,17 @@
   Let $f : A -> RR$ and $c$ a limit point of $A$. If a finite
   $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $
   exists, we say $f$ is _differentiable_ at $c$ with _derivative_ $f'(c)$.
+]
+
+#definition()[
+  Let $f : D subset.eq RR^n -> RR$ and let $a$ be an interior point of $D$.
+  We say that $f$ is _differentiable_ at $a$ if
+  there exists some real constants $A_1, A_2, ..., A_n$ and
+  some $rho : RR^n -> RR$ such that
+  $ f(ve(a) + ve(h)) - f(ve(a)) = A_1 h_1 + A_2 h_2 + dots.c + A_n h_n
+  + norm(ve(h)) rho(ve(h)) $
+  and
+  $ lim_(ve(h) -> ve(0)) rho(ve(h)) = 0. $ 
 ]
 
 #definition()[
@@ -402,21 +427,27 @@
   $ (g compose f)'(c) = g'(f(c)) f'(c). $
 ] <thm:chain>
 
+#theorem(title: [Chain Rule, Multivariable Case])[
+  In the case from $RR^k$ to $RR$,
+  $ dv(, t) f(g_1 (t), g_2 (t), ..., g_k (t))
+  = sum_(i=1)^k dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_k (t)). $
+]
+
 #theorem(title: [Basic Derivatives],
   grid(
     columns: (1fr, 1.2fr),
     [$
-      &derivative(,x) (arcsin x) = 1 / sqrt(1 - x^2) \
-      &derivative(,x) (arccos x) = -1 / sqrt(1 - x^2) \
-      &derivative(,x) (arctan x) = 1 / (1 + x^2) \
-      &derivative(,x) (arccot x) = -1 / (1 + x^2) \
-      &derivative(,x) (x^a) = a x^(a - 1) #h(0.7em) (a != 0) \
+      &dv(,x) (arcsin x) = 1 / sqrt(1 - x^2) \
+      &dv(,x) (arccos x) = -1 / sqrt(1 - x^2) \
+      &dv(,x) (arctan x) = 1 / (1 + x^2) \
+      &dv(,x) (arccot x) = -1 / (1 + x^2) \
+      &dv(,x) (x^a) = a x^(a - 1) #h(0.7em) (a != 0) \
     $],
     [$
-      &derivative(,x) (sin x) = cos x \
-      &derivative(,x) (cos x) = -sin x \
-      &derivative(,x) (tan x) = 1 / (cos^2 x) \
-      &derivative(,x) (ln abs(x)) = 1 / x \
+      &dv(,x) (sin x) = cos x \
+      &dv(,x) (cos x) = -sin x \
+      &dv(,x) (tan x) = 1 / (cos^2 x) \
+      &dv(,x) (ln abs(x)) = 1 / x \
       &(f^(-1))'(y) = 1/(f'(x)) #h(0.7em)
       (y = f(x), f'(x) != 0)
     $],
