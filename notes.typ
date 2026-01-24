@@ -404,6 +404,38 @@
   + norm(ve(h)) rho(ve(h)) $
   and
   $ lim_(ve(h) -> ve(0)) rho(ve(h)) = 0. $ 
+  Equivalently, one may use that
+  $ norm(ve(h)) rho(ve(h)) in o(norm(ve(h))). $
+]
+
+#definition()[
+  Let $D subset.eq RR^n$ be an open subset.
+  Then a function $ve(f) : D -> RR^m$ is said to be
+  (totally) differentiable at a point $ve(a) in D$ if
+  there exists a linear map $ve(D f_a) : RR^n -> RR^m$ such that
+  $ lim_(ve(h) -> ve(0))
+  norm( ve(f)(ve(a) + ve(h)) - ve(f)(ve(a)) - ve(D f_a)(ve(h)) ) /
+  norm(ve(h)) = 0 $
+  or equivalently
+  $ lim_(ve(h) -> ve(0))
+  ( ve(f)(ve(a) + ve(h)) - ve(f)(ve(a)) - ve(D f_a)(ve(h)) ) /
+  norm(ve(h)) = ve(0) $
+  or equivalently
+  $ ve(f)(ve(a) + ve(h))
+  = ve(f)(ve(a)) + ve(D f_a)(ve(h)) + ve(o)(norm(ve(h)))
+  quad (ve(h) -> ve(0)). $
+]
+
+#definition(title: [Gradient])[
+  In a real inner product space $(V, iprod(dot, dot))$,
+  the gradient of a scalar function $f : V -> RR$ is defined by the identity
+  $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" h in V. $
+]
+
+#theorem()[
+  Let $V$ be $RR^n$ with the dot product and an orthonormal basis
+  and let $f : V -> RR$ be differentiable. Then,
+  $ nabla f = [J f]^T. $
 ]
 
 #definition()[
@@ -417,6 +449,31 @@
   If $f in C^1 (D)$ then $f$ is differentiable on $D$.
 ]
 
+#definition()[
+  The Jacobian determinant of $ve(f) : RR^n -> RR^n$ is
+  the well-defined function $det ve(J f) : RR^n -> RR$.
+]
+
+#theorem(title: [Implicit Function, Two-Variable Case])[
+  Let $F : D subset.eq RR^3 -> RR$ be $C^1$ yielding a curve $F(x, y, z) = 0$.
+  If $F(x_0, y_0, z_0) = 0$ and $F_z (x_0, y_0, z_0) != 0$
+  then near $(x_0, y_0)$ there exists
+  a unique differentiable function $z = f(x, y)$ with $F(x, y, f(x, y)) = 0$.
+  and as a consequence the partial derivatives
+  $ f_x (x, y) = - (F_x (x, y, f(x,y ))) / (F_z (x, y, f(x, y))) $
+  and
+  $ f_y (x, y) = - (F_y (x, y, f(x,y ))) / (F_z (x, y, f(x, y))). $
+]
+
+#theorem()[
+  $det ve(J (f compose g) [a]) = (det ve(J f [g(a)]))(det ve(J g [a]))$
+]
+
+#theorem()[
+  If the Jacobian determinant $det ve(J f_a) != 0$
+  then $ve(f)$ is locally invertible at $ve(a)$.
+]
+
 === Rules of Calculation
 
 #theorem(title: [Chain Rule])[
@@ -428,9 +485,25 @@
 ] <thm:chain>
 
 #theorem(title: [Chain Rule, Multivariable Case])[
-  In the case from $RR^k$ to $RR$,
-  $ dv(, t) f(g_1 (t), g_2 (t), ..., g_k (t))
-  = sum_(i=1)^k dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_k (t)). $
+  Let $f : RR^n -> RR$ be differentiable
+  and let $ve(g) : RR -> RR^n$ be a vector of
+  individually differentiable functions.
+  Then, $f compose g : RR -> RR$ is differentiable and its derivative is
+  $ dv(, t) f(g_1 (t), g_2 (t), ..., g_n (t))
+  = sum_(i=1)^n dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_n (t)) $
+  or equivalently
+  $ dv(, t)(f compose ve(g))(t) = nabla f(ve(g)(t)) dot ve(g)'(t). $
+]
+
+#corollary()[
+  Let $f : RR^n -> RR$ be differentiable
+  and let $ve(g) : RR^m -> RR^n$ be a vector of
+  individually differentiable functions.
+  Then, $f compose ve(g) : RR^m -> RR$ is differentiable and its partial
+  derivatives are given by
+  $ pdv(, x_j) (f compose ve(g))(ve(x))
+  = sum_(i=1)^n pdv(, y_i) f(ve(g)(ve(x))) pdv(, x_j) g_i (ve(x)) $
+  for all $j in {1, 2, ..., m}.$
 ]
 
 #theorem(title: [Basic Derivatives],
@@ -745,6 +818,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The Darboux and Riemann integrals are equivalent.
 ]
 
+#definition(title: [Simple Function])[
+  A simple function is a measurable function that
+  takes only finitely many values.
+]
+
 === Integrability
 
 #theorem(title: [Integrability])[
@@ -764,6 +842,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   3. $f$ is _monotone_ on $[a, b]$
   + $f$ is continuous except at finitely many points, or at countably many
     points where it has only removable or jump discontinuities.
+]
+
+#theorem()[
+  If $f$ is a real continuous function defined on a rectangle $Delta$,
+  then $f$ is integrable on $Delta$.
 ]
 
 #theorem()[
@@ -1195,6 +1278,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   ]
 ]
 
+#definition()[
+  The Peano form of the remainder is
+  $ R_n (x) in o(abs(x - a)^n), quad x -> a. $ 
+]
+
 #definition(title: [Radius of Convergence])[
   Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
   The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
@@ -1221,6 +1309,30 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 === Function Order
+
+#definition()[
+  Up to a constant:
+  - little $o$: "grows strictly slower than"
+  - big $O$: "grows at most as fast as"
+  - big $Omega$: "grows at least as slow as"
+  - big $Theta$: "grows asymptotically the same"
+]
+
+#theorem()[
+  $ f in O(g) <==> g in Omega(f) $
+]
+
+#theorem()[
+  $ f in o(g) ==> f in O(g) $
+]
+
+#theorem()[
+  $ f in O(g) ==> lim f/g "is bounded" $
+]
+
+#theorem()[
+  $ f in o(g) ==> lim f/g = 0 $
+]
 
 #definition(title: [Big _O_ at Infinity])[
   Let $f$ and $g$ be defined on $(c, infinity)$.
