@@ -429,7 +429,7 @@
 #definition(title: [Gradient])[
   In a real inner product space $(V, iprod(dot, dot))$,
   the gradient of a scalar function $f : V -> RR$ is defined by the identity
-  $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" h in V. $
+  $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" ve(h) in V. $
 ]
 
 #theorem()[
@@ -701,8 +701,14 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 ]
 
 #definition(title: [Stationary])[
-  The point $c$ is a _stationary point_ of $f$ if $f'(c)=0$.
+  The point $c$ is a _stationary point_ of $f : RR -> RR$ if $f'(c)=0$.
 
+  In general, a point $c$ at which $f : RR^n -> RR^m$ is differentiable
+  is stationary if $D f(c) = 0,$
+  where $0 in cal(L)(RR^n, RR^m)$ is the zero map.
+]
+
+#definition(title: [Stationary Order])[
   The _stationary order_ is the smallest $n>=2$ such that
   $ f'(c) =  f''(c)=dots.h.c=f^((n-1))(c)=0 space "but" space
   f^((n))(c)!=0. $
@@ -1280,7 +1286,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #definition()[
   The Peano form of the remainder is
-  $ R_n (x) in o(abs(x - a)^n), quad x -> a. $ 
+  $ R_n (x) = o(abs(x - c)^n), quad x -> c. $ 
 ]
 
 #definition(title: [Radius of Convergence])[
@@ -1310,12 +1316,28 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Function Order
 
-#definition()[
-  Up to a constant:
-  - little $o$: "grows strictly slower than"
-  - big $O$: "grows at most as fast as"
-  - big $Omega$: "grows at least as slow as"
-  - big $Theta$: "grows asymptotically the same"
+#definition()[ // Beware of the possibility of errors here.
+  If $f$ is in something of the below of $g$:
+  - little $o$: $f$ lies _below every_ constant multiple of $g$.
+  - big $O$: $f$ lies _below some_ constant multiple of $g$.
+  - big $Omega$: $f$ lies _above some_ constant multiple of $g$.
+  - big $Theta$: $f$ lies _between two_ constant multiples of $g$.
+
+  More explicitly:
+  - little $o$:
+    - $f$ is eventually smaller than any scalar multiple of $g$ as $x -> oo$
+    - $f$ vanishes strictly faster than $g$ with $f/g -> 0$ as $g(x) -> 0$
+  - big $O$:
+    - $f$ grows at most as fast as $g$ as $x -> oo$
+    - $f$ vanishes at least as fast as $g$ as $g(x) -> 0$
+  - big $Omega$:
+    - $f$ grows at least as fast as $g$ as $x -> oo$
+    - $f$ vanishes at most as fast as $g$ as $g(x) -> 0$
+  - big $Theta$:
+    - $f$ grows asymptotically at the same rate as $g$ as $x -> oo$
+    - $f$ vanishes asymptotically at the same rate as $g$ as $g(x) -> 0$
+  For simplicity's sake we assume $f$ and $g$ are eventually non-negative.
+  Also, by $g(x) -> 0$ we actually mean $x -> a$.
 ]
 
 #theorem()[
