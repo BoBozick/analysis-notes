@@ -405,7 +405,7 @@
   and
   $ lim_(ve(h) -> ve(0)) rho(ve(h)) = 0. $ 
   Equivalently, one may use that
-  $ norm(ve(h)) rho(ve(h)) in o(norm(ve(h))). $
+  $ norm(ve(h)) rho(ve(h)) in o(norm(ve(h))), quad ve(h) -> ve(0). $
 ]
 
 #definition()[
