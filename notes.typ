@@ -87,7 +87,7 @@
   Otherwise, $A$ is _uncountable_.
 ]
 
-#theorem(title: [Countability of $QQ$, $RR$])[
+#theorem(title: [Countability])[
   $QQ$ is countable.
 
   #proof[
@@ -257,8 +257,10 @@
   and does not contain any unbounded sequences, hence being bounded.
 
   If $K$ is closed and bounded
-  each sequence in it is bounded and thus contains a convergent subsequence
-  by @thm-bolzano-weierstrass with a limit point in the set since a closed set contains all its limit points.
+  each sequence in it is bounded
+  and thus contains a convergent subsequence by @thm-bolzano-weierstrass
+  with a limit point in the set
+  since a closed set contains all its limit points.
 ]
 
 #corollary(title: [Compact])[
@@ -438,7 +440,9 @@
   and
   $ lim_(ve(h) -> ve(0)) rho(ve(h)) = 0. $ 
   Equivalently, one may use that
-  $ norm(ve(h)) rho(ve(h)) in o(norm(ve(h))), quad ve(h) -> ve(0). $
+  $ norm(ve(h)) rho(ve(h)) in o(norm(ve(h))), quad ve(h) -> ve(0), $
+  or that
+  $ ve(A) dot ve(h) = nabla f_ve(a) dot ve(h). $
 ]
 
 #definition()[
@@ -467,7 +471,12 @@
   is the linear map $D f_ve(a) : RR^n -> RR^m$ such that
   $ f(ve(a) + ve(h)) = f(ve(a)) + D f_ve(a) (ve(h)) + o(norm(ve(h))),
   quad ve(h) -> ve(0). $
-  In one dimension, $dif f = f'(ve(a)) dif ve(a)$.
+  
+  In the one-dimensional case,
+  $ dif f_ve(a) = f'(ve(a)) dif ve(a), $
+  or if the gradient exists,
+  $ dif f_ve(a) = nabla f(ve(a)) dot dif ve(a), $
+  where $dif ve(a) = ve(h).$
 ]
 
 #definition(title: [Gradient])[
@@ -480,6 +489,13 @@
   Let $V$ be $RR^n$ with the dot product and an orthonormal basis
   and let $f : V -> RR$ be differentiable. Then,
   $ nabla f = [J f]^T. $
+]
+
+#note-box()[
+  Loosely speaking, in an orthonormal $RR^n$-basis,
+  the gradient $nabla f : RR^n -> RR^n$
+  of a differentiable function $f : RR^n -> RR$
+  is an $n$-dimensional vector field.
 ]
 
 #definition()[
@@ -496,6 +512,10 @@
 #definition()[
   The Jacobian determinant of $ve(f) : RR^n -> RR^n$ is
   the well-defined function $det ve(J f) : RR^n -> RR$.
+]
+
+#theorem(title: [Inverse Function])[
+  // TODO
 ]
 
 #theorem(title: [Implicit Function, Two-Variable Case])[
@@ -692,6 +712,39 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   and then apply @thm-rolles.
 ]
 
+=== Constrained Optimization
+
+#lemma()[
+  At a feasible stationary point, $f$ and $g$ are parallel.
+  In the case of multiple constraints, we seek a feasible point where
+  $ nabla f in span{nabla g_1, nabla g_2, ..., nabla g_n}. $
+]
+
+#lemma(title: [Lagrange Multipliers])[
+  Let $f : D subset.eq RR^n -> RR$ and $g : D subset.eq RR^n -> RR$
+  be differentiable.
+  If $c in D$ is a local extremum of $f$ under the
+  constraint $g(x) = 0$, then
+  $ nabla g(c) != ve(0) quad ==> quad
+  exists lambda in RR : nabla f(c) = lambda nabla g(c). $
+]
+
+#theorem(title: [Lagrange Multipliers, Generalized])[
+  Let $f : D subset.eq RR^n -> RR$ and
+  $g_1, g_2, ..., g_m : D subset.eq RR^n -> RR$
+  be continuously differentiable.
+  Suppose $c in D$ is a local extremum of $f$ subject to the constraints
+  $ g_1 (c) = g_2 (c) = dots.h.c = g_m (c) = 0, $
+  with linearly independent gradients
+  $nabla g_1 (c), nabla g_2 (c), ..., nabla g_m (c)$.
+  Then there exist _Lagrange multipliers_
+  $lambda_1, lambda_2, ..., lambda_m in RR$
+  such that
+  $ nabla f(c)
+  = lambda_1 nabla g_1 (c) + lambda_2 nabla g_2 (c)
+  + dots.h.c + lambda_m nabla g_m (c). $
+]
+
 == Function Graphs
 
 #tip-box(title: [Tip (Sketching Graphs)])[
@@ -813,6 +866,36 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$)
     $==>$ local minimum at $0$, no inflection.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
+]
+
+#lemma()[
+  Assume $ve(a) in RR^n$ is a stationary point of
+  a $C^2$-function $f : RR^n -> RR$.
+  The second-order Taylor series expansion can be rewritten as
+  $ f(ve(a) + ve(h)) - f(ve(a)) = 1/2 Q(ve(h)) + o(norm(ve(h))^3),
+  wide ve(h) -> ve(0), $
+  showing that its local behavior is dominated by the quadratic term
+  $ Q(ve(h)) = ve(h)^T H ve(h), wide H = D f_ve(a). $
+]
+
+#theorem()[
+  In the scenario above,
+  $ H "positive definite" &==> ve(a) "local minimum"
+  \ H "negative definite" &==> ve(a) "local maximum"
+  \ H "indefinite" &==> ve(a) "saddle point"
+  \ H "positive semidefinite" &==> ve(a) "local minimum or saddle point"
+  \ H "negative semidefinite" &==> ve(a) "local maximum or saddle point" $
+]
+
+#corollary(title: [ABC-test])[
+  #set math.mat(gap: 0.8em)
+  If $n = 2$ in the scenario above, let
+  $ H = mat(f_(x x), f_(y x); f_(x y), f_(y y)) = mat(A, B; B, C) $
+  - $A C - B^2 > 0$ and $A > 0$ $==>$ local minimum.
+  - $A C - B^2 > 0$ and $A < 0$ $==>$ local maximum.
+  - $A C - B^2 < 0$ $==>$ saddle point.
+  - $A C - B^2 = 0$ and $A > 0$ $==>$ local minimum or saddle point.
+  - $A C - B^2 = 0$ and $A < 0$ $==>$ local maximum or saddle point.
 ]
 
 == Ordinary Differential Equations
@@ -1305,8 +1388,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
   Define
   $ F_(n,h)(t) = sum_(k=0)^(n) (f^((k))(t))/k! (c + h - t)^k, $
-with $F_(n,h)(c) = p_n(h)$ and $F_(n,h)(c + h) = f(c + h)$, and
-derivative
+  with $F_(n,h)(c) = p_n(h)$ and $F_(n,h)(c + h) = f(c + h)$, and
+  derivative
   $ F'_(n,h)(xi) = (f^((n+1))(xi)) / n! (c + h - xi)^n. $
 
   Also let
@@ -1314,9 +1397,9 @@ derivative
   with $g_(n,h)(c) = h^(n+1)$ and $g_(n,h)(c + h) = 0$ and
   $ g'_(n,h)(xi) = -(n + 1)(c + h - xi)^n. $
 
-@thm-gmv gives
-$ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
-= (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
+  @thm-gmv gives
+  $ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
+  = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
   for some $xi$ between $c$ and $c + h$. Substituting,
   $ (f(c + h) - p_n (h))/(0 - h^(n+1)) =
   (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n) $
