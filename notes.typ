@@ -498,9 +498,10 @@
   is an $n$-dimensional vector field.
 ]
 
-#definition()[
+#definition(title: [Class $C^k$])[
   Let $D subset.eq RR^n$ be an open subset and let $k$ be a positive integer.
-  The set $C^k (D)$ is the set of all functions $f : D -> RR$
+  The differentiability class $C^k (D)$
+  is the set of all functions $f : D -> RR$
   with partial derivatives that exist and are continuous on $D$
   up to order $k$.
 ]
@@ -514,8 +515,29 @@
   the well-defined function $det ve(J f) : RR^n -> RR$.
 ]
 
+#theorem()[
+  $ det ve(J (f compose g) [a]) = (det ve(J f [g(a)]))(det ve(J g [a])) $
+]
+
+#corollary()[
+  The identity map has determinant 1.
+]
+
 #theorem(title: [Inverse Function])[
-  // TODO
+  Let $ve(f) : U subset.eq RR^n -> RR^n$ with $U$ open
+  be a $C^k$ map for some $k >= 1$.
+  Suppose that its derivative at som point $ve(a) in U$,
+  $ det D ve(f)(ve(a)) != 0. $
+
+  Then there exist
+  neighborhoods $V$ to $ve(a)$ and $W$ to $ve(f)(ve(a))$ such that
+  $ve(f) : V -> W$ is a bijection with
+  a $C^k$ inverse $ve(g)= ve(f)^(-1) : W -> V$.
+
+  At a point $ve(y) in W$, the inverse has the derivative
+  $ D ve(g)(ve(y)) = [D ve(f)(ve(g)(ve(y)))]^(-1) $
+  and the determinant
+  $ det D ve(g)(ve(y)) = 1 / (det D ve(f)(ve(g)(ve(y)))). $
 ]
 
 #theorem(title: [Implicit Function, Two-Variable Case])[
@@ -527,15 +549,6 @@
   $ f_x (x, y) = - (F_x (x, y, f(x,y ))) / (F_z (x, y, f(x, y))) $
   and
   $ f_y (x, y) = - (F_y (x, y, f(x,y ))) / (F_z (x, y, f(x, y))). $
-]
-
-#theorem()[
-  $ det ve(J (f compose g) [a]) = (det ve(J f [g(a)]))(det ve(J g [a])) $
-]
-
-#theorem()[
-  If the Jacobian determinant $det ve(J f_a) != 0$
-  then $ve(f)$ is locally invertible at $ve(a)$.
 ]
 
 === Rules of Calculation
@@ -590,6 +603,13 @@
     $],
   )
 )
+
+#theorem(title: [Dot and Scalar Product Rules])[
+  $ dv(,t) ve(x)(t) dot ve(y)(t)
+  &= ve(x)'(t) dot ve(y)(t) + ve(x)(t) dot ve(y)'(t)
+  \ dv(,t) ve(x)(t) dot ve(y)(t)
+  &= ve(x)'(t) times ve(y)(t) + ve(x)(t) times ve(y)'(t) $
+]
 
 #theorem(title: [L'Hôpital's Rule])[
   Let $f$ and $g$ be differentiable on an open interval containing $c$
@@ -1201,6 +1221,120 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $sin(x^2), cos(x^2), "and" tan(x^2)$ lack elementary antiderivatives.
 ]
 
+== Multiple Integrals
+
+=== Multiple Integrals
+
+#definition(title: [Null Set])[
+  A set is a null set if it has measure zero. 
+]
+
+#theorem()[
+  A null set is integrable and its integral is $0$.
+]
+
+#corollary()[
+  If a set $A subset RR^n$ has $dim N < n$ then it has measure zero.
+]
+
+#definition(title: [Jordan Measurable])[
+  A bounded set in $RR^n$ is _Jordan measurable_
+  if its boundary has measure zero.
+]
+
+#lemma()[
+  If $f$ is uniformly continuous and bounded on a Jordan measurable set $D$,
+  then $f$ is integrable over $D$.
+]
+
+#theorem()[
+  If $f$ is continuous on
+  $ D = {(x, y) : alpha(x) <= y <= beta(y), a <= x <= b}, $
+  where $alpha$ and $beta$ are
+  continuous on $[a, b]$ with $alpha(x) <= beta(x)$,
+  then $f$ is integrable over $D$ and
+  $ integral.double_D f(x, y) dif x dif y
+  = integral_a^b (integral_(alpha(x))^(beta(x)) f(x, y) dif y) dif x. $
+
+  An equivalent form with respect to the other variable exists.
+]
+
+#proof[
+  Using earlier lemmas and theorems, 
+  $ D "compact" ==> f "uniformly continuous" ==> f "integrable over" D. $
+  The rest of the proof is left.
+]
+
+#theorem()[
+  If $f$ is seperable with
+  $ f(x, y) = g(x) h(y) $
+  then we may rewrite
+  $ integral.double_([a,b]times[c,d]) g(x) h(y) dif x dif y
+  = integral_a^b g(x) dif x integral_c^d h(y) dif y. $
+]
+
+#theorem(title: [Mean Value for Double Integrals])[
+  If $f$ is continuous on a compact, connected region $D subset RR^2$, then
+  $ integral.double_D f(x, y) dif x dif y = f(a, b) mu(D) $
+  then for some $(xi, eta) in D$.
+]
+
+=== Line Integrals
+
+#definition(title: [Line Integral])[
+  Let $f : C -> RR$ be a function defined on a curve $C in RR^n$.
+  The line integral of $f$ along $C$ is
+  $ integral_C f(x) dif s
+  = lim_(norm(P)->0) sum_(i=1)^n f(t_i) norm(x_i - x_(i-1)), $
+  where $P = {x_0, x_1, dots.h.c, x_n}$ is a partition of $C$ and
+  $t_i in C$ is a sample point in the subcurve between $x_(i-1)$ and $x_i$.
+]
+
+#definition(title: [Surface Integral])[
+  Let $f : S -> RR$ be a function defined on a surface $S in RR^3$.
+  The surface integral of $f$ along $S$ is
+  $ integral_S f(x) dif S
+  = lim_(norm(P)->0) sum_(i=1)^n f(t_i) "area"(S_i), $
+  where $P = {S_1, S_2, dots.h.c, S_n}$ is a partition of $S$ and
+  $t_i in S$ is a sample point in the sub-surface $S_i$.
+]
+
+#theorem()[
+  If $f$ is continuous on $C$, then the line integral exists.
+]
+
+#theorem()[
+  If $C$ is a smooth curve parametrized by $ve(r)(t)$ for $t in [a, b]$, then
+  $ integral_C f(x) dif s = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t. $
+]
+
+#theorem()[
+  If $C$ is a smooth curve parametrized by $ve(r)(t)$ for $t in [a, b]$, then
+  $ integral_C f(x) dif s
+  = integral_a^b f(ve(r)(t))
+  sqrt((x_1 '(t))^2 + (x_2 '(t))^2 + dots.h.c + (x_n '(t))^2) dif t. $
+]
+
+#theorem(title: [Green's])[
+  Let $P, Q in C^1 (Omega)$, where $Omega in RR^2$ is an open set.
+  If the compact region $D subset Omega$ has
+  a piecewise smooth boundary $partial D$
+  and is positively oriented, then
+  $ integral_(partial D) P dif x + Q dif y
+  = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
+] // TODO
+
+#definition(title: [Conservative Vector Field])[
+  A vector field $F : Omega -> RR^n$ is _conservative_ if there exists a
+  scalar _potential function_ $f : Omega -> RR$ such that $F = nabla f.$
+]
+
+#theorem(title: [Path Independence])[
+  If $F$ is a conservative vector field, then the line integral of $F$ along
+  any curve $C$ from $A$ to $B$ is independent of the path and equals
+  $ f(B) - f(A). $
+]
+
 = Infinite Series
 
 == Series
@@ -1240,7 +1374,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   However, the reverse is not implied.
 ] <thm-term>
 
-#lemma[
+#lemma()[
   The series $sum_(j=1)^infinity 1 slash j$ is divergent.
 ]
 
@@ -1336,7 +1470,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   #compact-restate((<thm-term>, <thm-alternating>, <thm-ratio>))
 ]
 
-#theorem[
+#theorem()[
   Let $f$ be decreasing on $[m, n]$, where $m < n$ are integers.
   Then,
   $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dif x <= sum_(j=m)^(n-1) f(j) $
