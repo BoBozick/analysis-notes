@@ -1106,11 +1106,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   + Let $F(x) = integral_a^x f(t) dif t$ for $x in [a, b]$.
     Then, $F$ is continuous on $[a, b]$,
     differentiable on $(a, b)$, and $F'(x) = f(x).$
-    
+
   + If $F'(x) = f(x)$ for $x in (a, b)$, then
     $ integral_a^b f(x) dif x = F(b) - F(a). $
-
-
 ] <thm-fundamental>
 
 #proof(title: [Proof of FTC1])[
@@ -1147,7 +1145,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   and let $f$ be continuous on $g([a, b])$.
   Then, with $u = g(x)$ and $dif u = g'(x) dif x$,
   $ integral_a^b f(g(x)) g'(x) dif x
-   = integral_(g(a))^(g(b)) f(u) dif u. $
+  = integral_(g(a))^(g(b)) f(u) dif u. $
 
   Equivalently, if $g$ is strictly monotonic and 
   thus invertible as $x = g^(-1)(u)$,
@@ -1221,9 +1219,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $sin(x^2), cos(x^2), "and" tan(x^2)$ lack elementary antiderivatives.
 ]
 
-== Multiple Integrals
+== Vector Integrals
 
-=== Multiple Integrals
+=== Measure Zero
 
 #definition(title: [Null Set])[
   A set is a null set if it has measure zero. 
@@ -1247,6 +1245,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   then $f$ is integrable over $D$.
 ]
 
+=== Double Integrals
+
 #theorem()[
   If $f$ is continuous on
   $ D = {(x, y) : alpha(x) <= y <= beta(y), a <= x <= b}, $
@@ -1265,6 +1265,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The rest of the proof is left.
 ]
 
+#theorem(title: [Mean Value for Double Integrals])[
+  If $f$ is continuous on a compact, connected region $D subset RR^2$, then
+  $ integral.double_D f(x, y) dif x dif y = f(a, b) mu(D) $
+  then for some $(xi, eta) in D$.
+]
+
 #theorem()[
   If $f$ is seperable with
   $ f(x, y) = g(x) h(y) $
@@ -1273,15 +1279,24 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = integral_a^b g(x) dif x integral_c^d h(y) dif y. $
 ]
 
-#theorem(title: [Mean Value for Double Integrals])[
-  If $f$ is continuous on a compact, connected region $D subset RR^2$, then
-  $ integral.double_D f(x, y) dif x dif y = f(a, b) mu(D) $
-  then for some $(xi, eta) in D$.
+=== Defining Curve Integrals
+
+#definition()[
+  $ dif s
+  &= norm(ve(r)'(t)) dif t
+
+  \ dif ve(s)
+  &= ve(r)'(t) dif t
+
+  \ dif S
+  &= norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
+
+  \ dif ve(S)
+  &= (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
+  = ve(hat(n)) dif S $
 ]
 
-=== Line Integrals
-
-#definition(title: [Line Integral])[
+#definition(title: [Line Integral, Riemann])[
   Let $f : C -> RR$ be a function defined on a curve $C in RR^n$.
   The line integral of $f$ along $C$ is
   $ integral_C f(x) dif s
@@ -1290,7 +1305,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $t_i in C$ is a sample point in the subcurve between $x_(i-1)$ and $x_i$.
 ]
 
-#definition(title: [Surface Integral])[
+#definition(title: [Surface Integral, Riemann])[
   Let $f : S -> RR$ be a function defined on a surface $S in RR^3$.
   The surface integral of $f$ along $S$ is
   $ integral_S f(x) dif S
@@ -1303,16 +1318,44 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If $f$ is continuous on $C$, then the line integral exists.
 ]
 
-#theorem()[
-  If $C$ is a smooth curve parametrized by $ve(r)(t)$ for $t in [a, b]$, then
-  $ integral_C f(x) dif s = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t. $
+#definition(title: [Line Integral, Scalar Field])[
+  For a scalar field $f : RR^n -> RR$,
+  the line integral along a smooth curve $C$
+  parametrized by $ve(r)(t)$ for $t in [a, b]$ is
+  $ integral_C f dif s
+  = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t $
+  under the assumption that $ve(r)'(t) != ve(0)$ for every $t in [a, b]$.
 ]
+
+#definition(title: [Line Integral, Vector Field])[
+  Likewise, for a vector field $ve(F) : RR^n -> RR^n$ the line integral is
+  $ integral_C ve(F) dot dif ve(r)
+  = integral_a^b ve(F)(ve(r)(t)) dot ve(r)'(t) dif t. $
+]
+
+#definition(title: [Surface Integral, Scalar Field])[
+  For a scalar field $f : RR^3 -> RR$,
+  the surface integral along a smooth surface $S$
+  parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
+  $ integral_S f dif S
+  = integral.double_D f(ve(r)(s, t)) norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
+]
+
+#definition(title: [Surface Integral, Vector Field])[
+  For a vector field $ve(F) : RR^3 -> RR^3$,
+  the surface integral along a smooth surface $S$
+  parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
+  $ integral_S ve(F) dot dif ve(S)
+  = integral.double_D ve(F)(ve(r)(s, t)) dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
+]
+
+=== Line Integral Properties
 
 #theorem()[
   If $C$ is a smooth curve parametrized by $ve(r)(t)$ for $t in [a, b]$, then
   $ integral_C f(x) dif s
   = integral_a^b f(ve(r)(t))
-  sqrt((x_1 '(t))^2 + (x_2 '(t))^2 + dots.h.c + (x_n '(t))^2) dif t. $
+  sqrt((x'_1 (t))^2 + (x'_2 (t))^2 + dots.h.c + (x'_n (t))^2) dif t. $
 ]
 
 #theorem(title: [Green's])[
@@ -1320,19 +1363,68 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If the compact region $D subset Omega$ has
   a piecewise smooth boundary $partial D$
   and is positively oriented, then
-  $ integral_(partial D) P dif x + Q dif y
+  $ integral.cont_(partial D) P dif x + Q dif y
   = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
-] // TODO
+]
+
+=== Vector Differential Operators
 
 #definition(title: [Conservative Vector Field])[
-  A vector field $F : Omega -> RR^n$ is _conservative_ if there exists a
-  scalar _potential function_ $f : Omega -> RR$ such that $F = nabla f.$
+  A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists a
+  scalar _potential function_ $f : Omega -> RR$ such that $ve(F) = nabla f.$
+]
+
+#lemma()[
+  $ "path independent" <==> "conservative" $ 
 ]
 
 #theorem(title: [Path Independence])[
   If $F$ is a conservative vector field, then the line integral of $F$ along
   any curve $C$ from $A$ to $B$ is independent of the path and equals
   $ f(B) - f(A). $
+]
+
+#theorem()[
+  If the vector field $ve(F) = (F_x, F_y)$
+  has a potential function $f in C^2$,
+  $ pdv(F_y, x) = pdv(F_x, y). $
+
+  Likewise, if the equality above holds then $ve(F)$ has a potential function.
+]
+
+#definition(title: [Divergence])[
+  Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
+  Its divergence is the scalar-valued function
+  $ "div" ve(F) = nabla dot ve(F) = pdv(F_x, x) + pdv(F_y, y) + pdv(F_y, y). $
+]
+
+#theorem(title: [Divergence or Gauss's])[
+  Let $V subset RR^3$ be compact and
+  with a piecewise smooth boundary $delta V$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
+  $ integral.triple_V (nabla dot ve(F)) dif V =
+  integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
+]
+
+#definition(title: [Curl])[
+  Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
+  Its curl is the vector-valued function
+  $ "curl" ve(F) = nabla times ve(F) =
+  (pdv(F_z, y) - pdv(F_y, z), pdv(F_x, z) - pdv(F_z, x), pdv(F_y, x) - pdv(F_x, y)). $
+]
+
+#theorem(title: [Stokes's])[
+  Let $S subset RR^3$ be a compact, orientable surface with a piecewise smooth boundary $partial S$ and
+  let $ve(hat(n))$ be a unit normal vector field on $S$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
+  $ integral.surf_S (nabla times ve(F)) dot ve(hat(n)) dif S =
+  integral.cont_(partial S) ve(F) dot dif ve(r). $
+]
+
+#definition(title: [Irrotional])[
+  A vector field is _irrotational_ if its curl is the zero vector.
+]
+
+#theorem()[
+  $ "conservative" ==> "irrotational" $
 ]
 
 = Infinite Series
@@ -1448,12 +1540,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #definition()[
   Let $f$ be integrable on every closed and bounded interval.
   If _both_
-  $ integral_(-infinity)^a f(x) dif x space "and" space
-  integral_(-infinity)^a f(x) dif x $
+  $ integral_(-oo)^a f(x) dif x space "and" space
+  integral_(a)^oo f(x) dif x $
   are convergent, then for any real $a$ we define the convergent integral
-  $ integral_(-infinity)^infinity f(x) dif x =
-  integral_(-infinity)^a f(x) dif x
-   + integral_(-infinity)^a f(x). $
+  $ integral_(-oo)^oo f(x) dif x =
+  integral_(-oo)^a f(x) dif x
+  + integral_a^oo f(x). $
 ]
 
 #theorem(title: [Properties])[
