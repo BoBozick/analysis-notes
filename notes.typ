@@ -1369,16 +1369,22 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Vector Differential Operators
 
+#tip-box()[
+  Vector calculus is heavily centered on the
+  three vector differential operators and
+  their respective fundamental theorems.
+]
+
 #definition(title: [Conservative Vector Field])[
   A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists a
   scalar _potential function_ $f : Omega -> RR$ such that $ve(F) = nabla f.$
 ]
 
-#lemma()[
+#lemma(title: [Path Independence])[
   $ "path independent" <==> "conservative" $ 
 ]
 
-#theorem(title: [Path Independence])[
+#theorem(title: [Gradient or FTC for Line Integrals])[
   If $F$ is a conservative vector field, then the line integral of $F$ along
   any curve $C$ from $A$ to $B$ is independent of the path and equals
   $ f(B) - f(A). $
@@ -1412,7 +1418,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   (pdv(F_z, y) - pdv(F_y, z), pdv(F_x, z) - pdv(F_z, x), pdv(F_y, x) - pdv(F_x, y)). $
 ]
 
-#theorem(title: [Stokes's])[
+#theorem(title: [Curl or Stokes's])[
   Let $S subset RR^3$ be a compact, orientable surface with a piecewise smooth boundary $partial S$ and
   let $ve(hat(n))$ be a unit normal vector field on $S$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
   $ integral.surf_S (nabla times ve(F)) dot ve(hat(n)) dif S =
