@@ -570,7 +570,7 @@
   = sum_(i=1)^n dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_n (t)) $
   or equivalently
   $ dv(, t)(f compose ve(g))(t) = nabla f(ve(g)(t)) dot ve(g)'(t). $
-]
+] <thm-chain-multivariable>
 
 #corollary()[
   Let $f : RR^n -> RR$ be differentiable
@@ -645,7 +645,6 @@
   // $ f(a)/g(a) - L =
   // (f'(p))/(g'(p)) - L + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
 ]
-
 
 #warning-box()[
   This is only an implication, not an equivalence,
@@ -918,7 +917,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $A C - B^2 = 0$ and $A < 0$ $==>$ local maximum or saddle point.
 ]
 
-== Ordinary Differential Equations
+== Differential Equations
 
 == The Riemann Integral
 
@@ -1219,7 +1218,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $sin(x^2), cos(x^2), "and" tan(x^2)$ lack elementary antiderivatives.
 ]
 
-== Vector Integrals
+== Vector Field Integrals
 
 === Measure Zero
 
@@ -1279,7 +1278,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = integral_a^b g(x) dif x integral_c^d h(y) dif y. $
 ]
 
-=== Defining Curve Integrals
+=== Defining Line and Surface Integrals
 
 #definition()[
   $ dif s
@@ -1370,14 +1369,23 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 === Vector Differential Operators
 
 #tip-box()[
-  Vector calculus is heavily centered on the
+  Vector calculus is heavily centered around the
   three vector differential operators and
   their respective fundamental theorems.
+
+  Furthermore, all of these are generalized by @thm-generalized-stokes.
 ]
+
+#theorem(title: [Generalized Stoke's])[
+  Let $Omega$ be an orientable manifold with boundary $partial Omega$,
+  and let $omega$ be a differential form of degree $dim(Omega)-1$.
+  Then
+  $ integral_(partial Omega) omega = integral_Omega dif omega. $
+] <thm-generalized-stokes>
 
 #definition(title: [Conservative Vector Field])[
   A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists a
-  scalar _potential function_ $f : Omega -> RR$ such that $ve(F) = nabla f.$
+  scalar _potential function_ $phi : Omega -> RR$ such that $ve(F) = nabla phi.$
 ]
 
 #lemma(title: [Path Independence])[
@@ -1385,14 +1393,28 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Gradient or FTC for Line Integrals])[
-  If $F$ is a conservative vector field, then the line integral of $F$ along
-  any curve $C$ from $A$ to $B$ is independent of the path and equals
-  $ f(B) - f(A). $
+  If $ve(F)$ is a conservative vector field,
+  then the line integral of $ve(F)$ along
+  any curve $C$ from $ve(a)$ to $ve(b)$
+  is independent of the path and equals
+  $ integral_C ve(F) dot dif ve(r)
+  = integral_C nabla phi dot dif ve(r)
+  = phi(ve(b)) - phi(ve(a)). $
+]
+
+#proof[
+  With a parameterization such that $ve(r)(a) = ve(a)$ and $ve(r)(b) = ve(b)$,
+  $ integral_C nabla phi dot dif ve(r)
+  = integral_a^b nabla phi(ve(r)(t)) dot ve(r)'(t) dif t
+  = integral_a^b dv(, t) phi(ve(r)(t)) dif t
+  = phi(ve(b)) - phi(ve(a)) $
+  is the evaluated line integral, since
+  $ dv(, t) phi(ve(r)(t)) = nabla phi(ve(r)(t)) dot ve(r)'(t), $
+  by @thm-chain-multivariable.
 ]
 
 #theorem()[
-  If the vector field $ve(F) = (F_x, F_y)$
-  has a potential function $f in C^2$,
+  If the vector field $ve(F) = (F_x, F_y)$ has a $C^2$ potential function, then
   $ pdv(F_y, x) = pdv(F_x, y). $
 
   Likewise, if the equality above holds then $ve(F)$ has a potential function.
@@ -1409,6 +1431,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   with a piecewise smooth boundary $delta V$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
   $ integral.triple_V (nabla dot ve(F)) dif V =
   integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
+
+  This may be generalized for $V subset RR^n$.
 ]
 
 #definition(title: [Curl])[
@@ -1421,7 +1445,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #theorem(title: [Curl or Stokes's])[
   Let $S subset RR^3$ be a compact, orientable surface with a piecewise smooth boundary $partial S$ and
   let $ve(hat(n))$ be a unit normal vector field on $S$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
-  $ integral.surf_S (nabla times ve(F)) dot ve(hat(n)) dif S =
+  $ integral.double_S (nabla times ve(F)) dot ve(hat(n)) dif S =
   integral.cont_(partial S) ve(F) dot dif ve(r). $
 ]
 
