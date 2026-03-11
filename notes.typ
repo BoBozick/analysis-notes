@@ -136,8 +136,8 @@
   Let $(I_n)$ be a nested sequence of nonempty closed
   and bounded intervals with
   $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c. $
-  Then $ inter.big_(n=1)^infinity I_n != emptyset. $
-  In particular, there exists $a in inter.big_(n=1)^infinity I_n$.
+  Then $ inter.big_(n=1)^oo I_n != emptyset. $
+  In particular, there exists $a in inter.big_(n=1)^oo I_n$.
 ]
 
 === Open and Closed Sets
@@ -199,7 +199,7 @@
   In other words, if every $epsilon$-neighborhood of some point
   contains all but a finite number of the terms in $(a_n)$.
 
-  We write this $lim_(n->infinity) a_n = lim a_n = a$ or $a_n -> a$.
+  We write this $lim_(n->oo) a_n = lim a_n = a$ or $a_n -> a$.
 
   #example[Template of a typical convergence proof:
     + Let $epsilon > 0$ be arbitrary.
@@ -296,7 +296,7 @@
 ]
 
 #definition(title: [Infinite Limit])[
-  Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = infinity$ if
+  Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = oo$ if
   $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
 ]
 
@@ -536,7 +536,7 @@
 
   At a point $ve(y) in W$, the inverse has the derivative
   $ D ve(g)(ve(y)) = [D ve(f)(ve(g)(ve(y)))]^(-1) $
-  and the determinant
+  and the Jacobian determinant
   $ det D ve(g)(ve(y)) = 1 / (det D ve(f)(ve(g)(ve(y)))). $
 ]
 
@@ -615,8 +615,8 @@
   Let $f$ and $g$ be differentiable on an open interval containing $c$
   (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
   + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$
-    (or both $plus.minus infinity$), and
-  + $lim_(x->c) (f'(x))/(g'(x)) = L$ exists (or $plus.minus infinity$).
+    (or both $plus.minus oo$), and
+  + $lim_(x->c) (f'(x))/(g'(x)) = L$ exists (or $plus.minus oo$).
   Then, $ lim_(x->c) (f(x))/(g(x)) = L. $
 ]
 
@@ -789,21 +789,21 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #definition(title: [Asymptote])[
   The line $y = k x + m$ is an _oblique_ asymptote of $f$ if
-  $ lim_(x->infinity) (f(x) - (k x + m)) = 0. $
+  $ lim_(x->oo) (f(x) - (k x + m)) = 0. $
 
   The line $x = c$ is a _vertical_ asymptote of $f$ if
-  $ lim_(x->c+) f(x) = plus.minus infinity #h(1.5em) "or"
-  #h(1.5em) lim_(x->c-) f(x) = plus.minus infinity. $
+  $ lim_(x->c+) f(x) = plus.minus oo #h(1.5em) "or"
+  #h(1.5em) lim_(x->c-) f(x) = plus.minus oo. $
 
   The line $y = b$ is a _horizontal_ asymptote of $f$ if
-  $ lim_(x->infinity) f(x) = b #h(1.5em) "or"
-  #h(1.5em) lim_(x->-infinity) f(x) = b. $
+  $ lim_(x->oo) f(x) = b #h(1.5em) "or"
+  #h(1.5em) lim_(x->-oo) f(x) = b. $
 ]
 
 #theorem(title: [Oblique Asymptote])[ 
   If $f(x)$ has an oblique asymptote $y = k x + m$, then
-  $ k = lim_(x->infinity) (f(x))/x $ and
-  $ m = lim_(x->infinity) (f(x) - k x). $
+  $ k = lim_(x->oo) (f(x))/x $ and
+  $ m = lim_(x->oo) (f(x) - k x). $
 ]
 
 === Convexity
@@ -1414,7 +1414,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem()[
-  If the vector field $ve(F) = (F_x, F_y)$ has a $C^2$ potential function, then
+  If the vector field $ve(F) = (F_x, F_y)$ has a $C^2$ potential function,
+  then
   $ pdv(F_y, x) = pdv(F_x, y). $
 
   Likewise, if the equality above holds then $ve(F)$ has a potential function.
@@ -1428,7 +1429,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Divergence or Gauss's])[
   Let $V subset RR^3$ be compact and
-  with a piecewise smooth boundary $delta V$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
+  with a piecewise smooth boundary $delta V$.
+  If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
   $ integral.triple_V (nabla dot ve(F)) dif V =
   integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
 
@@ -1439,12 +1441,16 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
   Its curl is the vector-valued function
   $ "curl" ve(F) = nabla times ve(F) =
-  (pdv(F_z, y) - pdv(F_y, z), pdv(F_x, z) - pdv(F_z, x), pdv(F_y, x) - pdv(F_x, y)). $
+  (pdv(F_z, y) - pdv(F_y, z),
+   pdv(F_x, z) - pdv(F_z, x),
+   pdv(F_y, x) - pdv(F_x, y)). $
 ]
 
 #theorem(title: [Curl or Stokes's])[
-  Let $S subset RR^3$ be a compact, orientable surface with a piecewise smooth boundary $partial S$ and
-  let $ve(hat(n))$ be a unit normal vector field on $S$. If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
+  Let $S subset RR^3$ be a compact, orientable surface with
+  a piecewise smooth boundary $partial S$ and
+  let $ve(hat(n))$ be a unit normal vector field on $S$.
+  If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
   $ integral.double_S (nabla times ve(F)) dot ve(hat(n)) dif S =
   integral.cont_(partial S) ve(F) dot dif ve(r). $
 ]
@@ -1462,10 +1468,10 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 == Series
 
 #definition(title: [Infinite Series])[
-  Let $(a_j)^infinity_(j=0)$ and let $(s_n)^infinity_(n=0)$.
+  Let $(a_j)^oo_(j=0)$ and let $(s_n)^oo_(n=0)$.
   The sum of the infinite series is defined as
-  $ sum^infinity_(j=0) a_j = lim_(n->infinity) s_n
-  = lim_(n->infinity) sum^n_(j=0) a_j. $
+  $ sum^oo_(j=0) a_j = lim_(n->oo) s_n
+  = lim_(n->oo) sum^n_(j=0) a_j. $
 
   If $a_j >= 0$ for every $j$ we say that the series is _positive_.
 ]
@@ -1477,7 +1483,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Geometric Series])[
   If $abs(x) < 1$, then
-  $ sum_(j=0)^infinity x^j = 1/(1 - x) $
+  $ sum_(j=0)^oo x^j = 1/(1 - x) $
   since
   $ s_n = sum_(j=0)^n x^j = (1 - x^(n+1))/(1 - x). $
 ]
@@ -1485,62 +1491,62 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 === Convergence
 
 #theorem(title: [Cauchy Criterion for Series])[
-  The series $sum_(k=0)^infinity a_k$ converges if and only if
+  The series $sum_(k=0)^oo a_k$ converges if and only if
   $ forall epsilon > 0 space exists N :
   n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
   < epsilon. $
 ]
 
 #corollary(title: [Series Term Test])[
-  If $sum^infinity_(k=1) a_k$ converges, then $a_k -> 0$.
+  If $sum^oo_(k=1) a_k$ converges, then $a_k -> 0$.
   However, the reverse is not implied.
 ] <thm-term>
 
 #lemma()[
-  The series $sum_(j=1)^infinity 1 slash j$ is divergent.
+  The series $sum_(j=1)^oo 1 slash j$ is divergent.
 ]
 
 #theorem(title: [Inverse Power Series])[
-  The series $sum_(j=1)^infinity 1 slash j^p$ converges if and only if
+  The series $sum_(j=1)^oo 1 slash j^p$ converges if and only if
   $p > 1$.
 ] <thm-inverse-power>
 
 #theorem(title: [Ratio Test])[
   Let $(a_n)$ be a sequence of positive terms and define
-  $ L = limsup_(n->infinity) abs(a_(n+1)/a_n). $
+  $ L = limsup_(n->oo) abs(a_(n+1)/a_n). $
   Then:
-  + If $L < 1$, the series $sum_(n=1)^infinity a_n$ converges.
-  + If $L > 1$ (including $L = infinity$), the series diverges.
+  + If $L < 1$, the series $sum_(n=1)^oo a_n$ converges.
+  + If $L > 1$ (including $L = oo$), the series diverges.
   + If $L = 1$, the test is inconclusive.
 ] <thm-ratio>
 
 #theorem(title: [Direct Comparison Test])[
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
-  + $sum^infinity_(k=1) (a_k)$ converges if
-    $sum^infinity_(k=1) (b_k)$  converges.
-  + $sum^infinity_(k=1) (b_k)$ diverges if
-    $sum^infinity_(k=1) (a_k)$  diverges.
+  + $sum^oo_(k=1) (a_k)$ converges if
+    $sum^oo_(k=1) (b_k)$  converges.
+  + $sum^oo_(k=1) (b_k)$ diverges if
+    $sum^oo_(k=1) (a_k)$  diverges.
 ] <thm-direct-comparison>
 
 #theorem(title: [Limit Comparison Test])[
-  Let $sum_(j=0)^infinity a_j$ and $sum_(j=0)^infinity b_j$
+  Let $sum_(j=0)^oo a_j$ and $sum_(j=0)^oo b_j$
   be positive series with terms such that
-  $ lim_(j->infinity) a_j/b_j = K $
+  $ lim_(j->oo) a_j/b_j = K $
   for some finite $K != 0.$
-  Then, $sum_(j=0)^infinity a_j$ converges if and only if
-  $sum_(j=0)^infinity b_j$ converges.
+  Then, $sum_(j=0)^oo a_j$ converges if and only if
+  $sum_(j=0)^oo b_j$ converges.
 ] <thm-limit-comparison>
 
 #theorem(title: [Alternating Series Test])[
   Let $(a_n)$ satisfy
   + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
   + $(a_n) -> 0$.
-  Then, $sum^infinity_(n=1) (-1)^(n+1) a_n$ converges.
+  Then, $sum^oo_(n=1) (-1)^(n+1) a_n$ converges.
 ] <thm-alternating>
 
 #definition(title: [Absolutely Convergent])[
-  A series $sum_(j=0)^infinity a_j$ is _absolutely convergent_ if
-  $sum_(j=0)^infinity abs(a_j)$ is convergent.
+  A series $sum_(j=0)^oo a_j$ is _absolutely convergent_ if
+  $sum_(j=0)^oo abs(a_j)$ is convergent.
 ]
 
 #theorem()[
@@ -1549,8 +1555,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem(title: [Cauchy Condensation Test])[
   Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
-  Then $sum_(n=1)^(infinity) a_n$ converges if and only if
-  $sum_(n=0)^(infinity) 2^n a_(2^n)$ converges.
+  Then $sum_(n=1)^(oo) a_n$ converges if and only if
+  $sum_(n=0)^(oo) 2^n a_(2^n)$ converges.
 ]
 
 #theorion-restate(filter: it => it.label == <thm-integral>)
@@ -1562,7 +1568,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #definition()[
   Let $f$ be integrable on $[a, R]$ for all $R > a$.
   Then the integral is defined
-  $ integral_a^infinity f(x) dif x = lim_(R->infinity)
+  $ integral_a^oo f(x) dif x = lim_(R->oo)
   integral_a^R f(x) dif x. $
   If this limit exists, then the integral is said to be convergent.
 ]
@@ -1608,12 +1614,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #corollary(title: [Integral Test])[ // AKA Maclaurin--Cauchy Test
-  Let $f$ be continuous, positive, and decreasing on $[m, infinity)$,
+  Let $f$ be continuous, positive, and decreasing on $[m, oo)$,
   where $m in NN$.
   Then,
-  $ sum_(n=m)^infinity f(n) $
+  $ sum_(n=m)^oo f(n) $
   converges if and only if
-  $ integral_m^infinity f(x) dif x $
+  $ integral_m^oo f(x) dif x $
   converges.
 ] <thm-integral>
 
@@ -1691,25 +1697,25 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #definition(title: [Radius of Convergence])[
   Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
   The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
-  $ forall x : abs(x - c) < r ==> lim_(n->infinity) R_n (x) = 0, $
+  $ forall x : abs(x - c) < r ==> lim_(n->oo) R_n (x) = 0, $
   which implies that the Taylor series converges to $f(x)$
-  for all such $x$ (so $f(x) = P_infinity (x)$).
+  for all such $x$ (so $f(x) = P_oo (x)$).
 ]
 
 #theorem(title: [Common Maclaurin Series])[
-  The following functions have a Maclaurin series with radius of
-  convergence $r = infinity$:
+  The following functions have a Maclaurin series with
+  radius of convergence $r = oo$:
   #block[$
-  & e^x = sum_(k=0)^infinity x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
-  & sin x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1)! = x - x^3/3!
+  & e^x = sum_(k=0)^oo x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
+  & sin x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1)! = x - x^3/3!
     + x^5/5! - dots.h.c \
-  & cos x = sum_(k=0)^infinity (-1)^k x^{2k} / (2k)! = 1 - x^2/2!
+  & cos x = sum_(k=0)^oo (-1)^k x^(2k) / (2k)! = 1 - x^2/2!
     + x^4/4! - dots.h.c \
-  & arctan x = sum_(k=0)^infinity (-1)^k x^{2k+1} / (2k+1) = x - x^3/3
+  & arctan x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1) = x - x^3/3
     + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
-  & ln(1 + x) = sum_(k=1)^infinity (-1)^{k+1} x^k / k = x - x^2/2
+  & ln(1 + x) = sum_(k=1)^oo (-1)^(k+1) x^k / k = x - x^2/2
     + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
-  & (1 + x)^a = sum_(k=0)^infinity binom(a, k) x^k quad(|x| < 1) \
+  & (1 + x)^a = sum_(k=0)^oo binom(a, k) x^k quad(|x| < 1) \
   $]
 ]
 
@@ -1756,8 +1762,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #definition(title: [Big _O_ at Infinity])[
-  Let $f$ and $g$ be defined on $(c, infinity)$.
-  We say that $f$ belongs to the set _O_ of $g$ as $x -> infinity$,
+  Let $f$ and $g$ be defined on $(c, oo)$.
+  We say that $f$ belongs to the set _O_ of $g$ as $x -> oo$,
   writing $O(g(x))$, if there exists $M$ and $x_0$ such that
   $ abs(f(x)) <= M abs(g(x)), $
   for every $x > x_0$.
@@ -1776,7 +1782,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $h(x) k(x) = O(f(x) g(x))$.
 
   If $m <= n$ then as $x -> 0$, $x^n = O(x^m)$ so
-  $O(x^m) + O(x^n) = O(x^m)$. As $x -> infinity$, $x^m = O(x^n)$ so
+  $O(x^m) + O(x^n) = O(x^m)$. As $x -> oo$, $x^m = O(x^n)$ so
   $O(x^m) + O(x^n) = O(x^n)$.
 ]
 
