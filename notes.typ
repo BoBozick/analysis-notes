@@ -924,7 +924,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 === Definition
 
 #definition(title: [Partition])[
-  A _partition_ of $[a,b]$ is a finite set $ P = {x_0, x_1, dots.h.c, x_n} $
+  A _partition_ of $[a,b]$ is a finite set $ P = {x_0, x_1, ..., x_n} $
   such that $ a = x_0 < x_1 < dots.h.c < x_n = b, $
   
   The partition $P$ has _subintervals_
@@ -1244,11 +1244,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   then $f$ is integrable over $D$.
 ]
 
-=== Double Integrals
+=== Multiple Integrals
 
 #theorem()[
   If $f$ is continuous on
-  $ D = {(x, y) : alpha(x) <= y <= beta(y), a <= x <= b}, $
+  $ D = {(x, y) : alpha(x) <= y <= beta(x), a <= x <= b}, $
   where $alpha$ and $beta$ are
   continuous on $[a, b]$ with $alpha(x) <= beta(x)$,
   then $f$ is integrable over $D$ and
@@ -1278,20 +1278,29 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = integral_a^b g(x) dif x integral_c^d h(y) dif y. $
 ]
 
+#theorem(title: [Power Test for Improper Integrals])[
+  For $ve(x) in RR^n$ and $p in RR$, the improper integral
+  $ integral_(0 < norm(ve(x)) < 1) 1/norm(ve(x))^p dif^n ve(x) $
+  converges if and only if $p < n$, while
+  $ integral_(norm(ve(x)) > 1) 1/norm(ve(x))^p dif^n ve(x) $
+  converges if and only if $p > n$.
+  Note that $p = n$ always diverges.
+]
+
 === Defining Line and Surface Integrals
 
 #definition()[
-  $ dif s
-  &= norm(ve(r)'(t)) dif t
+  $ &dif s
+  &&= norm(ve(r)'(t)) dif t
 
-  \ dif ve(s)
-  &= ve(r)'(t) dif t
+  \ &dif ve(s)
+  &&= ve(r)'(t) dif t
 
-  \ dif S
-  &= norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
+  \ &dif S
+  &&= norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
 
-  \ dif ve(S)
-  &= (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
+  \ &dif ve(S)
+  &&= (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
   = ve(hat(n)) dif S $
 ]
 
@@ -1300,7 +1309,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The line integral of $f$ along $C$ is
   $ integral_C f(x) dif s
   = lim_(norm(P)->0) sum_(i=1)^n f(t_i) norm(x_i - x_(i-1)), $
-  where $P = {x_0, x_1, dots.h.c, x_n}$ is a partition of $C$ and
+  where $P = {x_0, x_1, ...., x_n}$ is a partition of $C$ and
   $t_i in C$ is a sample point in the subcurve between $x_(i-1)$ and $x_i$.
 ]
 
@@ -1309,7 +1318,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The surface integral of $f$ along $S$ is
   $ integral_S f(x) dif S
   = lim_(norm(P)->0) sum_(i=1)^n f(t_i) "area"(S_i), $
-  where $P = {S_1, S_2, dots.h.c, S_n}$ is a partition of $S$ and
+  where $P = {S_1, S_2, ..., S_n}$ is a partition of $S$ and
   $t_i in S$ is a sample point in the sub-surface $S_i$.
 ]
 
@@ -1336,16 +1345,18 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   For a scalar field $f : RR^3 -> RR$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
-  $ integral_S f dif S
-  = integral.double_D f(ve(r)(s, t)) norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
+  $ integral.double_S f dif S
+  = integral.double_D f(ve(r)(s, t))
+  norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
 #definition(title: [Surface Integral, Vector Field])[
   For a vector field $ve(F) : RR^3 -> RR^3$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
-  $ integral_S ve(F) dot dif ve(S)
-  = integral.double_D ve(F)(ve(r)(s, t)) dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
+  $ integral.double_S ve(F) dot dif ve(S)
+  = integral.double_D ve(F)(ve(r)(s, t))
+  dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
 === Line Integral Properties
@@ -1384,8 +1395,9 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ] <thm-generalized-stokes>
 
 #definition(title: [Conservative Vector Field])[
-  A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists a
-  scalar _potential function_ $phi : Omega -> RR$ such that $ve(F) = nabla phi.$
+  A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists
+  a scalar _potential function_ $phi : Omega -> RR$
+  such that $ve(F) = nabla phi.$
 ]
 
 #lemma(title: [Path Independence])[
