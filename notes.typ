@@ -1,4 +1,4 @@
-#import "@local/probonotes:0.1.6": *
+#import "@local/probonotes:0.2.0": *
 #show: style.with(
   course-name: "Analysis",
   course-code: "SF1673, SF1674",
@@ -64,7 +64,7 @@
   Every bounded, nonempty set of real numbers has a least upper bound.
 ]
 
-#note-box[The same does not apply for the rationals.]
+#note[The same does not apply for the rationals.]
 
 #definition(title: [Least Upper Bound])[
   Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
@@ -180,7 +180,7 @@
   $emptyset$ is compact.
 ]
 
-#note-box[Compactness is like a generalization of closed intervals.]
+#note[Compactness is like a generalization of closed intervals.]
 
 = The Basics of Limits
 
@@ -290,7 +290,7 @@
   that $f(x_n) -> L$.
 ]
 
-#note-box[
+#note[
   In the $epsilon delta$-definition of limits,
   the additional restriction that $0 < abs(x - a)$
   is just a way to say $x != c.$
@@ -492,7 +492,7 @@
   $ nabla f = [J f]^T. $
 ]
 
-#note-box()[
+#note[
   Loosely speaking, in an orthonormal $RR^n$-basis,
   the gradient $nabla f : RR^n -> RR^n$
   of a differentiable function $f : RR^n -> RR$
@@ -649,7 +649,7 @@
   // (f'(p))/(g'(p)) - L + 1/g(a) (f(b)-g(b) (f'(p))/(g'(p))) $
 ]
 
-#warning-box()[
+#warning[
   This is only an implication, not an equivalence,
   so there may exist some other solution if this method fails.
 ]
@@ -770,7 +770,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 == Function Graphs
 
-#tip-box(title: [Tip (Sketching Graphs)])[
+#tip(title: [Tip (Sketching Graphs)])[
   ==== Information
   + symmetries
   + split into cases
@@ -1174,7 +1174,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x. $
 ] <thm-parts>
 
-#tip-box(title: [LIATE])[
+#tip(title: [LIATE])[
   The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
   - Logarithmic: $ln(x)$, $log_a(x)$
   - Inverse trigonometric: $arctan(x)$, $arcsin(x)$, $arccos(x)$
@@ -1184,7 +1184,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Choose $g(x)$ as the function that appears first in this list.
 ]
 
-#tip-box(title: [Trigonometric Functions])[
+#tip(title: [Trigonometric Functions])[
   ==== Arctangent
 
   + Addition: $(a b < 1, "otherwise add or subtract" pi slash 2)$
@@ -1387,7 +1387,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Vector Differential Operators
 
-#tip-box()[
+#tip[
   Vector calculus is heavily centered around the
   three vector differential operators and
   their respective fundamental theorems.
@@ -1501,7 +1501,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If $a_j >= 0$ for every $j$ we say that the series is _positive_.
 ]
 
-#warning-box[
+#warning[
   Beware of treating infinite series like elementary algebra,
   e.g., by rearranging terms.
 ]
@@ -1619,7 +1619,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   ))
 ]
 
-#warning-box()[
+#warning[
   The following does not apply.
   #compact-restate((<thm-term>, <thm-alternating>, <thm-ratio>))
 ]
