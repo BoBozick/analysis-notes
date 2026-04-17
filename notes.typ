@@ -607,7 +607,7 @@
 #theorem(title: [Dot and Scalar Product Rules])[
   $ dv(,t) ve(x)(t) dot ve(y)(t)
   &= ve(x)'(t) dot ve(y)(t) + ve(x)(t) dot ve(y)'(t)
-  \ dv(,t) ve(x)(t) dot ve(y)(t)
+  \ dv(,t) ve(x)(t) times ve(y)(t)
   &= ve(x)'(t) times ve(y)(t) + ve(x)(t) times ve(y)'(t) $
 ]
 
