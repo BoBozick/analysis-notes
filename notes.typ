@@ -258,7 +258,8 @@
 
   If $K$ is closed and bounded
   each sequence in it is bounded
-  and thus contains a convergent subsequence by @thm-bolzano-weierstrass
+  and thus contains a convergent subsequence by
+  @thm-bolzano-weierstrass
   with a limit point in the set
   since a closed set contains all its limit points.
 ]
@@ -544,7 +545,8 @@
   Let $F : D subset.eq RR^3 -> RR$ be $C^1$ yielding a curve $F(x, y, z) = 0$.
   If $F(x_0, y_0, z_0) = 0$ and $F_z (x_0, y_0, z_0) != 0$
   then near $(x_0, y_0)$ there exists
-  a unique differentiable function $z = f(x, y)$ with $F(x, y, f(x, y)) = 0$.
+  a unique differentiable function $z = f(x, y)$
+  with $F(x, y, f(x, y)) = 0$.
   and as a consequence the partial derivatives
   $ f_x (x, y) = - (F_x (x, y, f(x,y ))) / (F_z (x, y, f(x, y))) $
   and
@@ -565,7 +567,8 @@
   Let $f : RR^n -> RR$ be differentiable
   and let $ve(g) : RR -> RR^n$ be a vector of
   individually differentiable functions.
-  Then, $f compose ve(g) : RR -> RR$ is differentiable and its derivative is
+  Then, $f compose ve(g) : RR -> RR$ is differentiable
+  and its derivative is
   $ dv(, t) f(g_1 (t), g_2 (t), ..., g_n (t))
   = sum_(i=1)^n dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_n (t)) $
   or equivalently
@@ -576,8 +579,8 @@
   Let $f : RR^n -> RR$ be differentiable
   and let $ve(g) : RR^m -> RR^n$ be a vector of
   individually differentiable functions.
-  Then, $f compose ve(g) : RR^m -> RR$ is differentiable and its partial
-  derivatives are given by
+  Then, $f compose ve(g) : RR^m -> RR$ is differentiable and
+  its partial derivatives are given by
   $ pdv(, x_j) (f compose ve(g))(ve(x))
   = sum_(i=1)^n pdv(, y_i) f(ve(g)(ve(x))) pdv(, x_j) g_i (ve(x)) $
   for all $j in {1, 2, ..., m}.$
@@ -662,7 +665,8 @@
 ] <thm-fermat>
 
 #theorem(title: [Darboux's])[
-  If $f$ is differentiable on $[a, b]$ and if $y$ lies strictly between
+  If $f$ is differentiable on $[a, b]$ and
+  if $y$ lies strictly between
   $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
 
   In other words, if $f$ is differentiable on an interval,
@@ -924,7 +928,8 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 === Definition
 
 #definition(title: [Partition])[
-  A _partition_ of $[a,b]$ is a finite set $ P = {x_0, x_1, ..., x_n} $
+  A _partition_ of $[a,b]$ is
+  a finite set $ P = {x_0, x_1, ..., x_n} $
   such that $ a = x_0 < x_1 < dots.h.c < x_n = b, $
   
   The partition $P$ has _subintervals_
@@ -969,7 +974,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
    and form the (tagged) _Riemann sum_
   $ S(f, P, (t_i)) = sum_(i=1)^n f(t_i) (x_i - x_(i-1)). $
 
-  We say $f$ is _Riemann integrable_ if there exists $L in RR$ such that
+  We say $f$ is _Riemann integrable_ if
+  there exists $L in RR$ such that
   $ forall epsilon > 0 space exists delta > 0 :
   norm(P) < delta ==> |S(f,P,(t_i)) - L| < epsilon $
   for every choice of sample points $(t_i)$. In that case we write
@@ -1023,14 +1029,15 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Absolute Value / Triangle])[
-  If $f$ integrable, then $|f|$ integrable and
+  If $f$ is integrable, then $|f|$ is integrable and
   $ abs(integral_a^b f(x) dif x) <= integral_a^b |f(x)| dif x. $
 ]
 
 #theorem(title: [Products and Composition])[
-  If $f,g$ integrable, then $f g$ is integrable.
+  If $f,g$ are integrable, then $f g$ is integrable.
   
-  If $f$ integrable and $phi$ continuous on a set containing $f([a,b])$,
+  If $f$ is integrable and
+  $phi$ is continuous on a set containing $f([a,b])$,
   then $phi compose f$ is integrable.
 ]
 
@@ -1050,7 +1057,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Additivity of the Interval])[
-  If $c in (a,b)$ and $f$ integrable on $[a,b]$, then
+  If $c in (a,b)$ and $f$ is integrable on $[a,b]$, then
   $ integral_a^b f(x) dif x = integral_a^c f(x) dif x
    + integral_c^b f(x) dif x. $
   It follows that $ integral_a^a f(x) dif x = 0$ and
@@ -1058,7 +1065,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Order / Comparison])[
-  If $f,g$ integrable and $f(x) <= g(x)$ on $[a,b]$, then
+  If $f,g$ are integrable and $f(x) <= g(x)$ on $[a,b]$, then
   $ integral_a^b f(x) dif x <= integral_a^b g(x) dif x. $
 ] <thm-integral-comparison>
 
@@ -1362,7 +1369,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 === Line Integral Properties
 
 #theorem()[
-  If $C$ is a smooth curve parametrized by $ve(r)(t)$ for $t in [a, b]$, then
+  If $C$ is a smooth curve
+  parametrized by $ve(r)(t)$ for $t in [a, b]$, then
   $ integral_C f(x) dif s
   = integral_a^b f(ve(r)(t))
   sqrt((x'_1 (t))^2 + (x'_2 (t))^2 + dots.h.c + (x'_n (t))^2) dif t. $
@@ -1384,7 +1392,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   three vector differential operators and
   their respective fundamental theorems.
 
-  Furthermore, all of these are generalized by @thm-generalized-stokes.
+  Furthermore, all of these are generalized by
+  @thm-generalized-stokes.
 ]
 
 #theorem(title: [Generalized Stoke's])[
@@ -1395,7 +1404,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ] <thm-generalized-stokes>
 
 #definition(title: [Conservative Vector Field])[
-  A vector field $ve(F) : Omega -> RR^n$ is _conservative_ if there exists
+  A vector field $ve(F) : Omega -> RR^n$
+  is _conservative_ if there exists
   a scalar _potential function_ $phi : Omega -> RR$
   such that $ve(F) = nabla phi.$
 ]
@@ -1415,7 +1425,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #proof[
-  With a parameterization such that $ve(r)(a) = ve(a)$ and $ve(r)(b) = ve(b)$,
+  With a parameterization such that
+  $ve(r)(a) = ve(a)$ and $ve(r)(b) = ve(b)$,
   $ integral_C nabla phi dot dif ve(r)
   = integral_a^b nabla phi(ve(r)(t)) dot ve(r)'(t) dif t
   = integral_a^b dv(, t) phi(ve(r)(t)) dif t
@@ -1426,11 +1437,13 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem()[
-  If the vector field $ve(F) = (F_x, F_y)$ has a $C^2$ potential function,
+  If the vector field $ve(F) = (F_x, F_y)$
+  has a $C^2$ potential function,
   then
   $ pdv(F_y, x) = pdv(F_x, y). $
 
-  Likewise, if the equality above holds then $ve(F)$ has a potential function.
+  Likewise, if the equality above holds then
+  $ve(F)$ has a potential function.
 ]
 
 #definition(title: [Divergence])[
@@ -1590,7 +1603,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If _both_
   $ integral_(-oo)^a f(x) dif x space "and" space
   integral_(a)^oo f(x) dif x $
-  are convergent, then for any real $a$ we define the convergent integral
+  are convergent, then for any real $a$
+  we define the convergent integral
   $ integral_(-oo)^oo f(x) dif x =
   integral_(-oo)^a f(x) dif x
   + integral_a^oo f(x). $
@@ -1753,7 +1767,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   - big $Theta$:
     - $f$ grows asymptotically at the same rate as $g$ as $x -> oo$
     - $f$ vanishes asymptotically at the same rate as $g$ as $g(x) -> 0$
-  For simplicity's sake we assume $f$ and $g$ are eventually non-negative.
+  For simplicity's sake we assume
+  $f$ and $g$ are eventually non-negative.
   Also, by $g(x) -> 0$ we actually mean $x -> a$.
 ]
 
@@ -1790,7 +1805,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Big _O_ Behavior])[
-  If $h(x) = O(f(x))$ and $k(x) = O(g(x))$ (same limiting regime), then
+  If $h(x) = O(f(x))$ and $k(x) = O(g(x))$
+  (same limiting regime), then
   $h(x) k(x) = O(f(x) g(x))$.
 
   If $m <= n$ then as $x -> 0$, $x^n = O(x^m)$ so
@@ -1805,6 +1821,6 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1))
   "as" x-> c. $
 
-  Furthermore, the coefficients $f^((k))(c) slash k!$ are unique to each
-  $(x - c)^k$.
+  Furthermore, the coefficients $f^((k))(c) slash k!$ are
+  unique to each $(x - c)^k$.
 ]
