@@ -10,14 +10,13 @@
   margin: 0.5cm,
   width: 14cm,
   height: auto,
-  end-space: 40em,
+  end-space: 2em,
   heading-break: false,
 
   language: "en",
   contents: true,
   memes: false,
 )
-
 
 = The Real Numbers
 
@@ -64,7 +63,9 @@
   Every bounded, nonempty set of real numbers has a least upper bound.
 ]
 
-#note[The same does not apply for the rationals.]
+#note[
+  The same does not apply for the rationals.
+]
 
 #definition(title: [Least Upper Bound])[
   Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
@@ -75,7 +76,7 @@
 == Cardinality
 
 #definition(title: [Cardinality])[
-  $A$ has the same _cardinality_ as $B$ if
+  A set $A$ has the same _cardinality_ as a set $B$ if
   there exists a bijective $f : A -> B$.
 ]
 
@@ -185,13 +186,20 @@
   it is closed and bounded.
 ] <thm-heine-borel>
 
-#theorem()[
+#theorem[
   $RR$ is not compact.
 
   $emptyset$ is compact.
 ]
 
-#note[Compactness is like a generalization of closed intervals.]
+#note[
+  Compactness is like a generalization of closed intervals.
+]
+
+#theorem(title: [Tychonoff's])[
+  The product of any collection of compact topological spaces
+  is compact with respect to the product topology.
+]
 
 = The Basics of Limits
 
@@ -212,7 +220,8 @@
 
   We write this $lim_(n->oo) a_n = lim a_n = a$ or $a_n -> a$.
 
-  #example[Template of a typical convergence proof:
+  #example[
+    Template of a typical convergence proof:
     + Let $epsilon > 0$ be arbitrary.
     + Propose an $N in NN$ (found before writing the proof).
     + Assume $n >= N$.
@@ -228,7 +237,7 @@
   Subsequences of a convergent sequence converge to the same limit.
 ]
 
-#theorem()[
+#theorem[
   A sequence $(ve(a))_n in RR^m$ converges to a limit $ve(b)$
   if and only if $a_i -> b_i$ for all coordinates $i in {1, 2, ..., m}$.
 ]
@@ -240,7 +249,7 @@
   $exists M > 0 : |a_n| < M space forall n in NN$.
 ]
 
-#lemma()[
+#lemma[
   $ "monotone & bounded" ==> "convergent" ==> "bounded" $
 ]
 
@@ -316,7 +325,7 @@
   $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
 ]
 
-#theorem()[
+#theorem[
   Let $f$ and $g$ be functions from $D subset.eq RR^n$ to $RR^m$.
   If $f(x) -> A$ and $g(x) -> B$ as $x -> c in dash(D)$, then
   + $f(x) + g(x) -> A + B$
@@ -326,7 +335,7 @@
     for all $x$ in a punctured neighborhood to $c$
 ]
 
-#theorem()[
+#theorem[
   Let $Omega subset RR^n$ be a neighborhood around the origin and
   $f : Omega -> RR$ be a map with
   $ abs(f(ve(x)) - A) <= M(norm(ve(x))) -> 0 $
@@ -369,7 +378,7 @@
   In particular, $delta$ can be chosen independent of $y$.
 ]
 
-#theorem()[
+#theorem[
   If a function is uniformly continuous, it is also continuous.
 ]
 
@@ -446,7 +455,7 @@
   exists, we say $f$ is _differentiable_ at $c$ with _derivative_ $f'(c)$.
 ]
 
-#definition()[
+#definition[
   Let $f : D subset.eq RR^n -> RR$ and let $a$ be an interior point of $D$.
   We say that $f$ is _differentiable_ at $a$ if
   there exists some real constants $A_1, A_2, ..., A_n$ and
@@ -461,7 +470,7 @@
   $ ve(A) dot ve(h) = nabla f_ve(a) dot ve(h). $
 ]
 
-#definition()[
+#definition[
   Let $D subset.eq RR^n$ be an open subset.
   Then a function $ve(f) : D -> RR^m$ is said to be
   (totally) _differentiable_ at a point $ve(a) in D$ if
@@ -501,7 +510,7 @@
   $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" ve(h) in V. $
 ]
 
-#theorem()[
+#theorem[
   Let $V$ be $RR^n$ with the dot product and an orthonormal basis
   and let $f : V -> RR$ be differentiable. Then,
   $ nabla f = [J f]^T. $
@@ -522,20 +531,20 @@
   up to order $k$.
 ]
 
-#theorem()[
+#theorem[
   If $f in C^1 (D)$ then $f$ is differentiable on $D$.
 ]
 
-#definition()[
+#definition[
   The Jacobian determinant of $ve(f) : RR^n -> RR^n$ is
   the well-defined function $det ve(J f) : RR^n -> RR$.
 ]
 
-#theorem()[
+#theorem[
   $ det ve(J (f compose g) [a]) = (det ve(J f [g(a)]))(det ve(J g [a])) $
 ]
 
-#corollary()[
+#corollary[
   The identity map has determinant 1.
 ]
 
@@ -590,7 +599,7 @@
   $ dv(, t)(f compose ve(g))(t) = nabla f(ve(g)(t)) dot ve(g)'(t). $
 ] <thm-chain-multivariable>
 
-#corollary()[
+#corollary[
   Let $f : RR^n -> RR$ be differentiable
   and let $ve(g) : RR^m -> RR^n$ be a vector of
   individually differentiable functions.
@@ -752,7 +761,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 === Constrained Optimization
 
-#lemma()[
+#lemma[
   At a feasible stationary point, $f$ and $g$ are parallel.
   In the case of multiple constraints, we seek a feasible point where
   $ nabla f in span{nabla g_1, nabla g_2, ..., nabla g_n}. $
@@ -894,11 +903,11 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f''(c)>0$ $==>$ local minimum.
   - $f''(c)<0$ $==>$ local maximum.
   - $f''(c)=0$ and $f^((3))(c)!=0$ $==>$ stationary inflection point.  
-  Note: $f''(c)=0$ alone is insufficient for an inflection; the curvature
+  Note that $f''(c)=0$ alone is insufficient for an inflection; the curvature
   must change sign.
 ]
 
-#example(title: [Examples])[
+#examples[
   - $f(x)=x^3$: $f'(0)=f''(0)=0$, $f^((3))(0)=6!=0$ (odd $n=3$)
     $==>$ stationary inflection at $0$.
   - $f(x)=x^4$: $f'(0)=f''(0)=f^((3))(0)=0$, $f^((4))(0)=24>0$ (even $n=4$)
@@ -906,7 +915,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   - $f(x)=-x^4$: local maximum at $0$, no inflection.
 ]
 
-#lemma()[
+#lemma[
   Assume $ve(a) in RR^n$ is a stationary point of
   a $C^2$-function $f : RR^n -> RR$.
   The second-order Taylor series expansion can be rewritten as
@@ -916,7 +925,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ Q(ve(h)) = ve(h)^T H ve(h), wide H = D f_ve(a). $
 ]
 
-#theorem()[
+#theorem[
   In the scenario above,
   $ H "positive definite" &==> ve(a) "local minimum"
   \ H "negative definite" &==> ve(a) "local maximum"
@@ -997,7 +1006,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ L = integral_a^b f(x) dif x. $
 ]
 
-#theorem()[
+#theorem[
   The Darboux and Riemann integrals are equivalent.
 ]
 
@@ -1027,12 +1036,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     points where it has only removable or jump discontinuities.
 ]
 
-#theorem()[
+#theorem[
   If $f$ is a real continuous function defined on a rectangle $Delta$,
   then $f$ is integrable on $Delta$.
 ]
 
-#theorem()[
+#theorem[
   Assume $f$ is continuous on $[a, b]$. Let
   $ M_i = max_(x in [x_(i-1), x_i]) f(x)
   space "and" space
@@ -1248,11 +1257,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   A set is a null set if it has measure zero. 
 ]
 
-#theorem()[
+#theorem[
   A null set is integrable and its integral is $0$.
 ]
 
-#corollary()[
+#corollary[
   If a set $A subset RR^n$ has $dim N < n$ then it has measure zero.
 ]
 
@@ -1261,14 +1270,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   if its boundary has measure zero.
 ]
 
-#lemma()[
+#lemma[
   If $f$ is uniformly continuous and bounded on a Jordan measurable set $D$,
   then $f$ is integrable over $D$.
 ]
 
 === Multiple Integrals
 
-#theorem()[
+#theorem[
   If $f$ is continuous on
   $ D = {(x, y) : alpha(x) <= y <= beta(x), a <= x <= b}, $
   where $alpha$ and $beta$ are
@@ -1292,7 +1301,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   then for some $(xi, eta) in D$.
 ]
 
-#theorem()[
+#theorem[
   If $f$ is seperable with
   $ f(x, y) = g(x) h(y) $
   then we may rewrite
@@ -1311,7 +1320,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Defining Line and Surface Integrals
 
-#definition()[
+#definition[
   $ &dif s
   &&= norm(ve(r)'(t)) dif t
 
@@ -1344,7 +1353,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $t_i in S$ is a sample point in the sub-surface $S_i$.
 ]
 
-#theorem()[
+#theorem[
   If $f$ is continuous on $C$, then the line integral exists.
 ]
 
@@ -1383,7 +1392,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Line Integral Properties
 
-#theorem()[
+#theorem[
   If $C$ is a smooth curve
   parametrized by $ve(r)(t)$ for $t in [a, b]$, then
   $ integral_C f(x) dif s
@@ -1451,7 +1460,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   by @thm-chain-multivariable.
 ]
 
-#theorem()[
+#theorem[
   If the vector field $ve(F) = (F_x, F_y)$
   has a $C^2$ potential function,
   then
@@ -1499,7 +1508,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   A vector field is _irrotational_ if its curl is the zero vector.
 ]
 
-#theorem()[
+#theorem[
   $ "conservative" ==> "irrotational" $
 ]
 
@@ -1542,7 +1551,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   However, the reverse is not implied.
 ] <thm-term>
 
-#lemma()[
+#lemma[
   The series $sum_(j=1)^oo 1 slash j$ is divergent.
 ]
 
@@ -1589,7 +1598,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $sum_(j=0)^oo abs(a_j)$ is convergent.
 ]
 
-#theorem()[
+#theorem[
   If a series is absolutely convergent then it is convergent.
 ] <thm-absolutely-convergent>
 
@@ -1605,7 +1614,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Unlimited Intervals
 
-#definition()[
+#definition[
   Let $f$ be integrable on $[a, R]$ for all $R > a$.
   Then the integral is defined
   $ integral_a^oo f(x) dif x = lim_(R->oo)
@@ -1613,7 +1622,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If this limit exists, then the integral is said to be convergent.
 ]
 
-#definition()[
+#definition[
   Let $f$ be integrable on every closed and bounded interval.
   If _both_
   $ integral_(-oo)^a f(x) dif x space "and" space
@@ -1639,7 +1648,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   #compact-restate((<thm-term>, <thm-alternating>, <thm-ratio>))
 ]
 
-#theorem()[
+#theorem[
   Let $f$ be decreasing on $[m, n]$, where $m < n$ are integers.
   Then,
   $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dif x <= sum_(j=m)^(n-1) f(j) $
@@ -1730,7 +1739,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t $
 ]
 
-#definition()[
+#definition[
   The Peano form of the remainder is
   $ R_n (x) = o(abs(x - c)^n), quad x -> c. $ 
 ]
@@ -1747,22 +1756,22 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The following functions have a Maclaurin series with
   radius of convergence $r = oo$:
   #block[$
-  & e^x = sum_(k=0)^oo x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
-  & sin x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1)! = x - x^3/3!
-    + x^5/5! - dots.h.c \
-  & cos x = sum_(k=0)^oo (-1)^k x^(2k) / (2k)! = 1 - x^2/2!
-    + x^4/4! - dots.h.c \
-  & arctan x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1) = x - x^3/3
-    + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
-  & ln(1 + x) = sum_(k=1)^oo (-1)^(k+1) x^k / k = x - x^2/2
-    + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
-  & (1 + x)^a = sum_(k=0)^oo binom(a, k) x^k quad(|x| < 1) \
+    & e^x = sum_(k=0)^oo x^k / k! = 1 + x + x^2/2! + x^3/3! + dots.h.c \
+    & sin x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1)! = x - x^3/3!
+      + x^5/5! - dots.h.c \
+    & cos x = sum_(k=0)^oo (-1)^k x^(2k) / (2k)! = 1 - x^2/2!
+      + x^4/4! - dots.h.c \
+    & arctan x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1) = x - x^3/3
+      + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
+    & ln(1 + x) = sum_(k=1)^oo (-1)^(k+1) x^k / k = x - x^2/2
+      + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
+    & (1 + x)^a = sum_(k=0)^oo binom(a, k) x^k quad(|x| < 1) \
   $]
 ]
 
 === Function Order
 
-#definition()[ // Beware of the possibility of errors here.
+#definition[ // Beware of the possibility of errors here.
   If $f$ is in something of the below of $g$:
   - little $o$: $f$ lies _below every_ constant multiple of $g$.
   - big $O$: $f$ lies _below some_ constant multiple of $g$.
@@ -1787,19 +1796,19 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Also, by $g(x) -> 0$ we actually mean $x -> a$.
 ]
 
-#theorem()[
+#theorem[
   $ f in O(g) <==> g in Omega(f) $
 ]
 
-#theorem()[
+#theorem[
   $ f in o(g) ==> f in O(g) $
 ]
 
-#theorem()[
+#theorem[
   $ f in O(g) ==> lim f/g "is bounded" $
 ]
 
-#theorem()[
+#theorem[
   $ f in o(g) ==> lim f/g = 0 $
 ]
 
@@ -1829,7 +1838,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $O(x^m) + O(x^n) = O(x^n)$.
 ]
 
-#theorem()[
+#theorem[
   Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
   Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and
   $n + 1$ times on $(a, b)$. Then,
