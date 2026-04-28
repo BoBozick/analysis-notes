@@ -118,6 +118,17 @@
   + $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
 ]
 
+#definition(title: [Axiom of Choice])[
+  For any indexed family $cal(F)$ of nonempty sets,
+  there exists a choice function $f$
+  that selects one element from each set.
+  That is,
+  $ exists f : forall S in cal(F) : f(S) in S. $
+
+  Note that this is equivalent to
+  disjoint, nonempty $S subset.eq cal(F)$ for a set.
+] <axiom-choice>
+
 == Topology
 
 === Points
@@ -243,14 +254,14 @@
   whose limit point is in $K$.
 ]
 
-#corollary(title: [Sequential Compactness])[
-  A set $K subset RR^n$, where possibly $n = oo$,
+#lemma(title: [Real Sequential Compactness])[
+  A set $K subset RR^n$
   is sequentially compact if and only if
   $K$ is closed and bounded.
 ] <thm-sequential-compactness>
 
 #proof[
-  We show the two implication seperately.
+  We show the two implications seperately.
 
   If $K$ is sequentially compact
   it contains its limit points, hence being closed,
@@ -258,15 +269,19 @@
 
   If $K$ is closed and bounded
   each sequence in it is bounded
-  and thus contains a convergent subsequence by
-  @thm-bolzano-weierstrass
-  with a limit point in the set
+  and thus, by  @thm-bolzano-weierstrass,
+  contains a convergent subsequence
+  with a limit point in the set,
   since a closed set contains all its limit points.
 ]
 
-#corollary(title: [Compact])[
-  $K$ is compact by @thm-heine-borel
-  for finite $n$ in @thm-sequential-compactness.
+#theorem(title: [Metric Sequential Compactness])[
+  In a metric space,
+  the notions of
+  sequential compactness, limit point compactness,
+  countable compactness, and compactness
+  are all equivalent
+  (if one assumes the @axiom-choice.
 ]
 
 === Cauchy
