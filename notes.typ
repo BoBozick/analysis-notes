@@ -1,4 +1,4 @@
-#import "@local/probonotes:0.2.0": *
+#import "@local/probonotes:0.2.1": *
 #show: style.with(
   course-name: "Analysis",
   course-code: "SF1673, SF1674",
