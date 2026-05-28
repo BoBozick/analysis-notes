@@ -1292,7 +1292,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #proof[
   Using earlier lemmas and theorems, 
   $ D "compact" ==> f "uniformly continuous" ==> f "integrable over" D. $
-  The rest of the proof is left.
+  The rest of the proof is left as an exercise for the reader.
 ]
 
 #theorem(title: [Mean Value for Double Integrals])[
