@@ -1477,13 +1477,13 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 ]
 
 #theorem(title: [Divergence or Gauss's])[
-  Let $V subset RR^3$ be compact and
-  with a piecewise smooth boundary $delta V$.
+  Let $V subset RR^n$ be compact
+  with a piecewise smooth boundary $delta V$
+  oriented by outward pointing unit normals individually
+  denoted $hve(n)$.
   If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
   $ integral.triple_V (nabla dot ve(F)) dif V =
   integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
-
-  This may be generalized for $V subset RR^n$.
 ]
 
 #definition(title: [Curl])[
@@ -1737,6 +1737,20 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     integral_c^x (t-x)^2/2 f^((3))(t) dif t \
   &= dots.h.c \
   &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t $
+]
+
+#theorem(title: [Multivariable Taylor's])[
+  The Taylor expansion of degree $N$ for $f : RR^n -> RR$ is
+  $
+    f(ve(a) + ve(h))
+    = sum_(k=0)^N 1/k!
+    (ve(h) dot nabla)^k f(ve(a)) + R_N (ve(a), ve(h)),
+  $
+  where
+  $
+    ve(h) dot nabla =
+    h_1 pdv(, x_1) + h_2 pdv(, x_1) + dots.h.c + h_n pdv(, x_n).
+  $
 ]
 
 #definition[
