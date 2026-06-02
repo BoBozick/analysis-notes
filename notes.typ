@@ -1364,7 +1364,17 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ integral_C f dif s
   = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t $
   under the assumption that $ve(r)'(t) != ve(0)$ for every $t in [a, b]$.
+
+
 ]
+
+The above definition can also be written
+$
+  integral_C f dif s
+  = integral_a^b f(ve(x)(t))
+  sqrt((x'_1 (t))^2 + (x'_2 (t))^2 + dots.h.c + (x'_n (t))^2)
+  dif t.
+$
 
 #definition(title: [Line Integral, Vector Field])[
   Likewise, for a vector field $ve(F) : RR^n -> RR^n$ the line integral is
@@ -1390,33 +1400,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
-=== Line Integral Properties
-
-#theorem[
-  If $C$ is a smooth curve
-  parametrized by $ve(r)(t)$ for $t in [a, b]$, then
-  $ integral_C f(x) dif s
-  = integral_a^b f(ve(r)(t))
-  sqrt((x'_1 (t))^2 + (x'_2 (t))^2 + dots.h.c + (x'_n (t))^2) dif t. $
-]
-
-#theorem(title: [Green's])[
-  Let $P, Q in C^1 (Omega)$, where $Omega in RR^2$ is an open set.
-  If the compact region $D subset Omega$ has
-  a piecewise smooth boundary $partial D$
-  and is positively oriented, then
-  $ integral.cont_(partial D) P dif x + Q dif y
-  = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
-]
-
 === Vector Differential Operators
 
 #tip[
-  Vector calculus is heavily centered around the
-  three vector differential operators and
-  their respective fundamental theorems.
-
-  Furthermore, all of these are generalized by
+  Vector calculus is centered around the
+  three vector differential operators
+  $ nabla f, quad nabla dot ve(F), quad nabla times ve(F), $
+  and their respective fundamental theorem,
+  which are generalized by
   @thm-generalized-stokes.
 ]
 
@@ -1476,14 +1467,41 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ "div" ve(F) = nabla dot ve(F) = pdv(F_x, x) + pdv(F_y, y) + pdv(F_y, y). $
 ]
 
-#theorem(title: [Divergence or Gauss's])[
+#theorem(title: [Divergence, any $n$])[
   Let $V subset RR^n$ be compact
   with a piecewise smooth boundary $delta V$
   oriented by outward pointing unit normals individually
   denoted $hve(n)$.
   If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
+  $
+    underbrace(
+      integral dots.h.c integral _V,
+      n
+    ) (nabla dot ve(F)) dif V
+    =
+    underbrace(
+      integral.cont dots.h.c integral.cont _(delta V),
+      n - 1
+    ) (ve(F) dot ve(hat(n))) dif S.
+  $
+]
+
+#corollary(title: [Divergence or Gauss's, $n = 3$])[
   $ integral.triple_V (nabla dot ve(F)) dif V =
   integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
+]
+
+#corollary(title: [Green's, $n = 2$])[
+  Let $P, Q in C^1 (Omega)$, where $Omega in RR^2$ is an open set.
+  If the compact region $D subset Omega$ has
+  a piecewise smooth boundary $partial D$
+  and is positively oriented, then
+  $ integral.cont_(partial D) P dif x + Q dif y
+  = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
+]
+
+#corollary(title: [Fundamental Theorem of Calculus, $n = 1$])[
+  $ integral_a^b f'(x) dif x = f(a) - f(b) $
 ]
 
 #definition(title: [Curl])[
