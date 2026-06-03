@@ -290,7 +290,7 @@
   sequential compactness, limit point compactness,
   countable compactness, and compactness
   are all equivalent
-  (if one assumes the @axiom-choice.
+  (if one assumes the @axiom-choice).
 ]
 
 === Cauchy
@@ -537,7 +537,8 @@
 
 #definition[
   The Jacobian determinant of $ve(f) : RR^n -> RR^n$ is
-  the well-defined function $det ve(J f) : RR^n -> RR$.
+  the well-defined function
+  $ det ve(J f) : RR^n -> RR. $
 ]
 
 #theorem[
@@ -1504,6 +1505,12 @@ $
   $ integral_a^b f'(x) dif x = f(a) - f(b) $
 ]
 
+#definition(title: [Flux])[
+  $ Phi_ve(F) = integral.double_Sigma ve(F) dot ve(hat(n)) dif S, $
+  where $ve(hat(n))$ is the unit normal vector field to
+  the oriented surface $Sigma$.
+]
+
 #definition(title: [Curl])[
   Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
   Its curl is the vector-valued function
@@ -1528,6 +1535,14 @@ $
 
 #theorem[
   $ "conservative" ==> "irrotational" $
+]
+
+== Manifolds
+
+#theorem[
+  If $omega$ is an $n$-dimensional differential form
+  defined on an oriented $n$-dimensional manifold $M$, then
+  $ integral_M omega = - integral_(-M) omega. $
 ]
 
 = Infinite Series
