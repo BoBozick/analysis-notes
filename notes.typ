@@ -24,14 +24,14 @@
 
 === Prerequisites
 
-#theorem(title: [Induction])[
+#theorem[Induction][
   Let $S subset.eq NN$. If
   + $1 in S$, and
   + $n in S ==> n + 1 in S$ (inductive step),
   then $S = NN$.
 ]
 
-#definition(title: [Injective/Surjective/Bijective])[
+#definition[Injective/Surjective/Bijective][
   $f : X -> Y$ is _injective_ (or one-to-one) if
   $x_1 != x_2 ==> f(x_1) != f(x_2)$
   or equivalently if
@@ -45,11 +45,11 @@
 
 === Comparison
 
-#definition(title: [Equality])[
+#definition[Equality][
   $a  = b <==> (forall epsilon > 0 => |a - b| < epsilon)$
 ]
 
-#theorem(title: [Triangle Inequalities])[
+#theorem[Triangle Inequalities][
   + $|a + b| <= |a| + |b|$
   + $|a - b| <= |a - c| + |c - b|$
   + $|a - b| >= ||a| - |b||$
@@ -59,7 +59,7 @@
 
 === Bounds
 
-#definition(title: [Supremum Property or Axiom of Completeness])[
+#definition[Supremum Property or Axiom of Completeness][
   Every bounded, nonempty set of real numbers has a least upper bound.
 ]
 
@@ -67,7 +67,7 @@
   The same does not apply for the rationals.
 ]
 
-#definition(title: [Least Upper Bound])[
+#definition[Least Upper Bound][
   Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
   $ s = sup A #h(1em) <==> #h(1em)
   forall epsilon > 0 space exists a in A : s - epsilon < a. $
@@ -75,12 +75,12 @@
 
 == Cardinality
 
-#definition(title: [Cardinality])[
+#definition[Cardinality][
   A set $A$ has the same _cardinality_ as a set $B$ if
   there exists a bijective $f : A -> B$.
 ]
 
-#definition(title: [Countable/Uncountable])[
+#definition[Countable/Uncountable][
   $A$ is _countably infinite_ if $NN tilde A$.
 
   $A$ is _countable_ if it is finite or countably infinite.
@@ -88,7 +88,7 @@
   Otherwise, $A$ is _uncountable_.
 ]
 
-#theorem(title: [Countability])[
+#theorem[Countability][
   $QQ$ is countable.
 
   #proof[
@@ -113,13 +113,13 @@
   ]
 ]
 
-#theorem(title: [Density of $QQ$ in $RR$])[
+#theorem[Density of $QQ$ in $RR$][
   + $forall a < b in RR space exists r in QQ : a < r < b$
 
   + $forall y in RR space exists (r_n) in QQ : (r_n) -> y$
 ]
 
-#definition(title: [Axiom of Choice])[
+#definition[Axiom of Choice][
   For any indexed family $cal(F)$ of nonempty sets,
   there exists a choice function $f$
   that selects one element from each set.
@@ -134,17 +134,17 @@
 
 === Points
 
-#definition(title: [Limit Point])[
+#definition[Limit Point][
   $x$ is a _limit point_ of $A$ if every $V_epsilon (x)$ intersects $A$
   at some point other than $x$.
 ]
 
-#theorem(title: [Sequential Limit Point])[
+#theorem[Sequential Limit Point][
   $x$ is a limit point of $A$ if $x = lim a_n$ for some
   $(a_n) subset.eq A : a_n != x space forall n in NN.$
 ]
 
-#theorem(title: [Nested Interval Property])[
+#theorem[Nested Interval Property][
   Let $(I_n)$ be a nested sequence of nonempty closed
   and bounded intervals with
   $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c. $
@@ -154,7 +154,7 @@
 
 === Open and Closed Sets
 
-#definition(title: [Open/Closed Set])[
+#definition[Open/Closed Set][
   $A subset.eq RR$ is _open_ if $forall a in A space exists V_epsilon (a)
   subset.eq A$ or equivalently if its complement is closed.
   
@@ -162,11 +162,11 @@
   equivalently if its complement is open.
 ]
 
-#theorem(title: [Clopen Sets])[
+#theorem[Clopen Sets][
   $RR$ and $emptyset$ are _clopen_ (both opened and closed).
 ]
 
-#theorem(title: [Unions/Intersections])[
+#theorem[Unions/Intersections][
   Arbitrary unions of open sets are open;
   finite intersections of open sets are open.
   
@@ -176,12 +176,12 @@
 
 === Compactness
 
-#definition(title: [Compact])[
+#definition[Compact][
   A set $K$ in a topological space is _compact_ if
   every open cover has a finite subcover.
 ]
 
-#theorem(title: [Heine--Borel])[
+#theorem[Heine--Borel][
   A set $K subset.eq RR^n$ is compact if and only if
   it is closed and bounded.
 ] <thm-heine-borel>
@@ -196,7 +196,7 @@
   Compactness is like a generalization of closed intervals.
 ]
 
-#theorem(title: [Tychonoff's])[
+#theorem[Tychonoff's][
   The product of any collection of compact topological spaces
   is compact with respect to the product topology.
 ]
@@ -205,11 +205,11 @@
 
 == Sequences
 
-#definition(title: [Sequence])[
+#definition[Sequence][
   A _sequence_ is a function whose domain is $NN.$
 ]
 
-#definition(title: [Convergence])[
+#definition[Convergence][
   A sequence _converges_ to $a$ if
   $ forall epsilon > 0 space exists N in NN :
   n >= N ==> |a_n - a| < epsilon $
@@ -219,21 +219,21 @@
   contains all but a finite number of the terms in $(a_n)$.
 
   We write this $lim_(n->oo) a_n = lim a_n = a$ or $a_n -> a$.
-
-  #example[
-    Template of a typical convergence proof:
-    + Let $epsilon > 0$ be arbitrary.
-    + Propose an $N in NN$ (found before writing the proof).
-    + Assume $n >= N$.
-    4. Show that $|a_n - a| < epsilon.$
-  ]
 ]
 
-#theorem(title: [Uniqueness of Limits])[
+#example[
+  Template of a typical convergence proof:
+  + Let $epsilon > 0$ be arbitrary.
+  + Propose an $N in NN$ (found before writing the proof).
+  + Assume $n >= N$.
+  4. Show that $|a_n - a| < epsilon.$
+]
+
+#theorem[Uniqueness of Limits][
   The limit of a sequence, if it exists, is unique.
 ]
 
-#corollary(title: [Subsequence Limits])[
+#corollary[Subsequence Limits][
   Subsequences of a convergent sequence converge to the same limit.
 ]
 
@@ -244,7 +244,7 @@
 
 === Bounded
 
-#definition(title: [Bounded])[
+#definition[Bounded][
   A sequence is _bounded_ if
   $exists M > 0 : |a_n| < M space forall n in NN$.
 ]
@@ -253,17 +253,17 @@
   $ "monotone & bounded" ==> "convergent" ==> "bounded" $
 ]
 
-#theorem(title: [Bolzano--Weierstrass])[
+#theorem[Bolzano--Weierstrass][
   Each bounded sequence in $RR^n$ has a convergent subsequence.
 ] <thm-bolzano-weierstrass>
 
-#definition(title: [Sequentially Compact])[
+#definition[Sequentially Compact][
   A set $K subset RR^n$ is _sequentially compact_ if
   every sequence $(a_n) subset.eq K$ contains a convergent subsequence
   whose limit point is in $K$.
 ]
 
-#lemma(title: [Real Sequential Compactness])[
+#lemma[Real Sequential Compactness][
   A set $K subset RR^n$
   is sequentially compact if and only if
   $K$ is closed and bounded.
@@ -284,7 +284,7 @@
   since a closed set contains all its limit points.
 ]
 
-#theorem(title: [Metric Sequential Compactness])[
+#theorem[Metric Sequential Compactness][
   In a metric space,
   the notions of
   sequential compactness, limit point compactness,
@@ -295,19 +295,19 @@
 
 === Cauchy
 
-#definition(title: [Cauchy Sequence])[
+#definition[Cauchy Sequence][
   A sequence $(a_n)$ is a _Cauchy sequence_ if
   $ forall epsilon > 0 space exists N in NN :
   m, n >= N ==> |a_n - a_m| < epsilon. $
 ]
 
-#theorem(title: [Cauchy Criterion])[
+#theorem[Cauchy Criterion][
   A sequence converges if and only if it is a Cauchy sequence.
 ]
 
 == Functions
 
-#theorem(title: [Function Limit])[ 
+#theorem[Function Limit][ 
   Given $f : A -> RR$ with the limit point $c$,
   + $lim_(x->c) f(x) = L$ is equivalent to
   + if $forall (x_n) subset.eq A : (x_n != c "and" x_n -> c)$ it follows
@@ -320,7 +320,7 @@
   is just a way to say $x != c.$
 ]
 
-#definition(title: [Infinite Limit])[
+#definition[Infinite Limit][
   Given a limit point $c in D_f$, we say that $lim_(x->c) f(x) = oo$ if
   $ forall M space exists delta > 0 : 0 <|x - c| < delta ==> f(x) >=M. $
 ]
@@ -347,7 +347,7 @@
 
 === Existence
 
-#theorem(title: [Continuity])[
+#theorem[Continuity][
   The following are equivalent:
   + $f : A subset.eq RR -> RR$ is _continuous_ at $c in A$.
   + $forall epsilon > 0 space exists delta > 0 :
@@ -361,17 +361,17 @@
   Note that (ii) defines (i). Mostly (v) is used in practice.
 ]
 
-#corollary(title: [Isolated Continuity])[
+#corollary[Isolated Continuity][
   All functions are continuous at isolated points.
 ]
 
-#theorem(title: [Dirichlet Discontinuous])[ 
+#theorem[Dirichlet Discontinuous][ 
   The Dirichlet function $f : RR -> RR$ such that
   $f(x) = 1$ if $x in QQ$ and $f(x) = 0$ if $x in II$ is
   discontinuous everywhere.
 ]
 
-#definition(title: [Uniform Continuity])[
+#definition[Uniform Continuity][
   We say $f$ is _uniformly continuous_ on $I$ if
   $ forall epsilon > 0 space exists delta > 0 :
   x, y in I, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
@@ -382,7 +382,7 @@
   If a function is uniformly continuous, it is also continuous.
 ]
 
-#theorem(title: [Heine--Cantor])[
+#theorem[Heine--Cantor][
   If $f$ is continuous and defined on a compact set $K$,
   then it is also uniformly continuous on $K$.
 ]
@@ -409,37 +409,37 @@
 
 === Composition
 
-#theorem(title: [Composition])[ 
+#theorem[Composition][ 
   Given $f : A -> B$ and $g : B -> RR$ with $f(A) subset.eq B$,
   if $f$ is continuous at $c in A$ and
   $g$ is continuous at $f(c) in B$,
   then $g compose f$ is continuous at $c$.
 ]
 
-#theorem(title: [Composition Limit])[ 
+#theorem[Composition Limit][ 
   If $f$ is continuous at $y$ and $lim_(x->c) g(x) = y$, then
   $ lim_(x->c) f(g(x)) = f(lim_(x->c) g(x)) = f(y). $ 
 ]
 
 === Results
 
-#theorem(title: [Intermediate Value])[
+#theorem[Intermediate Value][
   If $f$ is continuous on $[a, b]$, then for any $y$ between $f(a)$ and
   $f(b)$, there exists some $c in (a, b)$ such that $f(c) = y$.
 ] <thm-intermediate>
 
-#theorem(title: [Intermediate Value in $RR^n$])[
+#theorem[Intermediate Value in $RR^n$][
   Let $D subset.eq RR^n$ be an arcwise connected domain and let $f : D -> RR$.
   Then if $f$ assumes two values $f(a)$ and $f(b)$,
   $f$ assumes all intermediate values.
 ]
 
-#theorem(title: [Weierstrass Extreme Value])[
+#theorem[Weierstrass Extreme Value][
   If $f$ is continuous on the compact set $K$,
   then $f$ attains a maximum and a minimum value on $K$.
 ] <thm-extreme>
 
-#theorem(title: [Limit of Bounded Function])[
+#theorem[Limit of Bounded Function][
   If $f$ is bounded then $lim_(h->0) f(h) h = 0.$
 ]
 
@@ -449,7 +449,7 @@
 
 === Differentiation
 
-#definition(title: [Derivative at a Point])[
+#definition[Derivative at a Point][
   Let $f : A -> RR$ and $c$ a limit point of $A$. If a finite
   $ f'(c) = lim_(h->0) (f(c + h) - f(c))/h $
   exists, we say $f$ is _differentiable_ at $c$ with _derivative_ $f'(c)$.
@@ -488,7 +488,7 @@
   quad ve(h) -> ve(0). $
 ]
 
-#definition(title: [Differential])[
+#definition[Differential][
   Let $D subset.eq RR^n$ be an open subset and let $f : D -> RR^m$ be
   differentiable at a point $ve(a) in D$.
   The _differential_ of $f$ at $ve(a)$,
@@ -504,7 +504,7 @@
   where $dif ve(a) = ve(h).$
 ]
 
-#definition(title: [Gradient])[
+#definition[Gradient][
   In a real inner product space $(V, iprod(dot, dot))$,
   the gradient of a scalar function $f : V -> RR$ is defined by the identity
   $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" ve(h) in V. $
@@ -523,7 +523,7 @@
   is an $n$-dimensional vector field.
 ]
 
-#definition(title: [Class $C^k$])[
+#definition[Class $C^k$][
   Let $D subset.eq RR^n$ be an open subset and let $k$ be a positive integer.
   The differentiability class $C^k (D)$
   is the set of all functions $f : D -> RR$
@@ -549,7 +549,7 @@
   The identity map has determinant 1.
 ]
 
-#theorem(title: [Inverse Function])[
+#theorem[Inverse Function][
   Let $ve(f) : U subset.eq RR^n -> RR^n$ with $U$ open
   be a $C^k$ map for some $k >= 1$.
   Suppose that its derivative at som point $ve(a) in U$,
@@ -566,7 +566,7 @@
   $ det D ve(g)(ve(y)) = 1 / (det D ve(f)(ve(g)(ve(y)))). $
 ]
 
-#theorem(title: [Implicit Function, Two-Variable Case])[
+#theorem[Implicit Function, Two-Variable Case][
   Let $F : D subset.eq RR^3 -> RR$ be $C^1$ yielding a curve $F(x, y, z) = 0$.
   If $F(x_0, y_0, z_0) = 0$ and $F_z (x_0, y_0, z_0) != 0$
   then near $(x_0, y_0)$ there exists
@@ -580,7 +580,7 @@
 
 === Rules of Calculation
 
-#theorem(title: [Chain Rule])[
+#theorem[Chain Rule][
   Let $f : X -> Y$ and $g : Y -> RR$.
   If $f$ is differentiable at $c in X$ and
   $g$ is differentiable at $f(c) in Y$,
@@ -588,7 +588,7 @@
   $ (g compose f)'(c) = g'(f(c)) f'(c). $
 ] <thm-chain>
 
-#theorem(title: [Chain Rule, Multivariable Case])[
+#theorem[Chain Rule, Multivariable Case][
   Let $f : RR^n -> RR$ be differentiable
   and let $ve(g) : RR -> RR^n$ be a vector of
   individually differentiable functions.
@@ -611,7 +611,7 @@
   for all $j in {1, 2, ..., m}.$
 ]
 
-#theorem(title: [Basic Derivatives],
+#theorem[Basic Derivatives],
   grid(
     columns: (1fr, 1.2fr),
     [$
@@ -632,14 +632,14 @@
   )
 )
 
-#theorem(title: [Dot and Scalar Product Rules])[
+#theorem[Dot and Scalar Product Rules][
   $ dv(,t) ve(x)(t) dot ve(y)(t)
   &= ve(x)'(t) dot ve(y)(t) + ve(x)(t) dot ve(y)'(t)
   \ dv(,t) ve(x)(t) times ve(y)(t)
   &= ve(x)'(t) times ve(y)(t) + ve(x)(t) times ve(y)'(t) $
 ]
 
-#theorem(title: [L'Hôpital's Rule])[
+#theorem[L'Hôpital's Rule][
   Let $f$ and $g$ be differentiable on an open interval containing $c$
   (except possibly at $c$), with $g'(x) != 0$ near $c$. Suppose
   + $lim_(x->c) f(x) = lim_(x->c) g(x) = 0$
@@ -648,7 +648,7 @@
   Then, $ lim_(x->c) (f(x))/(g(x)) = L. $
 ]
 
-#proof(title: "Proof of the zero case")[
+#proof"Proof of the zero case")[
   Assume the limits are zero.
 
   Let the functions be differentiable on the open interval $(c, x)$.
@@ -659,7 +659,7 @@
   for some $p "between" c "and" x$.
 ]
 
-#proof(title: "Proof of the infinity case")[
+#proof"Proof of the infinity case")[
   The proof is too complicated.
   // Assume the limits are infinite. We will only prove the right-hand limit.
   // Let $c < a < b$.
@@ -681,7 +681,7 @@
 
 === Function Character
 
-#theorem(title: [Fermat's or Interior Extremum])[
+#theorem[Fermat's or Interior Extremum][
   Let $f : (a, b) -> RR$  be differentiable at the local extremum
   $c in (a, b)$. Then $f'(x) = 0$.
 
@@ -689,7 +689,7 @@
   a stationary point of inflection. 
 ] <thm-fermat>
 
-#theorem(title: [Darboux's])[
+#theorem[Darboux's][
   If $f$ is differentiable on $[a, b]$ and
   if $y$ lies strictly between
   $f'(a)$ and $f'(b)$, then $exists c in (a, b) : f'(c) = y$.
@@ -712,7 +712,7 @@
   $g'(b) > 0$.
 ]
 
-#theorem(title: [Newton's Method])[
+#theorem[Newton's Method][
   Find roots to a differentiable function $f(x)$.
 
   Given $x_n$ with the coordinates $(x_n, f(x_n))$,
@@ -729,7 +729,7 @@
 
 Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
-#theorem(title: [Rolle's])[
+#theorem[Rolle's][
   $ f(a) = f(b) ==> exists c in (a, b) : f'(c) = 0 $
 ] <thm-rolles>
 
@@ -738,7 +738,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $f'(x) = 0$ at its interior extreme points by @thm-fermat.
 ]
 
-#theorem(title: [Mean Value])[
+#theorem[Mean Value][
   $ exists c in (a, b) : f'(c) = (f(b) - f(a))/(b - a) $
 ]
 
@@ -749,7 +749,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   and note that $d(a) = d(b) = 0$. Then apply @thm-rolles.
 ]
 
-#theorem(title: [Generalized Mean Value])[
+#theorem[Generalized Mean Value][
   $ exists c in (a, b) : [f(b) - f(a)] g'(c) = [g(b) - g(a)] f'(c) $
   If $g'$ is never zero on $(a, b)$, then the above can be stated as
   $ (f'(c))/(g'(c)) = (f(b) - f(a))/(g(b) - g(a)). $
@@ -768,7 +768,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ nabla f in span{nabla g_1, nabla g_2, ..., nabla g_n}. $
 ]
 
-#lemma(title: [Lagrange Multipliers])[
+#lemma[Lagrange Multipliers][
   Let $f : D subset.eq RR^n -> RR$ and $g : D subset.eq RR^n -> RR$
   be differentiable.
   If $c in D$ is a local extremum of $f$ under the
@@ -777,7 +777,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   exists lambda in RR : nabla f(c) = lambda nabla g(c). $
 ]
 
-#theorem(title: [Lagrange Multipliers, Generalized])[
+#theorem[Lagrange Multipliers, Generalized][
   Let $f : D subset.eq RR^n -> RR$ and
   $g_1, g_2, ..., g_m : D subset.eq RR^n -> RR$
   be continuously differentiable.
@@ -795,7 +795,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 == Function Graphs
 
-#tip(title: [Tip (Sketching Graphs)])[
+#tip[Tip (Sketching Graphs)][
   ==== Information
   + symmetries
   + split into cases
@@ -816,7 +816,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 === Asymptotes
 
-#definition(title: [Asymptote])[
+#definition[Asymptote][
   The line $y = k x + m$ is an _oblique_ asymptote of $f$ if
   $ lim_(x->oo) (f(x) - (k x + m)) = 0. $
 
@@ -829,7 +829,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   #h(1.5em) lim_(x->-oo) f(x) = b. $
 ]
 
-#theorem(title: [Oblique Asymptote])[ 
+#theorem[Oblique Asymptote][ 
   If $f(x)$ has an oblique asymptote $y = k x + m$, then
   $ k = lim_(x->oo) (f(x))/x $ and
   $ m = lim_(x->oo) (f(x) - k x). $
@@ -837,24 +837,24 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 === Convexity
 
-#theorem(title: [Convexity])[
+#theorem[Convexity][
   Let $f$ be twice differentiable on $(a, b)$.
   Then, $f''(x) >= 0$ if and only if $f$ is convex on $(a, b)$.
 ]
 
-#definition(title: [Concave])[
+#definition[Concave][
   On $[a, b]$, a function $f : [a, b] -> RR$ is _concave_ if $-f$ is convex.
 ]
 
 === Points
 
-#definition(title: [Local Extremum])[
+#definition[Local Extremum][
   A _local maximum_ of $f : D subset.eq RR -> RR$ is a point $c$ for which
   there exists an open neighborhood $N(c) subset.eq D$ such that
   $ f(c) >= f(x) quad forall x in N(c). $
 ]
 
-#definition(title: [Stationary])[
+#definition[Stationary][
   The point $c$ is a _stationary point_ of $f : RR -> RR$ if $f'(c)=0$.
 
   In general, a point $c$ at which $f : RR^n -> RR^m$ is differentiable
@@ -862,22 +862,22 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   where $0 in cal(L)(RR^n, RR^m)$ is the zero map.
 ]
 
-#definition(title: [Stationary Order])[
+#definition[Stationary Order][
   The _stationary order_ is the smallest $n>=2$ such that
   $ f'(c) =  f''(c)=dots.h.c=f^((n-1))(c)=0 space "but" space
   f^((n))(c)!=0. $
 ]
 
-#definition(title: [Critical])[
+#definition[Critical][
   The point $c$ is a _critical point_ if $f(c)$ is stationary or undefined.
 ]
 
-#definition(title: [Inflection])[
+#definition[Inflection][
   A point $c$ is an _inflection point_ of $f$ if $f$ is continuous at $c$
   and if $f$ is convex on one side of $c$ and concave on the other side.
 ]
 
-#theorem(title: [First Nonzero Derivative])[
+#theorem[First Nonzero Derivative][
   If $f$ has stationary order $n$, then:
   - If $n$ is _even_ $==>$ $f$ has a local extremum at $c$.
 
@@ -899,7 +899,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   for the second derivative.
 ]
 
-#corollary(title: [Second Derivative Test])[
+#corollary[Second Derivative Test][
   If $f''$ is continuous at $c$ and $f'(c)=0$, then:
   - $f''(c)>0$ $==>$ local minimum.
   - $f''(c)<0$ $==>$ local maximum.
@@ -935,7 +935,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   \ H "negative semidefinite" &==> ve(a) "local maximum or saddle point" $
 ]
 
-#corollary(title: [ABC-test])[
+#corollary[ABC-test][
   #set math.mat(gap: 0.8em)
   If $n = 2$ in the scenario above, let
   $ H = mat(f_(x x), f_(y x); f_(x y), f_(y y)) = mat(A, B; B, C) $
@@ -952,7 +952,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 === Definition
 
-#definition(title: [Partition])[
+#definition[Partition][
   A _partition_ of $[a,b]$ is
   a finite set $ P = {x_0, x_1, ..., x_n} $
   such that $ a = x_0 < x_1 < dots.h.c < x_n = b, $
@@ -966,7 +966,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
-#definition(title: [Darboux Integral])[
+#definition[Darboux Integral][
   Define the _lower sum_
   $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] })
   (x_i - x_(i-1)). $
@@ -979,7 +979,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $ integral_a^b f(x) dif x$.
 ]
 
-#definition(title: [Alternative Darboux Integral])[
+#definition[Alternative Darboux Integral][
   Let $Phi$ and $Psi$ be the _lower and upper step functions_ such that
   $ Phi(x) <= f(x) <= Psi(x) quad forall x in [a, b], $
   forming the _lower integral_
@@ -993,7 +993,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Note that the integral of a step function is simply its signed area.
 ]
 
-#definition(title: [Riemann Integral])[
+#definition[Riemann Integral][
   From a partition $P$ of $[a, b]$ pick _sample points_
   $ t_i in [x_(i-1), x_i], quad i = 1, 2, ..., n $
    and form the (tagged) _Riemann sum_
@@ -1011,14 +1011,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The Darboux and Riemann integrals are equivalent.
 ]
 
-#definition(title: [Simple Function])[
+#definition[Simple Function][
   A simple function is a measurable function that
   takes only finitely many values.
 ]
 
 === Integrability
 
-#theorem(title: [Integrability])[
+#theorem[Integrability][
   Let $f : [a, b] -> RR$ be bounded.
 
   The function is integrable if and only if:
@@ -1053,12 +1053,12 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = integral_a^b f(x) dif x. $
 ]
 
-#theorem(title: [Absolute Value / Triangle])[
+#theorem[Absolute Value / Triangle][
   If $f$ is integrable, then $|f|$ is integrable and
   $ abs(integral_a^b f(x) dif x) <= integral_a^b |f(x)| dif x. $
 ]
 
-#theorem(title: [Products and Composition])[
+#theorem[Products and Composition][
   If $f,g$ are integrable, then $f g$ is integrable.
   
   If $f$ is integrable and
@@ -1066,7 +1066,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   then $phi compose f$ is integrable.
 ]
 
-#theorem(title: [Uniform Limit])[
+#theorem[Uniform Limit][
   If $(f_n)$ are integrable on $[a,b]$ and $f_n -> f$ uniformly,
   then $f$ is integrable and
   $ integral_a^b f_n (x) dif x -> integral_a^b f(x) dif x. $
@@ -1074,14 +1074,14 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Properties
 
-#theorem(title: [Linearity])[
+#theorem[Linearity][
   If $f,g$ are integrable and $alpha, beta in RR$, then
   $ integral_a^b (alpha f(x) + beta g(x)) dif x
   = alpha integral_a^b f(x) dif x
   + space  beta integral_a^b g(x) dif x. $
 ]
 
-#theorem(title: [Additivity of the Interval])[
+#theorem[Additivity of the Interval][
   If $c in (a,b)$ and $f$ is integrable on $[a,b]$, then
   $ integral_a^b f(x) dif x = integral_a^c f(x) dif x
    + integral_c^b f(x) dif x. $
@@ -1089,29 +1089,29 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $integral_b^a f(x) dif x = - integral_a^b f(x) dif x.$
 ]
 
-#theorem(title: [Order / Comparison])[
+#theorem[Order / Comparison][
   If $f,g$ are integrable and $f(x) <= g(x)$ on $[a,b]$, then
   $ integral_a^b f(x) dif x <= integral_a^b g(x) dif x. $
 ] <thm-integral-comparison>
 
-#corollary(title: [Positivity])[
+#corollary[Positivity][
   If $f(x) >= 0$ on $[a,b]$, then $ integral_a^b f(x) dif x >= 0$.
   Moreover, if $f$ is continuous and the integral is $0$, then $f equiv 0$.
 ]
 
-#theorem(title: [Bounding by a Supremum])[
+#theorem[Bounding by a Supremum][
   If $|f(x)| <= M$ on $[a,b]$, then
   $ abs(integral_a^b f(x) dif x) <= M (b - a). $
 ]
 
-#theorem(title: [Mean Value for Integrals])[
+#theorem[Mean Value for Integrals][
   If $f$ is continuous on $[a, b]$, then
   $ integral_a^b f(x) dif x = f(xi) (b - a). $
   for some $xi in [a, b]$ or,
   to be more strict if $f$ is not constant, $xi in (a, b)$.
 ] <thm-mean-integrals>
 
-#theorem(title: [Generalized Mean Value for Integrals])[
+#theorem[Generalized Mean Value for Integrals][
   If $f$ is continuous and $g$ is integrable and
   does not change sign on $[a, b]$,
   $ integral_a^b f(x) g(x) dif x = f(xi) integral_a^b g(x) dif x $
@@ -1131,7 +1131,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   for some $xi in [a, b]$. Rewritten, this is the theorem.
 ]
 
-#theorem(title: [Fundamental Theorems of Calculus])[
+#theorem[Fundamental Theorems of Calculus][
   If $f$ is continuous on $[a, b]$, then the two theorems follow:
   
   + Let $F(x) = integral_a^x f(t) dif t$ for $x in [a, b]$.
@@ -1142,7 +1142,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $ integral_a^b f(x) dif x = F(b) - F(a). $
 ] <thm-fundamental>
 
-#proof(title: [Proof of FTC1])[
+#proof[Proof of FTC1][
   We want to show that $F'(x) = f(x)$.
 
   Applying the definition of derivatives,
@@ -1157,7 +1157,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   since $f$ is continuous.
 ]
 
-#proof(title: [Proof of FTC2])[
+#proof[Proof of FTC2][
   Let $G(x)$ have $G'(x) = f(x) = F'(x)$ for all $x in (a, b)$.
   Then, $G'(x) - F'(x) = 0$ gives that $G(x) - F(x) = C$ for some constant.
   We have $G(a) - F(a) = C$, but
@@ -1169,7 +1169,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Integration Techniques
 
-#theorem(title: [Integration by Substitution])[
+#theorem[Integration by Substitution][
   Also known as _change of variables_ or _u-substitution_.
 
   Let $g$ be injective and continuously differentiable on $[a,b]$
@@ -1193,13 +1193,13 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   according to @thm-fundamental (ii) and @thm-chain.
 ]
 
-#theorem(title: [Integration by Parts])[
+#theorem[Integration by Parts][
   If $f,g$ are continuously differentiable on $[a,b]$, then
   $ integral_a^b f(x) g(x) dif x =
   [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x. $
 ] <thm-parts>
 
-#tip(title: [LIATE])[
+#tip[LIATE][
   The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
   - Logarithmic: $ln(x)$, $log_a(x)$
   - Inverse trigonometric: $arctan(x)$, $arcsin(x)$, $arccos(x)$
@@ -1209,7 +1209,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Choose $g(x)$ as the function that appears first in this list.
 ]
 
-#tip(title: [Trigonometric Functions])[
+#tip[Trigonometric Functions][
   ==== Arctangent
 
   + Addition: $(a b < 1, "otherwise add or subtract" pi slash 2)$
@@ -1254,7 +1254,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 === Measure Zero
 
-#definition(title: [Null Set])[
+#definition[Null Set][
   A set is a null set if it has measure zero. 
 ]
 
@@ -1266,7 +1266,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If a set $A subset RR^n$ has $dim N < n$ then it has measure zero.
 ]
 
-#definition(title: [Jordan Measurable])[
+#definition[Jordan Measurable][
   A bounded set in $RR^n$ is _Jordan measurable_
   if its boundary has measure zero.
 ]
@@ -1296,7 +1296,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   The rest of the proof is left as an exercise for the reader.
 ]
 
-#theorem(title: [Mean Value for Double Integrals])[
+#theorem[Mean Value for Double Integrals][
   If $f$ is continuous on a compact, connected region $D subset RR^2$, then
   $ integral.double_D f(x, y) dif x dif y = f(a, b) mu(D) $
   then for some $(xi, eta) in D$.
@@ -1310,7 +1310,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = integral_a^b g(x) dif x integral_c^d h(y) dif y. $
 ]
 
-#theorem(title: [Power Test for Improper Integrals])[
+#theorem[Power Test for Improper Integrals][
   For $ve(x) in RR^n$ and $p in RR$, the improper integral
   $ integral_(0 < norm(ve(x)) < 1) 1/norm(ve(x))^p dif^n ve(x) $
   converges if and only if $p < n$, while
@@ -1336,7 +1336,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   = ve(hat(n)) dif S $
 ]
 
-#definition(title: [Line Integral, Riemann])[
+#definition[Line Integral, Riemann][
   Let $f : C -> RR$ be a function defined on a curve $C in RR^n$.
   The line integral of $f$ along $C$ is
   $ integral_C f(x) dif s
@@ -1345,7 +1345,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   $t_i in C$ is a sample point in the subcurve between $x_(i-1)$ and $x_i$.
 ]
 
-#definition(title: [Surface Integral, Riemann])[
+#definition[Surface Integral, Riemann][
   Let $f : S -> RR$ be a function defined on a surface $S in RR^3$.
   The surface integral of $f$ along $S$ is
   $ integral_S f(x) dif S
@@ -1358,7 +1358,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If $f$ is continuous on $C$, then the line integral exists.
 ]
 
-#definition(title: [Line Integral, Scalar Field])[
+#definition[Line Integral, Scalar Field][
   For a scalar field $f : RR^n -> RR$,
   the line integral along a smooth curve $C$
   parametrized by $ve(r)(t)$ for $t in [a, b]$ is
@@ -1377,13 +1377,13 @@ $
   dif t.
 $
 
-#definition(title: [Line Integral, Vector Field])[
+#definition[Line Integral, Vector Field][
   Likewise, for a vector field $ve(F) : RR^n -> RR^n$ the line integral is
   $ integral_C ve(F) dot dif ve(r)
   = integral_a^b ve(F)(ve(r)(t)) dot ve(r)'(t) dif t. $
 ]
 
-#definition(title: [Surface Integral, Scalar Field])[
+#definition[Surface Integral, Scalar Field][
   For a scalar field $f : RR^3 -> RR$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
@@ -1392,7 +1392,7 @@ $
   norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
-#definition(title: [Surface Integral, Vector Field])[
+#definition[Surface Integral, Vector Field][
   For a vector field $ve(F) : RR^3 -> RR^3$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
@@ -1412,25 +1412,25 @@ $
   @thm-generalized-stokes.
 ]
 
-#theorem(title: [Generalized Stoke's])[
+#theorem[Generalized Stoke's][
   Let $Omega$ be an orientable manifold with boundary $partial Omega$,
   and let $omega$ be a differential form of degree $dim(Omega)-1$.
   Then
   $ integral_(partial Omega) omega = integral_Omega dif omega. $
 ] <thm-generalized-stokes>
 
-#definition(title: [Conservative Vector Field])[
+#definition[Conservative Vector Field][
   A vector field $ve(F) : Omega -> RR^n$
   is _conservative_ if there exists
   a scalar _potential function_ $phi : Omega -> RR$
   such that $ve(F) = nabla phi.$
 ]
 
-#lemma(title: [Path Independence])[
+#lemma[Path Independence][
   $ "path independent" <==> "conservative" $ 
 ]
 
-#theorem(title: [Gradient or FTC for Line Integrals])[
+#theorem[Gradient or FTC for Line Integrals][
   If $ve(F)$ is a conservative vector field,
   then the line integral of $ve(F)$ along
   any curve $C$ from $ve(a)$ to $ve(b)$
@@ -1462,13 +1462,13 @@ $
   $ve(F)$ has a potential function.
 ]
 
-#definition(title: [Divergence])[
+#definition[Divergence][
   Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
   Its divergence is the scalar-valued function
   $ "div" ve(F) = nabla dot ve(F) = pdv(F_x, x) + pdv(F_y, y) + pdv(F_y, y). $
 ]
 
-#theorem(title: [Divergence, any $n$])[
+#theorem[Divergence, any $n$][
   Let $V subset RR^n$ be compact
   with a piecewise smooth boundary $delta V$
   oriented by outward pointing unit normals individually
@@ -1487,12 +1487,12 @@ $
   $
 ]
 
-#corollary(title: [Divergence or Gauss's, $n = 3$])[
+#corollary[Divergence or Gauss's, $n = 3$][
   $ integral.triple_V (nabla dot ve(F)) dif V =
   integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
 ]
 
-#corollary(title: [Green's, $n = 2$])[
+#corollary[Green's, $n = 2$][
   Let $P, Q in C^1 (Omega)$, where $Omega in RR^2$ is an open set.
   If the compact region $D subset Omega$ has
   a piecewise smooth boundary $partial D$
@@ -1501,17 +1501,17 @@ $
   = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
 ]
 
-#corollary(title: [Fundamental Theorem of Calculus, $n = 1$])[
+#corollary[Fundamental Theorem of Calculus, $n = 1$][
   $ integral_a^b f'(x) dif x = f(a) - f(b) $
 ]
 
-#definition(title: [Flux])[
+#definition[Flux][
   $ Phi_ve(F) = integral.double_Sigma ve(F) dot ve(hat(n)) dif S, $
   where $ve(hat(n))$ is the unit normal vector field to
   the oriented surface $Sigma$.
 ]
 
-#definition(title: [Curl])[
+#definition[Curl][
   Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
   Its curl is the vector-valued function
   $ "curl" ve(F) = nabla times ve(F) =
@@ -1520,7 +1520,7 @@ $
    pdv(F_y, x) - pdv(F_x, y)). $
 ]
 
-#theorem(title: [Curl or Stokes's])[
+#theorem[Curl or Stokes's][
   Let $S subset RR^3$ be a compact, orientable surface with
   a piecewise smooth boundary $partial S$ and
   let $ve(hat(n))$ be a unit normal vector field on $S$.
@@ -1529,7 +1529,7 @@ $
   integral.cont_(partial S) ve(F) dot dif ve(r). $
 ]
 
-#definition(title: [Irrotional])[
+#definition[Irrotional][
   A vector field is _irrotational_ if its curl is the zero vector.
 ]
 
@@ -1549,7 +1549,7 @@ $
 
 == Series
 
-#definition(title: [Infinite Series])[
+#definition[Infinite Series][
   Let $(a_j)^oo_(j=0)$ and let $(s_n)^oo_(n=0)$.
   The sum of the infinite series is defined as
   $ sum^oo_(j=0) a_j = lim_(n->oo) s_n
@@ -1563,7 +1563,7 @@ $
   e.g., by rearranging terms.
 ]
 
-#theorem(title: [Geometric Series])[
+#theorem[Geometric Series][
   If $abs(x) < 1$, then
   $ sum_(j=0)^oo x^j = 1/(1 - x) $
   since
@@ -1572,14 +1572,14 @@ $
 
 === Convergence
 
-#theorem(title: [Cauchy Criterion for Series])[
+#theorem[Cauchy Criterion for Series][
   The series $sum_(k=0)^oo a_k$ converges if and only if
   $ forall epsilon > 0 space exists N :
   n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
   < epsilon. $
 ]
 
-#corollary(title: [Series Term Test])[
+#corollary[Series Term Test][
   If $sum^oo_(k=1) a_k$ converges, then $a_k -> 0$.
   However, the reverse is not implied.
 ] <thm-term>
@@ -1588,12 +1588,12 @@ $
   The series $sum_(j=1)^oo 1 slash j$ is divergent.
 ]
 
-#theorem(title: [Inverse Power Series])[
+#theorem[Inverse Power Series][
   The series $sum_(j=1)^oo 1 slash j^p$ converges if and only if
   $p > 1$.
 ] <thm-inverse-power>
 
-#theorem(title: [Ratio Test])[
+#theorem[Ratio Test][
   Let $(a_n)$ be a sequence of positive terms and define
   $ L = limsup_(n->oo) abs(a_(n+1)/a_n). $
   Then:
@@ -1602,7 +1602,7 @@ $
   + If $L = 1$, the test is inconclusive.
 ] <thm-ratio>
 
-#theorem(title: [Direct Comparison Test])[
+#theorem[Direct Comparison Test][
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
   + $sum^oo_(k=1) (a_k)$ converges if
     $sum^oo_(k=1) (b_k)$  converges.
@@ -1610,7 +1610,7 @@ $
     $sum^oo_(k=1) (a_k)$  diverges.
 ] <thm-direct-comparison>
 
-#theorem(title: [Limit Comparison Test])[
+#theorem[Limit Comparison Test][
   Let $sum_(j=0)^oo a_j$ and $sum_(j=0)^oo b_j$
   be positive series with terms such that
   $ lim_(j->oo) a_j/b_j = K $
@@ -1619,14 +1619,14 @@ $
   $sum_(j=0)^oo b_j$ converges.
 ] <thm-limit-comparison>
 
-#theorem(title: [Alternating Series Test])[
+#theorem[Alternating Series Test][
   Let $(a_n)$ satisfy
   + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
   + $(a_n) -> 0$.
   Then, $sum^oo_(n=1) (-1)^(n+1) a_n$ converges.
 ] <thm-alternating>
 
-#definition(title: [Absolutely Convergent])[
+#definition[Absolutely Convergent][
   A series $sum_(j=0)^oo a_j$ is _absolutely convergent_ if
   $sum_(j=0)^oo abs(a_j)$ is convergent.
 ]
@@ -1635,7 +1635,7 @@ $
   If a series is absolutely convergent then it is convergent.
 ] <thm-absolutely-convergent>
 
-#theorem(title: [Cauchy Condensation Test])[
+#theorem[Cauchy Condensation Test][
   Let $(a_n)$ be a decreasing sequence of nonnegative real numbers.
   Then $sum_(n=1)^(oo) a_n$ converges if and only if
   $sum_(n=0)^(oo) 2^n a_(2^n)$ converges.
@@ -1667,7 +1667,7 @@ $
   + integral_a^oo f(x). $
 ]
 
-#theorem(title: [Properties])[
+#theorem[Properties][
   Let $f$ and $g$ be integrable on $[a, R]$.
   The following applies.
   #compact-restate((
@@ -1696,7 +1696,7 @@ $
   f(n) + integral_m^n f(x) dif x. $
 ]
 
-#corollary(title: [Integral Test])[ // AKA Maclaurin--Cauchy Test
+#corollary[Integral Test][ // AKA Maclaurin--Cauchy Test
   Let $f$ be continuous, positive, and decreasing on $[m, oo)$,
   where $m in NN$.
   Then,
@@ -1712,7 +1712,7 @@ $
 
 === Statement
 
-#theorem(title: [Taylor's])[
+#theorem[Taylor's][
   Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and
   $n + 1$ times on $(a, b)$. Fix $c in [a, b]$. Then,
   $ f(x) = P_n (x) + R_n (x), $
@@ -1757,7 +1757,7 @@ $
   with $xi$ strictly between $c$ and $x$.
 ]
   
-#proof(title: [Proof using integrals])[
+#proof[Proof using integrals][
   From @thm-fundamental (ii) we have
   $ integral_c^x f'(t) dif t = f(t) - f(c) $
   which we expand using @thm-parts as
@@ -1772,7 +1772,7 @@ $
   &= P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t $
 ]
 
-#theorem(title: [Multivariable Taylor's])[
+#theorem[Multivariable Taylor's][
   The Taylor expansion of degree $N$ for $f : RR^n -> RR$ is
   $
     f(ve(a) + ve(h))
@@ -1791,7 +1791,7 @@ $
   $ R_n (x) = o(abs(x - c)^n), quad x -> c. $ 
 ]
 
-#definition(title: [Radius of Convergence])[
+#definition[Radius of Convergence][
   Let $R_n (x)$ be the remainder to the Taylor polynomial around a point $c$.
   The _radius of convergence_ $R$ is the supremum of $r >= 0$ such that
   $ forall x : abs(x - c) < r ==> lim_(n->oo) R_n (x) = 0, $
@@ -1799,7 +1799,7 @@ $
   for all such $x$ (so $f(x) = P_oo (x)$).
 ]
 
-#theorem(title: [Common Maclaurin Series])[
+#theorem[Common Maclaurin Series][
   The following functions have a Maclaurin series with
   radius of convergence $r = oo$:
   #block[$
@@ -1859,7 +1859,7 @@ $
   $ f in o(g) ==> lim f/g = 0 $
 ]
 
-#definition(title: [Big _O_ at Infinity])[
+#definition[Big _O_ at Infinity][
   Let $f$ and $g$ be defined on $(c, oo)$.
   We say that $f$ belongs to the set _O_ of $g$ as $x -> oo$,
   writing $O(g(x))$, if there exists $M$ and $x_0$ such that
@@ -1867,7 +1867,7 @@ $
   for every $x > x_0$.
 ]
 
-#definition(title: [Big _O_ at a Point])[
+#definition[Big _O_ at a Point][
   Let $f$ and $g$ be defined on a neighborhood of $c$.
   We say that $f$ belongs to the set _O_ of $g$ around $c$,
   writing $O(g(x))$, if there exists $M$ and $delta > 0$ such that
@@ -1875,7 +1875,7 @@ $
   for every $x in (c - delta, c + delta)$.
 ]
 
-#theorem(title: [Big _O_ Behavior])[
+#theorem[Big _O_ Behavior][
   If $h(x) = O(f(x))$ and $k(x) = O(g(x))$
   (same limiting regime), then
   $h(x) k(x) = O(f(x) g(x))$.
