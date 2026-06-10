@@ -795,7 +795,7 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 == Function Graphs
 
-#tip[Tip (Sketching Graphs)][
+#tip(title: [Tip (Sketching Graphs)])[
   ==== Information
   + symmetries
   + split into cases
@@ -1199,7 +1199,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x. $
 ] <thm-parts>
 
-#tip[LIATE][
+#tip(title: [LIATE])[
   The LIATE rule helps choose $f(x)$ and $g(x)$ for integration by parts:
   - Logarithmic: $ln(x)$, $log_a(x)$
   - Inverse trigonometric: $arctan(x)$, $arcsin(x)$, $arccos(x)$
@@ -1209,7 +1209,7 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Choose $g(x)$ as the function that appears first in this list.
 ]
 
-#tip[Trigonometric Functions][
+#tip(title: [Trigonometric Functions])[
   ==== Arctangent
 
   + Addition: $(a b < 1, "otherwise add or subtract" pi slash 2)$
