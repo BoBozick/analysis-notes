@@ -505,9 +505,9 @@
 ]
 
 #definition[Gradient][
-  In a real inner product space $(V, iprod(dot, dot))$,
+  In a real inner product space $(V, chevrons(dot, dot))$,
   the gradient of a scalar function $f : V -> RR$ is defined by the identity
-  $ D f(ve(x)) [ve(h)] = iprod(nabla f(ve(x)), ve(h)) "for all" ve(h) in V. $
+  $ D f(ve(x)) [ve(h)] = chevrons(nabla f(ve(x)), ve(h)) "for all" ve(h) in V. $
 ]
 
 #theorem[
