@@ -948,6 +948,42 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 == Differential Equations
 
+=== Second-Order Linear ODEs
+
+A second-order linear ODE has the form
+$ a(x) y'' + b(x) y' + c(x) y = g(x). $
+
+#theorem[Superposition Principle][
+  For the homogeneous equation
+  $ a(x) y'' + b(x) y' + c(x) y = 0, $
+  any linear combination of solutions is again a solution.
+  Hence, if $y_1$ and $y_2$ are linearly independent solutions, then
+  $ y = C_1 y_1 + C_2 y_2 $ is the general solution.
+]
+
+#theorem[Constant Coefficients][
+  Consider
+  $ a y'' + b y' + c y = 0, quad a != 0. $
+  Try $ y = e^(r x) $ to obtain the characteristic equation
+  $ a r^2 + b r + c = 0. $
+  Then:
+  + distinct real roots $r_1 != r_2$ give
+    $ y = C_1 e^(r_1 x) + C_2 e^(r_2 x). $
+  + a repeated root $r$ gives
+    $ y = (C_1 + C_2 x) e^(r x). $
+  + complex roots $alpha plus.minus beta i$ give
+    $ y = e^(alpha x) (C_1 cos(beta x) + C_2 sin(beta x)). $
+]
+
+#theorem[Forced Equation][
+  For
+  $ a y'' + b y' + c y = g(x), $
+  the full solution is
+  $ y = y_h + y_p, $
+  where $y_h$ solves the homogeneous equation and $y_p$ is any particular
+  solution.
+]
+
 == The Riemann Integral
 
 === Definition
