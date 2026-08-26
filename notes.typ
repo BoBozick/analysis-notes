@@ -18,6 +18,22 @@
   memes: false,
 )
 
+#theorem[Picard][
+  If $f(x, y)$ and $pdv(f, y)(x, y)$ are continuous on
+  a closed rectangle $R subset RR^2,$
+  then for all inner points $(x_0, y_0) in R$
+  there exists a unique integral curve that intersects the point
+  and with the property that $dv(y, x) = f(x, y).$
+
+  Remark:
+  It suffices that $f$ is $y$-Lipschitz.
+
+  Remark: 
+  If we fix $x_0$ and vary $y_0$,
+  then the theorem gives a unique curve through $(x_0, y_0)$;
+  we get a family of curves $y = (x, c),$ where $c$ is a parameter.
+]
+
 = The Real Numbers
 
 == Reals
