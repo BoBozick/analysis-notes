@@ -18,22 +18,6 @@
   memes: false,
 )
 
-#theorem[Picard][
-  If $f(x, y)$ and $pdv(f, y)(x, y)$ are continuous on
-  a closed rectangle $R subset RR^2,$
-  then for all inner points $(x_0, y_0) in R$
-  there exists a unique integral curve that intersects the point
-  and with the property that $dv(y, x) = f(x, y).$
-
-  Remark:
-  It suffices that $f$ is $y$-Lipschitz.
-
-  Remark: 
-  If we fix $x_0$ and vary $y_0$,
-  then the theorem gives a unique curve through $(x_0, y_0)$;
-  we get a family of curves $y = (x, c),$ where $c$ is a parameter.
-]
-
 = The Real Numbers
 
 == Reals
@@ -1663,6 +1647,53 @@ $
 
 == Ordinary
 
+=== Definition
+
+#definition[ODE][
+  The general ODE of the $n$th order is
+  $ F(x, y, y', y'', ..., y^((n))) = 0. $
+]
+
+#definition[Seperable equation][
+  $ dv(y, x) = f(x) g(y) $
+
+  #solution[
+    Integrate both sides of
+    $ dd(y)/(g(y)) = f(x) dd(x). $
+  ]
+]
+
+#definition[Integral curve][
+  An solutions to a differential equation forms a family of curves
+  called the *integral curves*.
+]
+
+#definition[Parameter][
+  A *parameter* is an arbitrary constant.
+]
+
+#theorem[Picard][
+  If $f(x, y)$ and $pdv(f, y)(x, y)$ are continuous on
+  a closed rectangle $R subset RR^2,$
+  then for all inner points $(x_0, y_0) in R$
+  there exists a unique integral curve that intersects the point
+  and with the property that $dv(y, x) = f(x, y).$
+
+  Remark:
+  It suffices that $f$ is $y$-Lipschitz.
+
+  Remark: 
+  If we fix $x_0$ and vary $y_0$,
+  then the theorem gives a unique curve through $(x_0, y_0)$;
+  we get a family of curves $y = (x, c),$ where $c$ is a parameter.
+]
+
+#definition[Orthogonal curve][
+  Whenever two families of curves are pairwise orthogonal,
+  each is said to be
+  a family of *orthogonal trajectories* of the other.
+]
+
 === Second-Order Linear
 
 A second-order linear ODE has the form
@@ -1695,8 +1726,8 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
   $ a y'' + b y' + c y = g(x), $
   the full solution is
   $ y = y_h + y_p, $
-  where $y_h$ solves the homogeneous equation and $y_p$ is any particular
-  solution.
+  where $y_h$ solves the homogeneous equation
+  and $y_p$ is any particular solution.
 ]
 
 = Infinite Series
