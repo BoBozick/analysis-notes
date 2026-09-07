@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "probonotes",
+			"path": "../probonotes"
+		},
+		{
+			"name": "analysis-notes",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

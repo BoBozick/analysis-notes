@@ -1694,6 +1694,26 @@ $
   a family of *orthogonal trajectories* of the other.
 ]
 
+=== First-Order
+
+#definition[First-order linear system][
+  $ cases(
+    display(dv(x, t)) &= a_1(t) x + b_1(t) y + f_1(t),
+    display(dv(y, t)) &= a_2(t) x + b_2(t) y + f_2(t),
+    gap: #0.7em,
+  ) $
+
+  Homogenous if $f_1 = f_2 = 0$.
+]
+
+=== Second-Order
+
+#image("assets/image-2.png")
+
+#image("assets/image-1.png")
+
+#image("assets/image.png")
+
 === Second-Order Linear
 
 A second-order linear ODE has the form
