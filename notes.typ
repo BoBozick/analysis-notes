@@ -1571,14 +1571,24 @@ $ integral_C f dif s
 ]
 
 #theorem[Picard--Lindelöf][
-  Let $D subset RR times RR^n$ be an open domain where
+  Let $D subset.eq RR times RR^n$ be an open domain where
   $f : D -> RR^n$ is continuous and,
   with respect to $y$, locally Lipschitz continuous.
 
   For every initial point $(t_0, y_0) in D$,
-  there exists some open interval $I = (t_0 - delta, t_0 + delta)$
+  there exists some open interval
+  $I = (t_0 - delta, t_0 + delta)$ with $delta > 0$ and
   where the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$
-  has a unique solution $y : I -> RR^n$, and $y in C^1(I)$.
+  has a unique solution $y : I -> RR^n$.
+  Furthermore, $y in C^1(I)$.
+
+  In particular, if $f$ is defined on some closed cylinder
+  $ R = [t_0 - a, t_0 + a] times dash(B)(y_0, b) subset.eq D $
+  with a finite supinum
+  $ M = sup_((t, y) in R) abs(f(t, y)) < oo, $
+  then there is a unique and $C^1$ solution on
+  $[t_0 - delta, t_0 + delta]$ for all
+  $ delta <= min(a, b/M). $ 
 ]
 
 #tip[
