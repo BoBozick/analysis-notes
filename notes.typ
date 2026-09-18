@@ -69,10 +69,8 @@
 
 #definition[Least Upper Bound][
   Assume $s in RR$ is an upper bound for a set $A subset.eq RR$. Then,
-  $
-    s = sup A #h(1em) <==> #h(1em)
-    forall epsilon > 0 space exists a in A : s - epsilon < a.
-  $
+  $ s = sup A #h(1em) <==> #h(1em)
+    forall epsilon > 0 space exists a in A : s - epsilon < a. $
 ]
 
 == Cardinality
@@ -95,10 +93,8 @@
 
   #proof[
     Let $A_1 = {0}$ and let
-    $
-      A_n = {plus.minus p slash q : p, q in NN_+, gcd(p, q) = 1,
-        p + q = n}
-    $
+    $ A_n = {plus.minus p slash q : p, q in NN_+, gcd(p, q) = 1,
+        p + q = n} $
     for all $n >= 2$.
     Each $A_n$ is finite and
     every rational numbers appears in exactly one set.
@@ -215,10 +211,8 @@
 
 #definition[Convergence][
   A sequence _converges_ to $a$ if
-  $
-    forall epsilon > 0 space exists N in NN :
-    n >= N ==> |a_n - a| < epsilon
-  $
+  $ forall epsilon > 0 space exists N in NN :
+    n >= N ==> |a_n - a| < epsilon $
   or equivalently if for any $V_epsilon (a)$ there exists a point
   in the sequence after which all terms are in $V_epsilon (a)$.
   In other words, if every $epsilon$-neighborhood of some point
@@ -303,10 +297,8 @@
 
 #definition[Cauchy Sequence][
   A sequence $(a_n)$ is a _Cauchy sequence_ if
-  $
-    forall epsilon > 0 space exists N in NN :
-    m, n >= N ==> |a_n - a_m| < epsilon.
-  $
+  $ forall epsilon > 0 space exists N in NN :
+    m, n >= N ==> |a_n - a_m| < epsilon. $
 ]
 
 #theorem[Cauchy Criterion][
@@ -381,10 +373,8 @@
 
 #definition[Uniform Continuity][
   We say $f$ is _uniformly continuous_ on $I$ if
-  $
-    forall epsilon > 0 space exists delta > 0 :
-    x, y in I, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon.
-  $
+  $ forall epsilon > 0 space exists delta > 0 :
+    x, y in I, abs(x - y) < delta ==> abs(f(x) - f(y)) < epsilon. $
   In particular, $delta$ can be chosen independent of $y$.
 ]
 
@@ -396,16 +386,12 @@
 #proof[
   Assume the opposite, that $f$ is continuous but not uniformly.
   Since $f$ is not uniformly continuous,
-  $
-    exists epsilon_0 > 0 : forall delta > 0 space exists x, y in K :
-    space abs(x - y) < delta "but" abs(f(x) - f(y)) >= epsilon_0.
-  $
+  $ exists epsilon_0 > 0 : forall delta > 0 space exists x, y in K :
+    space abs(x - y) < delta "but" abs(f(x) - f(y)) >= epsilon_0. $
 
   Now, choose $(x_n)$ and $(y_n)$ such that
-  $
-    abs(x_n - y_n) < 1/n space "and" space
-    abs(f(x_n) - f(y_n)) >= epsilon_0.
-  $
+  $ abs(x_n - y_n) < 1/n space "and" space
+    abs(f(x_n) - f(y_n)) >= epsilon_0. $
   @thm-bolzano-weierstrass asserts that there exists some subsequence
   $x_n_k -> x_0$ for some $x_0 in K$.
   From $abs(x_n - y_n) < 1/n$ it follows that $y_n_k -> x_0$. Thus,
@@ -428,9 +414,9 @@
 
 #theorem[
   $ "Continuously differentiable" & subset \
-    "Lipschitz continuous" & subset \
-    "Uniformly continuous" & subset
-    "Continuous" $  
+           "Lipschitz continuous" & subset \
+           "Uniformly continuous" & subset
+           "Continuous" $
 ]
 
 It is also of note that Differentiable $subset$ Continuous.
@@ -493,10 +479,8 @@ It is also of note that Differentiable $subset$ Continuous.
   We say that $f$ is _differentiable_ at $a$ if
   there exists some real constants $A_1, A_2, ..., A_n$ and
   some $rho : RR^n -> RR$ such that
-  $
-    f(ve(a) + ve(h)) - f(ve(a)) = A_1 h_1 + A_2 h_2 + dots.c + A_n h_n
-    + norm(ve(h)) rho(ve(h))
-  $
+  $ f(ve(a) + ve(h)) - f(ve(a)) = A_1 h_1 + A_2 h_2 + dots.c + A_n h_n
+    + norm(ve(h)) rho(ve(h)) $
   and
   $ lim_(ve(h) -> ve(0)) rho(ve(h)) = 0. $
   Equivalently, one may use that
@@ -510,23 +494,17 @@ It is also of note that Differentiable $subset$ Continuous.
   Then a function $ve(f) : D -> RR^m$ is said to be
   (totally) _differentiable_ at a point $ve(a) in D$ if
   there exists a linear map $ve(D f_a) : RR^n -> RR^m$ such that
-  $
-    lim_(ve(h) -> ve(0))
+  $ lim_(ve(h) -> ve(0))
     norm(ve(f)(ve(a) + ve(h)) - ve(f)(ve(a)) - ve(D f_a)(ve(h))) /
-    norm(ve(h)) = 0
-  $
+    norm(ve(h)) = 0 $
   or equivalently
-  $
-    lim_(ve(h) -> ve(0))
+  $ lim_(ve(h) -> ve(0))
     ( ve(f)(ve(a) + ve(h)) - ve(f)(ve(a)) - ve(D f_a)(ve(h)) ) /
-    norm(ve(h)) = ve(0)
-  $
+    norm(ve(h)) = ve(0) $
   or equivalently
-  $
-    ve(f)(ve(a) + ve(h))
+  $ ve(f)(ve(a) + ve(h))
     = ve(f)(ve(a)) + ve(D f_a)(ve(h)) + ve(o)(norm(ve(h))),
-    quad ve(h) -> ve(0).
-  $
+    quad ve(h) -> ve(0). $
 ]
 
 #definition[Differential][
@@ -535,10 +513,8 @@ It is also of note that Differentiable $subset$ Continuous.
   The _differential_ of $f$ at $ve(a)$,
   denoted $D f_ve(a)$ or $dif f_ve(a)$,
   is the linear map $D f_ve(a) : RR^n -> RR^m$ such that
-  $
-    f(ve(a) + ve(h)) = f(ve(a)) + D f_ve(a) (ve(h)) + o(norm(ve(h))),
-    quad ve(h) -> ve(0).
-  $
+  $ f(ve(a) + ve(h)) = f(ve(a)) + D f_ve(a) (ve(h)) + o(norm(ve(h))),
+    quad ve(h) -> ve(0). $
 
   In the one-dimensional case,
   $ dif f_ve(a) = f'(ve(a)) dif ve(a), $
@@ -637,10 +613,8 @@ It is also of note that Differentiable $subset$ Continuous.
   individually differentiable functions.
   Then, $f compose ve(g) : RR -> RR$ is differentiable
   and its derivative is
-  $
-    dv(, t) f(g_1 (t), g_2 (t), ..., g_n (t))
-    = sum_(i=1)^n dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_n (t))
-  $
+  $ dv(, t) f(g_1 (t), g_2 (t), ..., g_n (t))
+    = sum_(i=1)^n dv(g_i, t) pdv(, g_i (t)) f(g_1 (t), g_2 (t), ..., g_n (t)) $
   or equivalently
   $ dv(, t)(f compose ve(g))(t) = nabla f(ve(g)(t)) dot ve(g)'(t). $
 ] <thm-chain-multivariable>
@@ -651,13 +625,14 @@ It is also of note that Differentiable $subset$ Continuous.
   individually differentiable functions.
   Then, $f compose ve(g) : RR^m -> RR$ is differentiable and
   its partial derivatives are given by
-  $
-    pdv(, x_j) (f compose ve(g))(ve(x))
-    = sum_(i=1)^n pdv(, y_i) f(ve(g)(ve(x))) pdv(, x_j) g_i (ve(x))
-  $
+  $ pdv(, x_j) (f compose ve(g))(ve(x))
+    = sum_(i=1)^n pdv(, y_i) f(ve(g)(ve(x))) pdv(, x_j) g_i (ve(x)) $
   for all $j in {1, 2, ..., m}.$
-]
-
+]$
+  lim_(x->c) f(x)/g(x) = lim_(x->c)
+  (f(x)-f(c))/(g(x)-g(c))
+  = lim_(x->c) (f'(p))/(g'(p)) = lim_(p->c) (f'(p))/(g'(p))
+$ 
 #theorem[Basic Derivatives],
 grid(
 columns: (1fr, 1.2fr),
@@ -675,11 +650,8 @@ columns: (1fr, 1.2fr),
 )
 )
 
-#theorem[Dot and Scalar Product Rules][
-  $
-      dv(, t) ve(x)(t) dot ve(y)(t) & = ve(x)'(t) dot ve(y)(t) + ve(x)(t) dot ve(y)'(t) \
-    dv(, t) ve(x)(t) times ve(y)(t) & = ve(x)'(t) times ve(y)(t) + ve(x)(t) times ve(y)'(t)
-  $
+#theorem[Dot and Scalar Product Rules][ $ dv(, t) ve(x)(t) dot ve(y)(t) & = ve(x)'(t) dot ve(y)(t) + ve(x)(t) dot ve(y)'(t) \
+    dv(, t) ve(x)(t) times ve(y)(t) & = ve(x)'(t) times ve(y)(t) + ve(x)(t) times ve(y)'(t) $
 ]
 
 #theorem[L'Hôpital's Rule][
@@ -696,11 +668,9 @@ Assume the limits are zero.
 
 Let the functions be differentiable on the open interval $(c, x)$.
 Then, rewriting and applying @thm-gmv gives
-$
-  lim_(x->c) f(x)/g(x) = lim_(x->c)
+$ lim_(x->c) f(x)/g(x) = lim_(x->c)
   (f(x)-f(c))/(g(x)-g(c))
-  = lim_(x->c) (f'(p))/(g'(p)) = lim_(p->c) (f'(p))/(g'(p))
-$
+  = lim_(x->c) (f'(p))/(g'(p)) = lim_(p->c) (f'(p))/(g'(p)) $
 for some $p "between" c "and" x$.
 ]
 
@@ -764,10 +734,8 @@ The proof is too complicated.
   the tangent line is given by
   $ T(x) = f'(x_n)(x - x_n) + f(x_n) $
   and intersects the $x$-axis at
-  $
-    T(x_(n+1)) = 0 #h(0.8em) <==>
-    #h(0.8em) x_(n+1) = x_n - f(x_n)/(f'(x_n)).
-  $
+  $ T(x_(n+1)) = 0 #h(0.8em) <==>
+    #h(0.8em) x_(n+1) = x_n - f(x_n)/(f'(x_n)). $
 
   The method fails if it iterates endlessly or $f'(x_n) = 0$.
 ]
@@ -820,10 +788,8 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   be differentiable.
   If $c in D$ is a local extremum of $f$ under the
   constraint $g(x) = 0$, then
-  $
-    nabla g(c) != ve(0) quad ==> quad
-    exists lambda in RR : nabla f(c) = lambda nabla g(c).
-  $
+  $ nabla g(c) != ve(0) quad ==> quad
+    exists lambda in RR : nabla f(c) = lambda nabla g(c). $
 ]
 
 #theorem[Lagrange Multipliers, Generalized][
@@ -837,11 +803,9 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   Then there exist _Lagrange multipliers_
   $lambda_1, lambda_2, ..., lambda_m in RR$
   such that
-  $
-    nabla f(c)
+  $ nabla f(c)
     = lambda_1 nabla g_1 (c) + lambda_2 nabla g_2 (c)
-    + dots.h.c + lambda_m nabla g_m (c).
-  $
+    + dots.h.c + lambda_m nabla g_m (c). $
 ]
 
 == Function Graphs
@@ -872,16 +836,12 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   $ lim_(x->oo) (f(x) - (k x + m)) = 0. $
 
   The line $x = c$ is a _vertical_ asymptote of $f$ if
-  $
-    lim_(x->c+) f(x) = plus.minus oo #h(1.5em) "or"
-    #h(1.5em) lim_(x->c-) f(x) = plus.minus oo.
-  $
+  $ lim_(x->c+) f(x) = plus.minus oo #h(1.5em) "or"
+    #h(1.5em) lim_(x->c-) f(x) = plus.minus oo. $
 
   The line $y = b$ is a _horizontal_ asymptote of $f$ if
-  $
-    lim_(x->oo) f(x) = b #h(1.5em) "or"
-    #h(1.5em) lim_(x->-oo) f(x) = b.
-  $
+  $ lim_(x->oo) f(x) = b #h(1.5em) "or"
+    #h(1.5em) lim_(x->-oo) f(x) = b. $
 ]
 
 #theorem[Oblique Asymptote][
@@ -919,10 +879,8 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
 
 #definition[Stationary Order][
   The _stationary order_ is the smallest $n>=2$ such that
-  $
-    f'(c) = f''(c)=dots.h.c=f^((n-1))(c)=0 space "but" space
-    f^((n))(c)!=0.
-  $
+  $ f'(c) = f''(c)=dots.h.c=f^((n-1))(c)=0 space "but" space
+    f^((n))(c)!=0. $
 ]
 
 #definition[Critical][
@@ -977,23 +935,19 @@ Let $f$ and $g$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
   Assume $ve(a) in RR^n$ is a stationary point of
   a $C^2$-function $f : RR^n -> RR$.
   The second-order Taylor series expansion can be rewritten as
-  $
-    f(ve(a) + ve(h)) - f(ve(a)) = 1/2 Q(ve(h)) + o(norm(ve(h))^3),
-    wide ve(h) -> ve(0),
-  $
+  $ f(ve(a) + ve(h)) - f(ve(a)) = 1/2 Q(ve(h)) + o(norm(ve(h))^3),
+    wide ve(h) -> ve(0), $
   showing that its local behavior is dominated by the quadratic term
   $ Q(ve(h)) = ve(h)^T H ve(h), wide H = D f_ve(a). $
 ]
 
 #theorem[
   In the scenario above,
-  $
-        H "positive definite" & ==> ve(a) "local minimum" \
+  $ H "positive definite" & ==> ve(a) "local minimum" \
         H "negative definite" & ==> ve(a) "local maximum" \
                H "indefinite" & ==> ve(a) "saddle point" \
     H "positive semidefinite" & ==> ve(a) "local minimum or saddle point" \
-    H "negative semidefinite" & ==> ve(a) "local maximum or saddle point"
-  $
+    H "negative semidefinite" & ==> ve(a) "local maximum or saddle point" $
 ]
 
 #corollary[ABC-test][
@@ -1027,15 +981,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #definition[Darboux Integral][
   Define the _lower sum_
-  $
-    L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] })
-    (x_i - x_(i-1)).
-  $
+  $ L(f,P) = sum_(i=1)^n (inf { f(x) : x in [x_(i-1), x_i] })
+    (x_i - x_(i-1)). $
   and the _upper sum_
-  $
-    U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] })
-    (x_i - x_(i-1))
-  $
+  $ U(f,P) = sum_(i=1)^n (sup { f(x) : x in [x_(i-1), x_i] })
+    (x_i - x_(i-1)) $
   The function $f$ is _Darboux integrable_ if
   $sup_P L(f,P) = inf_P U(f,P)$.
   The common value is denoted as the _definite integral_
@@ -1046,15 +996,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Let $Phi$ and $Psi$ be the _lower and upper step functions_ such that
   $ Phi(x) <= f(x) <= Psi(x) quad forall x in [a, b], $
   forming the _lower integral_
-  $
-    L(f) = sup{integral_a^b Phi(x) dif x :
-      Phi "is a lower step function to" f}
-  $
+  $ L(f) = sup{integral_a^b Phi(x) dif x :
+      Phi "is a lower step function to" f} $
   and the _upper integral_
-  $
-    U(f) = inf{integral_a^b Psi(x) dif x :
-      Psi "is an upper step function to" f}
-  $
+  $ U(f) = inf{integral_a^b Psi(x) dif x :
+      Psi "is an upper step function to" f} $
   which, if equal, give the definite integral.
 
   Note that the integral of a step function is simply its signed area.
@@ -1068,10 +1014,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
   We say $f$ is _Riemann integrable_ if
   there exists $L in RR$ such that
-  $
-    forall epsilon > 0 space exists delta > 0 :
-    norm(P) < delta ==> |S(f,P,(t_i)) - L| < epsilon
-  $
+  $ forall epsilon > 0 space exists delta > 0 :
+    norm(P) < delta ==> |S(f,P,(t_i)) - L| < epsilon $
   for every choice of sample points $(t_i)$. In that case we write
   $ L = integral_a^b f(x) dif x. $
 ]
@@ -1096,10 +1040,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     U(f,P_n) - L(f,P_n) -> 0.$
   + (Lebesgue Criterion for Riemann Integrability) \
     Its set of discontinuities has Lebesgue measure zero.
-  + $
-      forall epsilon > 0 space exists Phi, Psi :
-      integral_a^b Psi(x) dif x - integral_a^b Phi(x) dif x < epsilon,
-    $
+  + $ forall epsilon > 0 space exists Phi, Psi :
+      integral_a^b Psi(x) dif x - integral_a^b Phi(x) dif x < epsilon, $
     where $Phi$ and $Psi$ are lower and upper step functions.
 
   The function is integrable if:
@@ -1115,17 +1057,13 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem[
   Assume $f$ is continuous on $[a, b]$. Let
-  $
-    M_i = max_(x in [x_(i-1), x_i]) f(x)
+  $ M_i = max_(x in [x_(i-1), x_i]) f(x)
     space "and" space
-    m_i = min_(x in [x_(i-1), x_i]) f(x).
-  $
+    m_i = min_(x in [x_(i-1), x_i]) f(x). $
   Then,
-  $
-    lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1))
+  $ lim_(norm(P)->0) sum_(i=1)^n M_i (x_i - x_(i-1))
     = lim_(norm(P)->0) sum_(i=1)^n m_i (x_i - x_(i-1))
-    = integral_a^b f(x) dif x.
-  $
+    = integral_a^b f(x) dif x. $
 ]
 
 #theorem[Absolute Value / Triangle][
@@ -1151,19 +1089,15 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #theorem[Linearity][
   If $f,g$ are integrable and $alpha, beta in RR$, then
-  $
-    integral_a^b (alpha f(x) + beta g(x)) dif x
+  $ integral_a^b (alpha f(x) + beta g(x)) dif x
     = alpha integral_a^b f(x) dif x
-    + space beta integral_a^b g(x) dif x.
-  $
+    + space beta integral_a^b g(x) dif x. $
 ]
 
 #theorem[Additivity of the Interval][
   If $c in (a,b)$ and $f$ is integrable on $[a,b]$, then
-  $
-    integral_a^b f(x) dif x = integral_a^c f(x) dif x
-    + integral_c^b f(x) dif x.
-  $
+  $ integral_a^b f(x) dif x = integral_a^c f(x) dif x
+    + integral_c^b f(x) dif x. $
   It follows that $integral_a^a f(x) dif x = 0$ and
   $integral_b^a f(x) dif x = - integral_a^b f(x) dif x.$
 ]
@@ -1200,15 +1134,11 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 
 #proof[
   Let $m = min f(x)$ and $M = max f(x)$ for $x in [a, b].$ Then,
-  $
-    m integral_a^b g(x) <= integral_a^b f(x) g(x)
-    <= M integral_a^b g(x)
-  $
+  $ m integral_a^b g(x) <= integral_a^b f(x) g(x)
+    <= M integral_a^b g(x) $
   by @thm-integral-comparison, or rewritten,
-  $
-    m <= 1/(integral_a^b g(x)) integral_a^b f(x) g(x)
-    <= M.
-  $
+  $ m <= 1/(integral_a^b g(x)) integral_a^b f(x) g(x)
+    <= M. $
   Since $m <= f(x) <= M$, @thm-intermediate gives that
   $ f(xi) = 1/(integral_a^b g(x)) integral_a^b f(x) g(x) $
   for some $xi in [a, b]$. Rewritten, this is the theorem.
@@ -1229,10 +1159,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   We want to show that $F'(x) = f(x)$.
 
   Applying the definition of derivatives,
-  $
-    F'(x) = lim_(h->0) 1/h (F(x+h) - F(x))
-    = lim_(h->0) 1/h integral_x^(x+h) f(x) dif x,
-  $
+  $ F'(x) = lim_(h->0) 1/h (F(x+h) - F(x))
+    = lim_(h->0) 1/h integral_x^(x+h) f(x) dif x, $
   where $x$ and $x + h$ are in $(a, b)$.
   By @thm-mean-integrals,
   $ integral_x^(x+h) f(t) dif t = f(xi) h $
@@ -1260,36 +1188,28 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   Let $g$ be injective and continuously differentiable on $[a,b]$
   and let $f$ be continuous on $g([a, b])$.
   Then, with $u = g(x)$ and $dif u = g'(x) dif x$,
-  $
-    integral_a^b f(g(x)) g'(x) dif x
-    = integral_(g(a))^(g(b)) f(u) dif u.
-  $
+  $ integral_a^b f(g(x)) g'(x) dif x
+    = integral_(g(a))^(g(b)) f(u) dif u. $
 
   Equivalently, if $g$ is strictly monotonic and
   thus invertible as $x = g^(-1)(u)$,
-  $
-    integral_a^b f(x) dif x =
-    integral_(g^(-1)(a))^(g^(-1)(b)) f'(g(u)) g'(u) dif u.
-  $
+  $ integral_a^b f(x) dif x =
+    integral_(g^(-1)(a))^(g^(-1)(b)) f'(g(u)) g'(u) dif u. $
 ]
 
 #proof[
   We prove the first formulation of the theorem. We have,
-  $
-    integral_a^b f(g(x)) g'(x)
+  $ integral_a^b f(g(x)) g'(x)
     = [f(g(x))]_a^b
     = [f(u)]_(g(a))^(g(b))
-    = integral_(g(a))^(g(b)) f(u) dif u
-  $
+    = integral_(g(a))^(g(b)) f(u) dif u $
   according to @thm-fundamental (ii) and @thm-chain.
 ]
 
 #theorem[Integration by Parts][
   If $f,g$ are continuously differentiable on $[a,b]$, then
-  $
-    integral_a^b f(x) g(x) dif x =
-    [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x.
-  $
+  $ integral_a^b f(x) g(x) dif x =
+    [F(x) g(x)]_a^b - integral_a^b F(x) g'(x) dif x. $
 ] <thm-parts>
 
 #tip(title: [LIATE])[
@@ -1312,12 +1232,10 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   + Inverse:
     $ arctan(x) = -arctan(-x) $
   + Integration:
-    $
-      integral a/(b^2 + c^2 x^2) dif x & = a/b^2 integral 1/(1 + c^2 x^2 slash b^2) \
-                                       & = vec(u &= c x slash b, dif u &= c slash b, delim: "{") \
-                                       & = a/(b c) integral 1/(1 + u^2) dif u \
-                                       & = a/(b c) arctan((c x)/b)
-    $
+    $ integral a/(b^2 + c^2 x^2) dif x & = a/b^2 integral 1/(1 + c^2 x^2 slash b^2) \
+      & = vec(u &= c x slash b, dif u &= c slash b, delim: "{") \
+      & = a/(b c) integral 1/(1 + u^2) dif u \
+      & = a/(b c) arctan((c x)/b) $
 
   ==== Elementary
 
@@ -1332,12 +1250,10 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
     $ tan(x/2) = (1-cos(x))/sin(x) = sin(x)/(1+cos(x)) $
     (Weierstrass Substitution)
     Let $t = tan(x slash 2)$, then:
-    $
-      sin(x) & = (2t)/(1 + t^2) \
+    $ sin(x) & = (2t)/(1 + t^2) \
       cos(x) & = (1 - t^2)/(1 + t^2) \
       tan(x) & = (2t)/(1 - t^2) \
-       dif x & = (2 dif t)/(1 + t^2)
-    $
+       dif x & = (2 dif t)/(1 + t^2) $
     This substitution is especially useful for integrating rational functions of trigonometric expressions.
   + Antiderivatives:
 
@@ -1378,10 +1294,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   where $alpha$ and $beta$ are
   continuous on $[a, b]$ with $alpha(x) <= beta(x)$,
   then $f$ is integrable over $D$ and
-  $
-    integral.double_D f(x, y) dif x dif y
-    = integral_a^b (integral_(alpha(x))^(beta(x)) f(x, y) dif y) dif x.
-  $
+  $ integral.double_D f(x, y) dif x dif y
+    = integral_a^b (integral_(alpha(x))^(beta(x)) f(x, y) dif y) dif x. $
 
   An equivalent form with respect to the other variable exists.
 ]
@@ -1402,10 +1316,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   If $f$ is seperable with
   $ f(x, y) = g(x) h(y) $
   then we may rewrite
-  $
-    integral.double_([a,b]times[c,d]) g(x) h(y) dif x dif y
-    = integral_a^b g(x) dif x integral_c^d h(y) dif y.
-  $
+  $ integral.double_([a,b]times[c,d]) g(x) h(y) dif x dif y =
+    integral_a^b g(x) dif x integral_c^d h(y) dif y. $
 ]
 
 #theorem[Power Test for Improper Integrals][
@@ -1420,22 +1332,18 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 === Defining Line and Surface Integrals
 
 #definition[
-  $
-    & dif s     && = norm(ve(r)'(t)) dif t \
+  $ & dif s     && = norm(ve(r)'(t)) dif t \
     & dif ve(s) && = ve(r)'(t) dif t \
     & dif S     && = norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t \
     & dif ve(S) && = (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t
-                   = ve(hat(n)) dif S
-  $
+                 = ve(hat(n)) dif S $
 ]
 
 #definition[Line Integral, Riemann][
   Let $f : C -> RR$ be a function defined on a curve $C in RR^n$.
   The line integral of $f$ along $C$ is
-  $
-    integral_C f(x) dif s
-    = lim_(norm(P)->0) sum_(i=1)^n f(t_i) norm(x_i - x_(i-1)),
-  $
+  $ integral_C f(x) dif s
+    = lim_(norm(P)->0) sum_(i=1)^n f(t_i) norm(x_i - x_(i-1)), $
   where $P = {x_0, x_1, ...., x_n}$ is a partition of $C$ and
   $t_i in C$ is a sample point in the subcurve between $x_(i-1)$ and $x_i$.
 ]
@@ -1443,10 +1351,8 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
 #definition[Surface Integral, Riemann][
   Let $f : S -> RR$ be a function defined on a surface $S in RR^3$.
   The surface integral of $f$ along $S$ is
-  $
-    integral_S f(x) dif S
-    = lim_(norm(P)->0) sum_(i=1)^n f(t_i) "area"(S_i),
-  $
+  $ integral_S f(x) dif S
+    = lim_(norm(P)->0) sum_(i=1)^n f(t_i) "area"(S_i), $
   where $P = {S_1, S_2, ..., S_n}$ is a partition of $S$ and
   $t_i in S$ is a sample point in the sub-surface $S_i$.
 ]
@@ -1459,51 +1365,39 @@ Let $f : [a,b] -> RR$ be bounded. We now define its definite integral.
   For a scalar field $f : RR^n -> RR$,
   the line integral along a smooth curve $C$
   parametrized by $ve(r)(t)$ for $t in [a, b]$ is
-  $
-    integral_C f dif s
-    = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t
-  $
+  $ integral_C f dif s
+    = integral_a^b f(ve(r)(t)) norm(ve(r)'(t)) dif t $
   under the assumption that $ve(r)'(t) != ve(0)$ for every $t in [a, b]$.
-
-
 ]
 
 The above definition can also be written
-$
-  integral_C f dif s
+$ integral_C f dif s
   = integral_a^b f(ve(x)(t))
   sqrt((x'_1 (t))^2 + (x'_2 (t))^2 + dots.h.c + (x'_n (t))^2)
-  dif t.
-$
+  dif t. $
 
 #definition[Line Integral, Vector Field][
   Likewise, for a vector field $ve(F) : RR^n -> RR^n$ the line integral is
-  $
-    integral_C ve(F) dot dif ve(r)
-    = integral_a^b ve(F)(ve(r)(t)) dot ve(r)'(t) dif t.
-  $
+  $ integral_C ve(F) dot dif ve(r)
+    = integral_a^b ve(F)(ve(r)(t)) dot ve(r)'(t) dif t. $
 ]
 
 #definition[Surface Integral, Scalar Field][
   For a scalar field $f : RR^3 -> RR$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
-  $
-    integral.double_S f dif S
+  $ integral.double_S f dif S
     = integral.double_D f(ve(r)(s, t))
-    norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t.
-  $
+    norm(ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
 #definition[Surface Integral, Vector Field][
   For a vector field $ve(F) : RR^3 -> RR^3$,
   the surface integral along a smooth surface $S$
   parametrized by $ve(r)(s, t)$ for $(s, t) in D$ is
-  $
-    integral.double_S ve(F) dot dif ve(S)
+  $ integral.double_S ve(F) dot dif ve(S)
     = integral.double_D ve(F)(ve(r)(s, t))
-    dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t.
-  $
+    dot (ve(r)_s (s, t) times ve(r)_t (s, t)) dif s dif t. $
 ]
 
 === Vector Differential Operators
@@ -1540,22 +1434,18 @@ $
   then the line integral of $ve(F)$ along
   any curve $C$ from $ve(a)$ to $ve(b)$
   is independent of the path and equals
-  $
-    integral_C ve(F) dot dif ve(r)
+  $ integral_C ve(F) dot dif ve(r)
     = integral_C nabla phi dot dif ve(r)
-    = phi(ve(b)) - phi(ve(a)).
-  $
+    = phi(ve(b)) - phi(ve(a)). $
 ]
 
 #proof[
   With a parameterization such that
   $ve(r)(a) = ve(a)$ and $ve(r)(b) = ve(b)$,
-  $
-    integral_C nabla phi dot dif ve(r)
+  $ integral_C nabla phi dot dif ve(r)
     = integral_a^b nabla phi(ve(r)(t)) dot ve(r)'(t) dif t
     = integral_a^b dv(, t) phi(ve(r)(t)) dif t
-    = phi(ve(b)) - phi(ve(a))
-  $
+    = phi(ve(b)) - phi(ve(a)) $
   is the evaluated line integral, since
   $ dv(, t) phi(ve(r)(t)) = nabla phi(ve(r)(t)) dot ve(r)'(t), $
   by @thm-chain-multivariable.
@@ -1583,8 +1473,7 @@ $
   oriented by outward pointing unit normals individually
   denoted $hve(n)$.
   If $ve(F)$ is a $C^1$ vector field on a neighborhood of $V$, then
-  $
-    underbrace(
+  $ underbrace(
       integral dots.h.c integral_V,
       n
     ) (nabla dot ve(F)) dif V
@@ -1592,15 +1481,12 @@ $
     underbrace(
       integral.cont dots.h.c integral.cont_(delta V),
       n - 1
-    ) (ve(F) dot ve(hat(n))) dif S.
-  $
+    ) (ve(F) dot ve(hat(n))) dif S. $
 ]
 
 #corollary[Divergence or Gauss's, $n = 3$][
-  $
-    integral.triple_V (nabla dot ve(F)) dif V =
-    integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S.
-  $
+  $ integral.triple_V (nabla dot ve(F)) dif V =
+    integral.surf_(delta V) (ve(F) dot ve(hat(n))) dif S. $
 ]
 
 #corollary[Green's, $n = 2$][
@@ -1608,10 +1494,8 @@ $
   If the compact region $D subset Omega$ has
   a piecewise smooth boundary $partial D$
   and is positively oriented, then
-  $
-    integral.cont_(partial D) P dif x + Q dif y
-    = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y.
-  $
+  $ integral.cont_(partial D) P dif x + Q dif y
+    = integral.double_D (pdv(Q, x) - pdv(P, y)) dif x dif y. $
 ]
 
 #corollary[Fundamental Theorem of Calculus, $n = 1$][
@@ -1627,12 +1511,10 @@ $
 #definition[Curl][
   Let $ve(F) = (F_x, F_y, F_z)$ be a $C^1$ vector field.
   Its curl is the vector-valued function
-  $
-    "curl" ve(F) = nabla times ve(F) =
+  $ "curl" ve(F) = nabla times ve(F) =
     (pdv(F_z, y) - pdv(F_y, z),
-      pdv(F_x, z) - pdv(F_z, x),
-      pdv(F_y, x) - pdv(F_x, y)).
-  $
+     pdv(F_x, z) - pdv(F_z, x),
+     pdv(F_y, x) - pdv(F_x, y)). $
 ]
 
 #theorem[Curl or Stokes's][
@@ -1640,10 +1522,8 @@ $
   a piecewise smooth boundary $partial S$ and
   let $ve(hat(n))$ be a unit normal vector field on $S$.
   If $ve(F)$ is a $C^1$ vector field on a neighborhood of $S$, then
-  $
-    integral.double_S (nabla times ve(F)) dot ve(hat(n)) dif S =
-    integral.cont_(partial S) ve(F) dot dif ve(r).
-  $
+  $ integral.double_S (nabla times ve(F)) dot ve(hat(n)) dif S =
+    integral.cont_(partial S) ve(F) dot dif ve(r). $
 ]
 
 #definition[Irrotional][
@@ -1691,20 +1571,27 @@ $
   A *parameter* is an arbitrary constant.
 ]
 
-#theorem[Picard][
-  If $f(x, y)$ and $pdv(f, y)(x, y)$ are continuous on
-  a closed rectangle $R subset RR^2,$
-  then for all inner points $(x_0, y_0) in R$
-  there exists a unique integral curve that intersects the point
-  and with the property that $dv(y, x) = f(x, y).$
+#theorem[Picard--Lindelöf][
+  Let $D subset RR times RR^n$ be an open domain where
+  $f: D -> RR^n$ is continuous,
+  and $f$ is locally Lipschitz continuous with respect to $y$.
 
-  Remark:
-  It suffices that $f$ is $y$-Lipschitz.
+  For every initial point $(t_0, y_0) in D$,
+  there exists some $epsilon > 0$
+  and a unique continuously differentiable curve $y : I -> RR^n$
+  defined on the interval $I = (t_0 - epsilon, t_0 + epsilon)$ that solves
+  the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$.
+]
 
-  Remark: 
-  If we fix $x_0$ and vary $y_0$,
-  then the theorem gives a unique curve through $(x_0, y_0)$;
-  we get a family of curves $y = (x, c),$ where $c$ is a parameter.
+#tip[
+  The local Lipschitz condition is automatically satisfied if
+  the Jacobian matrix $pdv(f, y)(t, y) =$ exists and is continuous on $D$.
+]
+
+#corollary[
+  Integral curves can never intersect or branch,
+  which yields a family of unique, non-overlapping trajectories
+  in the phase space parametrised by the initial condition.
 ]
 
 #definition[Orthogonal curve][
@@ -1717,10 +1604,10 @@ $
 
 #definition[First-order linear system][
   $ cases(
-    display(dv(x, t)) &= a_1(t) x + b_1(t) y + f_1(t),
-    display(dv(y, t)) &= a_2(t) x + b_2(t) y + f_2(t),
-    gap: #0.7em,
-  ) $
+      display(dv(x, t)) & = a_1(t) x + b_1(t) y + f_1(t),
+      display(dv(y, t)) & = a_2(t) x + b_2(t) y + f_2(t),
+      gap: #0.7em,
+    ) $
 
   Homogenous if $f_1 = f_2 = 0$.
 ]
@@ -1776,10 +1663,8 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 #definition[Infinite Series][
   Let $(a_j)^oo_(j=0)$ and let $(s_n)^oo_(n=0)$.
   The sum of the infinite series is defined as
-  $
-    sum^oo_(j=0) a_j = lim_(n->oo) s_n
-    = lim_(n->oo) sum^n_(j=0) a_j.
-  $
+  $ sum^oo_(j=0) a_j = lim_(n->oo) s_n
+    = lim_(n->oo) sum^n_(j=0) a_j. $
 
   If $a_j >= 0$ for every $j$ we say that the series is _positive_.
 ]
@@ -1800,11 +1685,9 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 
 #theorem[Cauchy Criterion for Series][
   The series $sum_(k=0)^oo a_k$ converges if and only if
-  $
-    forall epsilon > 0 space exists N :
+  $ forall epsilon > 0 space exists N :
     n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
-    < epsilon.
-  $
+    < epsilon. $
 ]
 
 #corollary[Series Term Test][
@@ -1878,27 +1761,21 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 #definition[
   Let $f$ be integrable on $[a, R]$ for all $R > a$.
   Then the integral is defined
-  $
-    integral_a^oo f(x) dif x = lim_(R->oo)
-    integral_a^R f(x) dif x.
-  $
+  $ integral_a^oo f(x) dif x = lim_(R->oo)
+    integral_a^R f(x) dif x. $
   If this limit exists, then the integral is said to be convergent.
 ]
 
 #definition[
   Let $f$ be integrable on every closed and bounded interval.
   If _both_
-  $
-    integral_(-oo)^a f(x) dif x space "and" space
-    integral_(a)^oo f(x) dif x
-  $
+  $ integral_(-oo)^a f(x) dif x space "and" space
+    integral_(a)^oo f(x) dif x $
   are convergent, then for any real $a$
   we define the convergent integral
-  $
-    integral_(-oo)^oo f(x) dif x =
+  $ integral_(-oo)^oo f(x) dif x =
     integral_(-oo)^a f(x) dif x
-    + integral_a^oo f(x).
-  $
+    + integral_a^oo f(x). $
 ]
 
 #theorem[Properties][
@@ -1922,18 +1799,14 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
   Then,
   $ sum_(j=m+1)^n f(j) <= integral_m^n f(x) dif x <= sum_(j=m)^(n-1) f(j) $
   and
-  $
-    f(n) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
-    f(m) + integral_m^n f(x) dif x.
-  $
+  $ f(n) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
+    f(m) + integral_m^n f(x) dif x. $
 
   Let $f$ instead be increasing. Then,
   $ sum_(j=m)^(n-1) f(j) <= integral_m^n f(x) dif x <= sum_(j=m+1)^n f(j) $
   and
-  $
-    f(m) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
-    f(n) + integral_m^n f(x) dif x.
-  $
+  $ f(m) + integral_m^n f(x) dif x <= sum_(j=m)^n f(j) <=
+    f(n) + integral_m^n f(x) dif x. $
 ]
 
 #corollary[Integral Test][ // AKA Maclaurin--Cauchy Test
@@ -1967,10 +1840,8 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 
 #proof[
   Let $h = x - c$ be the deviation from the point. Then,
-  $
-    f(x) = f(c + h) = sum_(k=0)^(n) (f^((k))(c))/k! h^k
-    + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h),
-  $
+  $ f(x) = f(c + h) = sum_(k=0)^(n) (f^((k))(c))/k! h^k
+    + (f^((n+1))(xi))/(n+1)! h^(n+1) = p_n (h) + r_n (h), $
   where $p_n (h)$ and $r_n (h)$ correspond to $P_n (x)$ and $R_n (x)$.
 
   Define
@@ -1985,15 +1856,11 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
   $ g'_(n,h)(xi) = -(n + 1)(c + h - xi)^n. $
 
   @thm-gmv gives
-  $
-    (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
-    = (F'_(n,h)(xi)) / (g'_(n,h)(xi))
-  $
+  $ (F_(n,h)(c+h) - F_(n,h)(c)) / (g_(n,h)(c+h) - g_(n,h)(c))
+    = (F'_(n,h)(xi)) / (g'_(n,h)(xi)) $
   for some $xi$ between $c$ and $c + h$. Substituting,
-  $
-    (f(c + h) - p_n (h))/(0 - h^(n+1)) =
-    (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n)
-  $
+  $ (f(c + h) - p_n (h))/(0 - h^(n+1)) =
+    (f^((n+1))(xi) (c + h - xi)^n slash n!)/(-(n + 1)(c + h - xi)^n) $
   so
   $ f(c + h) - p_n (h) = (f^((n+1))(xi))/(n + 1)! h^(n+1). $
   Hence
@@ -2004,33 +1871,29 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 ]
 
 #proof[Proof using integrals][
+  
   From @thm-fundamental (ii) we have
   $ integral_c^x f'(t) dif t = f(t) - f(c) $
   which we expand using @thm-parts as
-  $
-    f(x) & = f(c) + integral_c^x 1 dot f'(t) dif t \
+  #set text(size: 0.97em)
+  $ f(x) & = f(c) + integral_c^x 1 dot f'(t) dif t \
          & = f(c) + [(t-x)f'(t)]_c^x - integral_c^x (t-x)f''(x) dif t \
          & = f(c) + f'(c)(x - c) -
            ([(t-x)^2/2 f''(t)]_c^x - integral_c^x (t-x)^2/2 f^((3))(t) dif t) \
          & = f(c) + f'(c)(x-c) + (f''(t))/2 (x-c)^2 +
            integral_c^x (t-x)^2/2 f^((3))(t) dif t \
          & = dots.h.c \
-         & = P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t
-  $
+         & = P_n (x) + (-1)^n integral_c^x (t-x)^n/n! f^((n+1))(t) dif t. $
 ]
 
 #theorem[Multivariable Taylor's][
   The Taylor expansion of degree $N$ for $f : RR^n -> RR$ is
-  $
-    f(ve(a) + ve(h))
+  $ f(ve(a) + ve(h))
     = sum_(k=0)^N 1/k!
-    (ve(h) dot nabla)^k f(ve(a)) + R_N (ve(a), ve(h)),
-  $
+    (ve(h) dot nabla)^k f(ve(a)) + R_N (ve(a), ve(h)), $
   where
-  $
-    ve(h) dot nabla =
-    h_1 pdv(, x_1) + h_2 pdv(, x_1) + dots.h.c + h_n pdv(, x_n).
-  $
+  $ ve(h) dot nabla =
+    h_1 pdv(, x_1) + h_2 pdv(, x_1) + dots.h.c + h_n pdv(, x_n). $
 ]
 
 #definition[
@@ -2137,10 +2000,8 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
   Let $f(x) : [a, b] -> RR$ and fix $c in [a, b]$.
   Suppose $f$ is continuously differentiable $n$ times on $[a, b]$ and
   $n + 1$ times on $(a, b)$. Then,
-  $
-    f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1))
-    "as" x-> c.
-  $
+  $ f(x) = sum_(k=0)^n (f^((k))(c))/k! (x - c)^k + O(abs(x - c)^(n+1))
+    "as" x-> c. $
 
   Furthermore, the coefficients $f^((k))(c) slash k!$ are
   unique to each $(x - c)^k$.
