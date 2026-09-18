@@ -733,8 +733,8 @@ The proof is too complicated.
   the tangent line is given by
   $ T(x) = f'(x_n)(x - x_n) + f(x_n) $
   and intersects the $x$-axis at
-  $ T(x_(n+1)) = 0 #h(0.8em) <==>
-    #h(0.8em) x_(n+1) = x_n - f(x_n)/(f'(x_n)). $
+  $ T(x_(n+1)) = 0 quad <==> quad
+    x_(n+1) = x_n - f(x_n)/(f'(x_n)). $
 
   The method fails if it iterates endlessly or $f'(x_n) = 0$.
 ]
@@ -1572,19 +1572,18 @@ $ integral_C f dif s
 
 #theorem[Picard--Lindelöf][
   Let $D subset RR times RR^n$ be an open domain where
-  $f: D -> RR^n$ is continuous,
-  and $f$ is locally Lipschitz continuous with respect to $y$.
+  $f : D -> RR^n$ is continuous and,
+  with respect to $y$, locally Lipschitz continuous.
 
   For every initial point $(t_0, y_0) in D$,
-  there exists some $epsilon > 0$
-  and a unique continuously differentiable curve $y : I -> RR^n$
-  defined on the interval $I = (t_0 - epsilon, t_0 + epsilon)$ that solves
-  the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$.
+  there exists some open interval $I = (t_0 - delta, t_0 + delta)$
+  where the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$
+  has a unique solution $y : I -> RR^n$, and $y in C^1(I)$.
 ]
 
 #tip[
   The local Lipschitz condition is automatically satisfied if
-  the Jacobian matrix $pdv(f, y)(t, y) =$ exists and is continuous on $D$.
+  the Jacobian matrix $pdv(f, y)(t, y)$ exists and is continuous on $D$.
 ]
 
 #corollary[
@@ -1684,9 +1683,8 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 
 #theorem[Cauchy Criterion for Series][
   The series $sum_(k=0)^oo a_k$ converges if and only if
-  $ forall epsilon > 0 space exists N :
-    n > m > N ==> abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n)
-    < epsilon. $
+  $ forall epsilon > 0 space exists N : n > m > N ==>
+    abs(a_m + a_(m+1) + dots.h.c + a_(n-1) + a_n) < epsilon. $
 ]
 
 #corollary[Series Term Test][
@@ -1715,9 +1713,9 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 #theorem[Direct Comparison Test][
   Let $(a_k)$ and $(b_k)$ satisfy $0 <= a_k <= b_k.$ Then,
   + $sum^oo_(k=1) (a_k)$ converges if
-    $sum^oo_(k=1) (b_k)$  converges.
+    $sum^oo_(k=1) (b_k)$ converges.
   + $sum^oo_(k=1) (b_k)$ diverges if
-    $sum^oo_(k=1) (a_k)$  diverges.
+    $sum^oo_(k=1) (a_k)$ diverges.
 ] <thm-direct-comparison>
 
 #theorem[Limit Comparison Test][
