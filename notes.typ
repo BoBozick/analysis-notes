@@ -1571,24 +1571,24 @@ $ integral_C f dif s
 ]
 
 #theorem[Picard--Lindelöf][
-  Let $D subset.eq RR times RR^n$ be an open domain where
-  $f : D -> RR^n$ is continuous and,
-  with respect to $y$, locally Lipschitz continuous.
+  Let $D subset.eq RR times RR^n$ be an open set where
+  $f : D -> RR^n$ is continuous and locally Lipschitz continuous
+  with respect to $y$.
 
   For every initial point $(t_0, y_0) in D$,
   there exists some open interval
-  $I = (t_0 - delta, t_0 + delta)$ with $delta > 0$ and
-  where the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$
-  has a unique solution $y : I -> RR^n$.
-  Furthermore, $y in C^1(I)$.
+  $I = (t_0 - delta, t_0 + delta)$ with $delta > 0$
+  such that the initial value problem $y'(t) = f(t, y(t))$ with $y(t_0) = y_0$
+  has a unique $C^1$ solution $y : I -> RR^n$ satisfying $(t, y(t)) in D$ for all $t in I$.
 
-  In particular, if $f$ is defined on some closed cylinder
-  $ R = [t_0 - a, t_0 + a] times dash(B)(y_0, b) subset.eq D $
-  with a finite supinum
-  $ M = sup_((t, y) in R) abs(f(t, y)) < oo, $
-  then there is a unique and $C^1$ solution on
-  $[t_0 - delta, t_0 + delta]$ for all
-  $ delta <= min(a, b/M). $ 
+  In particular, for any cylinder
+  $ R = [t_0 - a, t_0 + a] times overline(B)(y_0, b) subset.eq D $
+  with $a, b > 0$, the maximum
+  $ M = max_((t, y) in R) norm(f(t, y)) $
+  is finite, and a unique $C^1$ solution exists on
+  $[t_0 - alpha, t_0 + alpha]$ for
+  $ alpha = min(a, b/M), $
+  adopting the convention $b / 0 = oo$ if $M = 0$.
 ]
 
 #tip[
@@ -1622,11 +1622,31 @@ $ integral_C f dif s
 
 === Second-Order
 
-#image("assets/image-2.png")
+#lemma[Wronskian Alternative][
+  Let $P, Q in C([a, b])$
+  and consider the homogeneous linear differential equation
+  $ y'' + P(x)y' + Q(x)y = 0. $
+  If $y_1$ and $y_2$ are solutions on $[a, b]$, then their Wronskian
+  $ W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_2(x)y_1'(x) $
+  is either identically zero on $[a, b]$ or never zero on $[a, b]$.
+]
 
-#image("assets/image-1.png")
+#lemma[Linear Dependence and the Wronskian][
+  Let $y_1$ and $y_2$ be solutions of the homogeneous equation on $[a, b]$. 
+  Then $y_1$ and $y_2$ are linearly dependent on $[a, b]$ if and only if
+  $ W(y_1, y_2)(x) = 0 $
+  for all $x in [a, b]$ (or equivalently, at a single point $x_0 in [a, b]$).
+]
 
-#image("assets/image.png")
+#theorem[General Solution][
+  Let $y_1$ and $y_2$ be linearly independent solutions of
+  $ y'' + P(x)y' + Q(x)y = 0 $
+  on $[a, b]$. Then the family of functions
+  $ y(x) = c_1 y_1(x) + c_2 y_2(x), quad c_1, c_2 in RR $
+  constitutes the general solution on $[a, b]$,
+  in the sense that every solution to the equation on $[a, b]$
+  can be uniquely represented by a choice of constants $c_1$ and $c_2$.
+]
 
 === Second-Order Linear
 
