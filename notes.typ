@@ -388,10 +388,6 @@
   In particular, $delta$ can be chosen independent of $y$.
 ]
 
-#theorem[
-  If a function is uniformly continuous, it is also continuous.
-]
-
 #theorem[Heine--Cantor][
   If $f$ is continuous and defined on a compact set $K$,
   then it is also uniformly continuous on $K$.
@@ -419,6 +415,29 @@
   $ abs(f(x_n_k) - f(x_n_k)) -> 0. $
   However, this contradicts our assumption that
   $ abs(f(x_n_k) -> f(y_n_k)) >= epsilon_0. $
+]
+
+#definition[Lipschitz Continuous][
+  A function $f : (X, d_X) -> (Y, d_Y)$ between metric spaces
+  is *Lipschitz continuous* if there exists a real constant $L >= 0$
+  such that for all $x_1, x_2 in X$,
+  $ d_Y (f(x_1), f(x_2)) <= L thin d_X (x_1, x_2). $
+
+  The minimal $L$ satisfying this is the *Lipschitz constant*.
+]
+
+#theorem[
+  $ "Continuously differentiable" & subset \
+    "Lipschitz continuous" & subset \
+    "Uniformly continuous" & subset
+    "Continuous" $  
+]
+
+It is also of note that Differentiable $subset$ Continuous.
+
+#theorem[
+  A differentiable function is Lipschitz continuous if and only if
+  (the norm of) its (total) derivative is bounded.
 ]
 
 === Composition
