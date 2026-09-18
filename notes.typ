@@ -145,11 +145,10 @@
 ]
 
 #theorem[Nested Interval Property][
-  Let $(I_n)$ be a nested sequence of nonempty closed
-  and bounded intervals with
-  $ I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c. $
-  Then $ inter.big_(n=1)^oo I_n != emptyset. $
-  In particular, there exists $a in inter.big_(n=1)^oo I_n$.
+  If $(I_n)$ with $I_1 supset.eq I_2 supset.eq I_3 supset.eq dots.h.c$
+  is a nested sequence of nonempty closed bounded intervals,
+  then their intersection $inter.big_(n=1)^oo I_n != emptyset$
+  is nontrivial and contains at least one element from any interval.
 ]
 
 === Open and Closed Sets
@@ -1731,10 +1730,10 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 ] <thm-limit-comparison>
 
 #theorem[Alternating Series Test][
-  Let $(a_n)$ satisfy
-  + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c$ and
-  + $(a_n) -> 0$.
-  Then, $sum^oo_(n=1) (-1)^(n+1) a_n$ converges.
+  If $(a_n)$ satisfies
+  + $a_1 >= a_2 >= dots.h.c >= a_n >= a_(n+1) >= dots.h.c space$ and
+  + $(a_n) -> 0$,
+  then $sum^oo_(n=1) (-1)^(n+1) a_n$ converges.
 ] <thm-alternating>
 
 #definition[Absolutely Convergent][
@@ -1871,8 +1870,7 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
 ]
 
 #proof[Proof using integrals][
-  
-  From @thm-fundamental (ii) we have
+  From @thm-fundamental part (ii) we have
   $ integral_c^x f'(t) dif t = f(t) - f(c) $
   which we expand using @thm-parts as
   #set text(size: 0.97em)
@@ -1919,9 +1917,9 @@ $ a(x) y'' + b(x) y' + c(x) y = g(x). $
     & cos x = sum_(k=0)^oo (-1)^k x^(2k) / (2k)! = 1 - x^2/2!
       + x^4/4! - dots.h.c \
     & arctan x = sum_(k=0)^oo (-1)^k x^(2k+1) / (2k+1) = x - x^3/3
-      + x^5/5 - x^7/7 + dots.h.c quad(|x| <= 1) \
+      + x^5/5 - x^7/7 + dots.h.c quad &(|x| <= 1) \
     & ln(1 + x) = sum_(k=1)^oo (-1)^(k+1) x^k / k = x - x^2/2
-      + x^3/3 - x^4/4 + dots.h.c quad(|x| < 1) \
+      + x^3/3 - x^4/4 + dots.h.c quad &(|x| < 1) \
     & (1 + x)^a = sum_(k=0)^oo binom(a, k) x^k quad(|x| < 1) \
   $]
 ]
